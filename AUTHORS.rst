@@ -9,4 +9,4 @@ Development Lead
 Contributors
 ------------
 
-None yet. Why not be the first?
+* Josh McKinstry <jmckins3@msudenver.edu>
