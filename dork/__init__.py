@@ -4,5 +4,5 @@
 
 __version__ = '0.1.0'
 __author__ = ", ".join([
-    "Luke Smith", "Sinh Mai"
+    "Luke Smith", "Sinh Mai" , "Josh McKinstry"
 ])
