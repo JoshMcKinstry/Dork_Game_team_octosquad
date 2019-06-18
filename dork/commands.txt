@@ -1,0 +1,12 @@
+/// ignore lines beginning with three slashes
+/// "command" : ["nouns/objects"]  | (Help description)
+
+/// Movement Commands
+"go" : "north" , "south" , "east" , "west" | (Move to a different area in the specified direction. Ex: "go north")
+
+/// Action Commands
+"look" : "around" , "[object]" | (Look at a specified object. Ex: "look sword")
+"open" : "[object]" | (Open the specified object, if it exists. Ex: "open chest")
+"take" : "[object]" | (Take the specified object, if it exists. Ex: "take bottle")
+"drop" : "[object]" | (Drop the specified object, must be held by player. Ex: "drop rock")
+"use"  : "[object]" | (Use the specified object, does not need to be held by the player. Ex: "use secret passage")
