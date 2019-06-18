@@ -3,12 +3,12 @@ def _start_game():
 
 def _exit_game():
     return "Your game has been saved", False
-    
+
 def _show_help():
     return "try typing 'help'", False
 
 def _move_east():
-    return  "you have moved to east", False
+    return "you have moved to east", False
 
 def _move_west():
     return "you have moved to west", False
@@ -26,13 +26,13 @@ def read():
 
 def evaluate(command):
     words_in_command = command.split()
-    main_menu ={
+    main_menu = {
          "say": {
-            "hello": _start_game, 
-            "hi"   : _start_game, 
-            "goodbye" : _exit_game,
-            "quit": _exit_game,
-            "save" : _exit_game
+         "hello": _start_game,
+         "hi"   : _start_game,
+         "goodbye" : _exit_game,
+         "quit": _exit_game,
+         "save" : _exit_game
         },
         "help": {"say": _show_help},
          "go" : {
@@ -63,6 +63,4 @@ def repl():
     print("ending repl...")
 
 if __name__ == "__main__":
-    repl()         
-
-       
+    repl()
