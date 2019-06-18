@@ -9,4 +9,4 @@
 "open" : "[object]" | (Open the specified object, if it exists. Ex: "open chest")
 "take" : "[object]" | (Take the specified object, if it exists. Ex: "take bottle")
 "drop" : "[object]" | (Drop the specified object, must be held by player. Ex: "drop rock")
-"use"  : "[object]" | (Use the specified object, does not need to be held by the player. Ex: "use secret passage")
+"use"  : "[object]" | (Use the specified object, if it exists. Ex: "use secret passage")
