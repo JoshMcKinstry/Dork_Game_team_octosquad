@@ -19,7 +19,8 @@ def test_repl_exists():
 def test_repl_runs_with_input(_mock_read, _mock_evaluate):
     """the repl runs with correct output given specific input
     """
-    #https://forum.learncodethehardway.com/t/testing-input-and-print/1757/10
+    '''https://forum.learncodethehardway.com/t/testing-input-and-print/1757/10
+    '''
     with patch('sys.stdout') as mock_print:
         commandsparser.repl()
     mock_print.assert_has_calls([
