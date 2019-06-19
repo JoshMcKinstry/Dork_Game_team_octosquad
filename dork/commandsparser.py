@@ -7,7 +7,7 @@ def _start_game():
 
 
 def _exit_game():
-    return "Your game has been saved", False
+    return "Your game has been saved", True
 
 
 def _show_help():

@@ -4,6 +4,7 @@ from types import FunctionType
 from unittest import mock
 from unittest.mock import patch
 from dork import commandsparser
+import pytest
 
 
 def test_repl_exists():
@@ -38,6 +39,18 @@ def test_read_exists():
     expect = "Dork.commandsparser should define a read method"
     assert "read" in vars(commandsparser), expect
     assert isinstance(commandsparser.read, FunctionType)
+
+
+@pytest.mark.parametrize("expected, actual", [
+    ("", ""),
+    ("words go here", "words go here"),
+    ("555", "555")
+])
+def test_read_takes_any_input(expected, actual):
+    """the repl read function should accept any input
+    """
+    with patch('builtins.input', return_value=actual, autospec=True):
+        assert commandsparser.read() == expected
 
 
 def test_evaluate_exists():
