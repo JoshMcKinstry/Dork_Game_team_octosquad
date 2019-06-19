@@ -119,3 +119,14 @@ def test_evaluate_has_unknown_commands(command, response):
     """dork game has commands that are unknown
     """
     assert commandsparser.evaluate(command) == response
+
+
+# https://medium.com/opsops/how-to-test-if-name-main-1928367290cb
+def test_init():
+    """testing of the if __name__ == "__main__" method
+    """
+    with patch.object(commandsparser, "repl", return_value=42):
+        with patch.object(commandsparser, "__name__", "__main__"):
+            with patch.object(commandsparser.sys, 'exit') as mock_exit:
+                commandsparser.init()
+                assert mock_exit.call_args[0][0] == 42

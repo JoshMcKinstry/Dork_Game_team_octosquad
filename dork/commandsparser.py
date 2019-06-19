@@ -1,5 +1,6 @@
 """REPL and commands parser for dork game
 """
+import sys
 
 
 def _start_game():
@@ -103,5 +104,11 @@ def repl():
     print("ending repl...")
 
 
-if __name__ == "__main__":
-    repl()
+def init():
+    """initializer function
+    """
+    if __name__ == "__main__":
+        sys.exit(repl())
+
+
+init()
