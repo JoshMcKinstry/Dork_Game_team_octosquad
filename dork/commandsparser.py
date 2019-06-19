@@ -19,7 +19,20 @@ def _move_north():
 def _move_south():
     return "you have moved to south", False
 
+def _get_item():
+    return "you picked up an item", False
 
+def _use_item():
+    return "you used an item", False
+
+def _look():
+    return "you are in an empty room", False
+
+def _open(): 
+    return "you opened a door", False
+
+def _drop():
+    return "you dropped an item", False
 
 def read():
     return input("> ")
@@ -40,7 +53,12 @@ def evaluate(command):
              "south": _move_south,
              "west" : _move_west,
              "east" : _move_east
-         } 
+         },
+        "get" : _get_item,
+        "use" : _use_item,
+        "look" : _look,
+        "open" : _open,
+        "drop" : _drop
     }
     for word in words_in_command:
         if word in main_menu:
