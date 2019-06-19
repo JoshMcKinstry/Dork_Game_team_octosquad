@@ -1,0 +1,28 @@
+dist: xenial
+language: python
+python:
+  - "3.7"
+
+addons:
+  sonarcloud:
+    organization: "joshmckinstry-github"
+    token:
+      secure: ${SONAR_TOKEN}
+
+before_install:
+  - pip install -U pip
+
+install:
+  - pip install -r requirements-dev.txt codecov
+
+script:
+  - pylint dork tests
+  - flake8 dork tests
+  - coverage erase
+  - coverage run --branch --source=dork --omit=dork/__main__.py -m pytest
+  - coverage report -m
+  
+after_success:
+  - coverage xml -i
+  - codecov
+  - sonar-scanner -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.organization=${SONAR_ORGANIZATION}
