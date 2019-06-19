@@ -109,3 +109,13 @@ def test_evaluate_ignores_case(command, response):
     """dork game commands should not be case sensitive
     """
     assert commandsparser.evaluate(command) == response
+
+
+@pytest.mark.parametrize("command,response", [
+    ("have jelly", ("Unknown Command", False)),
+    ("move sideways", ("Unknown Command", False))
+])
+def test_evaluate_has_unknown_commands(command, response):
+    """dork game has commands that are unknown
+    """
+    assert commandsparser.evaluate(command) == response
