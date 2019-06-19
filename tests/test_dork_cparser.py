@@ -13,7 +13,7 @@ def test_repl_exists():
 
 @patch('dork.commandsparser.read', return_value='say goodbye')
 @patch('dork.commandsparser.evaluate', return_value=('your game is saved', True))
-def test_repl_runs_with_input(mock_read, mock_evaluate):
+def test_repl_runs_with_input(_mock_read, _mock_evaluate):
     """the repl runs with correct output given specific input
     """
     #https://forum.learncodethehardway.com/t/testing-input-and-print/1757/10
@@ -37,5 +37,6 @@ def test_read_exists():
 def test_evaluate_exists():
     """the commandsparser.evaluate should exist
     """
-    assert "evaluate" in vars(dork.commandsparser), "Dork.commandsparser should define a evaluate method"
+    expect = "Dork.commandsparser should define an evaluate method"
+    assert "evaluate" in vars(dork.commandsparser), expect
     assert isinstance(dork.commandsparser.evaluate, FunctionType)

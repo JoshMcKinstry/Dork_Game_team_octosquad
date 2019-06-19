@@ -1,3 +1,5 @@
+"""REPL and commands parser for dork game
+"""
 def _start_game():
     return "wellcome to the game!", False
 
@@ -28,32 +30,36 @@ def _use_item():
 def _look():
     return "you are in an empty room", False
 
-def _open(): 
+def _open():
     return "you opened a door", False
 
 def _drop():
     return "you dropped an item", False
 
 def read():
+    """read input from console to repl
+    """
     return input("> ")
 
 def evaluate(command):
+    """command evaluating method in repl
+    """
     words_in_command = command.split()
     main_menu = {
-         "say": {
-         "hello": _start_game,
-         "hi"   : _start_game,
-         "goodbye" : _exit_game,
-         "quit": _exit_game,
-         "save" : _exit_game
+        "say": {
+            "hello": _start_game,
+            "hi"   : _start_game,
+            "goodbye" : _exit_game,
+            "quit": _exit_game,
+            "save" : _exit_game
         },
         "help": {"say": _show_help},
-         "go" : {
-             "north": _move_north,
-             "south": _move_south,
-             "west" : _move_west,
-             "east" : _move_east
-         },
+        "go" : {
+            "north": _move_north,
+            "south": _move_south,
+            "west" : _move_west,
+            "east" : _move_east
+        },
         "get" : _get_item,
         "use" : _use_item,
         "look" : _look,
@@ -63,14 +69,16 @@ def evaluate(command):
     for word in words_in_command:
         if word in main_menu:
             sub_menu = main_menu[word]
-            for word in words_in_command:
-                if word in sub_menu:
-                    function = sub_menu[word]
+            for sub_word in words_in_command:
+                if sub_word in sub_menu:
+                    function = sub_menu[sub_word]
                     return function()
 
     return "Unknown Command", False
 
 def repl():
+    """repl for dork game
+    """
     print("starting repl...")
     while True:
         command = read()
@@ -82,3 +90,4 @@ def repl():
 
 if __name__ == "__main__":
     repl()
+    
