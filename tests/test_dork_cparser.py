@@ -3,8 +3,9 @@
 from types import FunctionType
 from unittest import mock
 from unittest.mock import patch
-from dork import commandsparser
 import pytest
+
+from dork import commandsparser
 
 
 def test_repl_exists():
