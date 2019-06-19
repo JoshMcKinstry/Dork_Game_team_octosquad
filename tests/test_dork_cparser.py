@@ -95,3 +95,17 @@ def test_evaluate_starting_and_ending_dork(command, response):
     """dork game commands should be correctly evaluated
     """
     assert commandsparser.evaluate(command) == response
+
+
+@pytest.mark.parametrize("command,response", [
+    ("Go north", ("you have moved north", False)),
+    ("GO eaST", ("you have moved east", False)),
+    ("gEt obJecT", ("you picked up an item", False)),
+    ("lOOk ArouNd", ("you are in an empty room", False)),
+    ("sTART dOrK", ("Welcome to Dork!", False)),
+    ("QUIT DORK", ("Leaving the game of Dork.", True))
+])
+def test_evaluate_ignores_case(command, response):
+    """dork game commands should not be case sensitive
+    """
+    assert commandsparser.evaluate(command) == response

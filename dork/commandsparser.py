@@ -55,7 +55,8 @@ def read():
 def evaluate(command):
     """command evaluating method in repl
     """
-    words_in_command = command.split()
+    # https://docs.python.org/3/tutorial/datastructures.html
+    words_in_command = [words.casefold() for words in command.split()]
     player_commands = {
         "go": {
             "north": _move_north,
