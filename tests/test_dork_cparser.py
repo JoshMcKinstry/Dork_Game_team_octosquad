@@ -60,3 +60,38 @@ def test_evaluate_exists():
     expect = "Dork.commandsparser should define an evaluate method"
     assert "evaluate" in vars(commandsparser), expect
     assert isinstance(commandsparser.evaluate, FunctionType)
+
+
+@pytest.mark.parametrize("command,response", [
+    ("go north", ("you have moved north", False)),
+    ("go east", ("you have moved east", False)),
+    ("go west", ("you have moved west", False)),
+    ("go south", ("you have moved south", False))
+])
+def test_evaluate_go_commands(command, response):
+    """dork go commands should be correctly evaluated
+    """
+    assert commandsparser.evaluate(command) == response
+
+
+@pytest.mark.parametrize("command,response", [
+    ("get object", ("you picked up an item", False)),
+    ("use object", ("you used an item", False)),
+    ("look around", ("you are in an empty room", False)),
+    ("open object", ("you opened a door", False)),
+    ("drop object", ("you dropped an item", False))
+])
+def test_evaluate_action_commands(command, response):
+    """dork action commands should be correctly evaluated
+    """
+    assert commandsparser.evaluate(command) == response
+
+
+@pytest.mark.parametrize("command,response", [
+    ("start dork", ("Welcome to Dork!", False)),
+    ("quit dork", ("Leaving the game of Dork.", True))
+])
+def test_evaluate_starting_and_ending_dork(command, response):
+    """dork game commands should be correctly evaluated
+    """
+    assert commandsparser.evaluate(command) == response
