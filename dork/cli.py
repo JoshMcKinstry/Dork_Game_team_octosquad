@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Basic CLI Dork.
-"""
+"""Start CLI"""
+# from dork.command_manager import CommandManager
+#  """Basic CLI Dork."""
 
 __all__ = ["main"]
 
@@ -13,3 +14,7 @@ def main(*args):
         print("usage:", script_name, "[-h]")
     else:
         print(*args)
+    # command_manage = CommandManager()
+    # while command_manage.check_game_over() is not True:
+    #    command_manage.read_command()
+    #    command_manage.execute_command()

@@ -5,9 +5,9 @@ python:
 
 addons:
   sonarcloud:
-    organization: "joshmckinstry-github"
-    token:
-      secure: ${SONAR_TOKEN}
+    organization: "$SONAR_ORGANIZATION"
+    token: 
+      secure: "$SONAR_TOKEN"
 
 before_install:
   - pip install -U pip
