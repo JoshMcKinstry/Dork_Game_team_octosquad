@@ -7,15 +7,15 @@ class YamlReader:
     """
     A .yml/.ymal reader
     """
-    @classmethod
-    def valid_file_path(cls, file_path):
+    @staticmethod
+    def valid_file_path(file_path):
         """
         checking for valid file path and valid extension
         """
         return os.path.isfile(file_path)
 
-    @classmethod
-    def valid_extension(cls, file_path):
+    @staticmethod
+    def valid_extension(file_path):
         """
         validating .yml or .ymal extension
         """
@@ -23,8 +23,8 @@ class YamlReader:
         valid_extension = file_extension[1] == '.yml'
         return valid_extension
 
-    @classmethod
-    def yaml_loader(cls, file_path):
+    @staticmethod
+    def yaml_loader(file_path):
         """
         reading the content of the .yml or .ymal file
         """

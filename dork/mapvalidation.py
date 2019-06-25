@@ -8,8 +8,8 @@ class ValidMaze:
     A valid maze
     """
 
-    @classmethod
-    def load_rooms(cls, maze):
+    @staticmethod
+    def load_rooms(maze):
         """
         Loading the room names
         """
@@ -17,8 +17,8 @@ class ValidMaze:
             room_names = list(maze[room_name].keys())
         return room_names
 
-    @classmethod
-    def load_cardinals(cls, maze):
+    @staticmethod
+    def load_cardinals(maze):
         """
         Loading the room cardinals
         """
@@ -26,15 +26,15 @@ class ValidMaze:
             room_cardinals = list(maze[room_name].values())
         return room_cardinals
 
-    @classmethod
-    def check_rooms(cls, room_names):
+    @staticmethod
+    def check_rooms(room_names):
         """
         Checking room names for valid names
         """
         return None in room_names
 
-    @classmethod
-    def check_cardinals(cls, room_cardinals):
+    @staticmethod
+    def check_cardinals(room_cardinals):
         """
         Checking for valid cardinals in each room
         """
@@ -47,8 +47,8 @@ class ValidMaze:
                 break
         return invalid_cardinal
 
-    @classmethod
-    def check_connections(cls, room_names, room_cardinals):
+    @staticmethod
+    def check_connections(room_names, room_cardinals):
         """
         Checking for cardinals to be pointing to unique and valid directions
         """
