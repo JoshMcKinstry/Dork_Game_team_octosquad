@@ -1,8 +1,8 @@
 """Test for room_printing"""
 import unittest
-from dork.room_printing import Room1Printing
 from unittest import mock
 from unittest.mock import patch
+from dork.room_printing import Room1Printing
 # from dork.command_manager import CommandManager
 
 
