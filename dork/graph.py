@@ -6,13 +6,13 @@ from mapvalidation import ValidMaze as val
 
 class MapGraph:
 
-    maze = yaml.yaml_loader('dork.yml')
+    maze = yaml.yaml_loader("C:\\Users\Andres Restrepo\\Downloads\\Dork before 3.5\\Yaml Validation Files\\dork.yml")
     
     rooms = val.load_rooms(maze)
-
     cardinals = val.load_cardinals(maze)
 
-    print(rooms, cardinals)
+    print(cardinals)
+    print(rooms)
 
     plt.tight_layout()
 
