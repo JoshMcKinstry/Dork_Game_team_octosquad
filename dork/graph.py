@@ -4,10 +4,16 @@ from yamlreader import YamlReader as yaml
 from mapvalidation import ValidMaze as val
 
 
-
 class MapGraph:
 
-    yaml.yaml_loader('dork.')
+    maze = yaml.yaml_loader('dork.yml')
+    
+    rooms = val.load_rooms(maze)
+
+    cardinals = val.load_cardinals(maze)
+
+    print(rooms, cardinals)
+
     plt.tight_layout()
 
     G = nx.Graph()
