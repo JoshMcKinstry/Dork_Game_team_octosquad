@@ -1,6 +1,8 @@
 """Test for room_printing"""
 import unittest
 from dork.room_printing import Room1Printing
+from unittest import mock
+from unittest.mock import patch
 # from dork.command_manager import CommandManager
 
 
@@ -232,10 +234,19 @@ class Room1PrintingTestCase(unittest.TestCase):
             "There is nothing to feed the bird with.")
 
     @classmethod
-    def test_print_give_item(cls):
+    @patch("builtins.print", autospec=True, side_effect=print)
+    def test_print_give_item(cls, mock_print):
         """Tests print_give_item"""
-        assert Room1Printing.print_give_item() == print(
-            'CHANGE THIS LATER')
+        Room1Printing.print_give_item()
+        mock_print.assert_called_with("CHANGE THIS LATER")
+
+#    @classmethod
+#   def test_print_give_item(cls):
+#        """Tests print_give_item"""
+#        with patch('sys.stdout') as mock_print_give_item:
+#            Room1Printing.print_give_item()
+#            mock_print_give_item.assert_has_calls([
+#                mock.call.write('CHANGE THIS LATER')])
 
 
 if __name__ == '__main__':
