@@ -1,0 +1,27 @@
+---
+Rooms:
+  Entrance:
+    north: "Boss"
+    east: "Lounge"
+    south: null
+    west: "Roadrunner's Nest"
+  Boss:
+    north: "Treasure Room"
+    east: "Lounge"
+    south: "Entrance"
+    west: "Roadrunner's Nest"
+  Lounge:
+    north: "Boss"
+    east: null
+    south: null
+    west: "Entrance"
+  Roadrunner's Nest:
+    north: "Boss"
+    east: "Entrance"
+    south: null
+    west: null
+  Treasure Room:
+    north: null
+    east: null
+    south: "Boss"
+    west: null
