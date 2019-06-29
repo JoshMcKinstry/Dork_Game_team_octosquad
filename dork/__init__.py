@@ -12,4 +12,5 @@ __author__ = ", ".join([
     "Jacob Netwal",
     "Rachel Rosebrook",
     "Warren J Ramos",
+    "Kevin Morales-Folgar",
 ])
