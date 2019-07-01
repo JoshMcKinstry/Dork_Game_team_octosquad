@@ -75,6 +75,7 @@ def saving_progress():
     file_name = file_name + '.yml'
     writer.writing_yml(my_maze, file_name)
 
+    
 if __name__ == "__main__":
     import menu
     NEW_GAME = menu.new_game()
