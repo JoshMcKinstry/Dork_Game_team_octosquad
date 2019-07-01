@@ -2,7 +2,7 @@
 A testing module for the items module
 '''
 import unittest
-from gameitem import Items
+from dork.gameitem import Items
 
 
 class TestValidMaze(unittest.TestCase):
