@@ -71,12 +71,14 @@ def saving_progress():
     game = {'Boss': boss_room, 'Cave': cave_room, 'Player': player}
     my_maze = {'State of Game': game}
 
-    file_name = input('Type a name for your saving file\n')
+    file_name = input('Type a name for your saving file:\n')
     file_name = file_name + '.yml'
     writer.writing_yml(my_maze, file_name)
 
 if __name__ == "__main__":
     import menu
-    menu.new_game()
+    NEW_GAME = menu.new_game()
+    print(NEW_GAME)
     SAVED = menu.saved_game()
     print(SAVED)
+    menu.saving_progress()
