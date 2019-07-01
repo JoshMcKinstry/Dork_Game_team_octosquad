@@ -26,7 +26,7 @@ def get_saved_game():
 
     validated = True
     while validated:
-        file_path = input('Type a file path for your saved state file\n')
+        file_path = input('Type a file path for your saved state file:\n')
         is_file_path = reader.valid_file_path(file_path)
         is_yml = reader.valid_extension(file_path)
         validated = not is_file_path or not is_yml
@@ -78,3 +78,5 @@ def saving_progress():
 if __name__ == "__main__":
     import menu
     menu.new_game()
+    SAVED = menu.saved_game()
+    print(SAVED)
