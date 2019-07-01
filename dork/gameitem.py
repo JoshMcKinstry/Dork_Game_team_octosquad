@@ -1,8 +1,12 @@
 '''
 A class that models a item object
 '''
+
+
 class Items:
-    """ Creates, uses and stores item objects"""
+    '''
+    Creates, uses and stores item objects
+    '''
 
     def __init__(self, name):
         '''
@@ -10,13 +14,11 @@ class Items:
         '''
         self.name = name
 
-
     def use(self):
         '''
         Using item method
         '''
         return 'You used the ' + self.name + ' item'
-
 
     def store(self):
         '''
