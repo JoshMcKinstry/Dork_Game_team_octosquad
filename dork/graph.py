@@ -1,8 +1,7 @@
 import matplotlib.pyplot as plt
 import networkx as nx
-from yamlreader import YamlReader as yaml
-from mapvalidation import ValidMaze as val
-
+import mapvalidation as val
+import yamlreader as yaml
 
 class MapGraph:
 
