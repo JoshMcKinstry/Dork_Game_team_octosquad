@@ -70,6 +70,8 @@ class Room1Printing():
         elif room == "room 2":
             if direction in direction_room2:
                 print(direction_room2[direction])
+            else:
+                print("None")
 
         elif room == "room 3":
             if direction in direction_room3:
@@ -229,7 +231,7 @@ class Room1Printing():
         """
         print("You currently have:")
         for items in inventory:
-            print(str(items) + " ")
+            print(str(items))
 
     @classmethod
     def print_eat_food(cls, item):
@@ -242,7 +244,7 @@ class Room1Printing():
             # import sys
             # sys.exit(0)
         else:
-            print(item + "is not something you can eat.")
+            print(item + " is not something you can eat.")
 
     @classmethod
     def print_feed_creature(cls, food):
