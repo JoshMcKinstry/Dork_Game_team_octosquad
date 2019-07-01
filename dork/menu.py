@@ -77,6 +77,4 @@ def saving_progress():
 
 if __name__ == "__main__":
     import menu
-    import sys
-
     menu.new_game()
