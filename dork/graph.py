@@ -5,7 +5,7 @@ import yamlreader as yaml
 
 class MapGraph:
 
-    maze = yaml.yaml_loader("C:\\Users\Andres Restrepo\\Downloads\\Dork before 3.5\\Yaml Validation Files\\dork.yml")
+    maze = yaml.reading_yml("C:\\Users\Andres Restrepo\\Downloads\\Dork before 3.5\\Yaml Validation Files\\dork.yml")
     
     rooms = val.load_rooms(maze)
     cardinals = val.load_cardinals(maze)
