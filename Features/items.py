@@ -1,14 +1,11 @@
 class Items:
     """ Creates, uses and stores item objects"""
 
-    def __init__(self, item):
-        self.item = item
+    def __init__(self, name):
+        self.name = name
 
-    def add_item(self, item):
-        self.item.append(item)
-    
-    def use(self, item):
-        print("You used the " + item)
+    def use(self):
+        print("You used the " + self.name)
 
-    def store(self, item,):
-        print("You stored the " + item + " into your inventory")
+    def store(self):
+        print("You stored the " + self.name + " into your inventory")
