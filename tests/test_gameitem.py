@@ -2,7 +2,7 @@
 A testing module for the items module
 '''
 import unittest
-from items import Items
+from gameitem import Items
 
 class TestValidMaze(unittest.TestCase):
     '''
