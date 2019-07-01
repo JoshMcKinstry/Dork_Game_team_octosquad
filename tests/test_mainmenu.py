@@ -1,6 +1,6 @@
 """A testing class for mainmenu"""
 import unittest
-import dork.mainmenu as menu
+import dork.menu as menu
 
 
 class TestYamlReader(unittest.TestCase):
