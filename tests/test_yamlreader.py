@@ -1,6 +1,6 @@
-"""A testing class from yamlreader"""
+"""A testing class for yamlreader"""
 import unittest
-from dork.yamlreader import YamlReader
+import dork.yamlreader as reader
 
 
 class TestYamlReader(unittest.TestCase):
@@ -12,24 +12,16 @@ class TestYamlReader(unittest.TestCase):
         """
         Testing the file path method
         """
-        reader = YamlReader()
-        flag = reader.valid_file_path('dork.yml')
+        flag = reader.valid_file_path('no_path')
         self.assertFalse(flag)
 
     def test_valid_extension(self):
         """
         Testing the valid extension method
         """
-        reader = YamlReader()
         path_file = 'dork.yml'
         flag = reader.valid_extension(path_file)
         self.assertTrue(flag)
 
-    def test_yaml_loader(self):
-        """
-        Testing the yaml_loader method
-        """
-        reader = YamlReader()
-        path_file = 'dork.yml'
-        with self.assertRaises(FileNotFoundError):
-            reader.yaml_loader(path_file)
+if __name__ == "__main__":
+    unittest.main()
