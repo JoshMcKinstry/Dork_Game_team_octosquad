@@ -2,9 +2,9 @@
 A menu that handles loading and creating files to
 manage user progress in the game.
 '''
-import yamlloader as writer
-import yamlreader as reader
-import mapvalidation as validmap
+import dork.yamlloader as writer
+import dork.yamlreader as reader
+import dork.mapvalidation as validmap
 
 
 def new_game():
@@ -74,6 +74,7 @@ def saving_progress():
     file_name = input('Type a name for your saving file:\n')
     file_name = file_name + '.yml'
     writer.writing_yml(my_maze, file_name)
+
 
 if __name__ == "__main__":
     import menu
