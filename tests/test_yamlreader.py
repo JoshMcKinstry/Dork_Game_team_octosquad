@@ -22,6 +22,3 @@ class TestYamlReader(unittest.TestCase):
         path_file = 'dork.yml'
         flag = reader.valid_extension(path_file)
         self.assertTrue(flag)
-
-if __name__ == "__main__":
-    unittest.main()
