@@ -19,7 +19,7 @@ script:
   - pylint dork tests
   - flake8 dork tests
   - coverage erase
-  - coverage run --branch --source=dork --omit=dork/__main__.py -m pytest
+  - coverage run --branch --source=dork --omit=dork/__main__.py,dork/graph.py -m pytest
   - coverage report -m
   
 after_success:
