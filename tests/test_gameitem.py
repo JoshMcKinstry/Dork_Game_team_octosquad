@@ -4,6 +4,7 @@ A testing module for the items module
 import unittest
 from gameitem import Items
 
+
 class TestValidMaze(unittest.TestCase):
     '''
     A testing class for the Items class
@@ -15,14 +16,14 @@ class TestValidMaze(unittest.TestCase):
         testing_item = Items('name')
         self.assertEqual(testing_item.name, 'name')
 
-
     def test_use(self):
         '''
         testing the use method
         '''
         testing_item = Items('name')
-        self.assertEqual(testing_item.use(), 'You used the ' + testing_item.name + ' item')
-
+        output = testing_item.use()
+        expect = 'You used the ' + testing_item.name + ' item'
+        self.assertEqual(output, expect)
 
     def test_store(self):
         '''
@@ -30,5 +31,5 @@ class TestValidMaze(unittest.TestCase):
         '''
         testing_item = Items('name')
         output = testing_item.store()
-        expected = 'You stored the ' + testing_item.name + ' into your inventory'
-        self.assertEqual(output, expected)
+        expect = 'You stored the ' + testing_item.name + ' into your inventory'
+        self.assertEqual(output, expect)
