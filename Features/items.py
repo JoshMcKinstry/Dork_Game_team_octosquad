@@ -10,4 +10,7 @@ class Items:
     
     def use(self, item):
         self.print("You used the " + item)
+
+    def store(self, item,):
+        self.print("You stored the " + item + " into your inventory")
         
