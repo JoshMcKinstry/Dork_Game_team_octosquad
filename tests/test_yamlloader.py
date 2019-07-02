@@ -1,5 +1,6 @@
 """A testing class for yamlloader"""
 import unittest
+from unittest.mock import patch
 import dork.yamlloader as loader
 
 
@@ -7,12 +8,12 @@ class TestYamlReader(unittest.TestCase):
     """
     Testing YamlReader
     """
-
-    def test_yaml_loader(self):
+    my_data = 'data'
+    @patch('yaml.safe_dump', return_value=my_data)
+    def test_yaml_loader(self, my_data):
         """
-        Testing the yaml_loader method
+        Testing the writing_yml method
         """
-        file_path = None
-        dummy_data = [1]
-        with self.assertRaises(TypeError):
-            loader.writing_yml(dummy_data, file_path)
+        my_list = my_data
+        file_path = 'file_path'
+        self.assertEqual(loader.writing_yml(my_list, file_path), None)
