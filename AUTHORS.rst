@@ -16,3 +16,4 @@ Contributors
 * Jacob Netwal <jnetwal@msudenver.edu>
 * Andres Restrepo <arestre1@msudenver.edu>
 * Rachel Rosebrook <rrosebro@msudenver.edu>
+* Kevin Morales-Folgar <kmorale4@msudenver.edu>
