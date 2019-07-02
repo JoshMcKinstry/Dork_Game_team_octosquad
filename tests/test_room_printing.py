@@ -11,10 +11,11 @@ def test_print_move(run):
     output, _, _ = run(Room1Printing.print_move, 'room 1', 'east')
     assert output == "There is a table in the room with a donut on top.\n"
     output, _, _ = run(Room1Printing.print_move, 'room 1', 'west')
-    assert output == ("There is a beautiful garden with the roadrunner's" +
-                   "nest right \nin the center of the garden. The nest " +
-                   "has eggs that look about \nready to hatch but no " +
-                   "roadrunner parent to be seen.\n")
+    assert output == (
+        "There is a beautiful garden with the roadrunner's" +
+        "nest right \nin the center of the garden. The nest " +
+        "has eggs that look about \nready to hatch but no " +
+        "roadrunner parent to be seen.\n")
     output, _, _ = run(Room1Printing.print_move, 'room 1', 'invalid')
     assert output == ''
     output, _, _ = run(Room1Printing.print_move, 'room 2', 'north')
