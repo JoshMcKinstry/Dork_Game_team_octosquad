@@ -9,7 +9,7 @@ class TestYamlReader(unittest.TestCase):
     Testing YamlReader
     """
 
-    dummy_dict = {'key':'value'}
+    dummy_dict = {'key': 'value'}
 
     def test_valid_file_path(self):
         """
