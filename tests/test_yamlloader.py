@@ -15,5 +15,5 @@ class TestYamlReader(unittest.TestCase):
         Testing the writing_yml method
         """
         my_list = my_data
-        file_path = 'file_path'
+        file_path = 'testing_out_put_file'
         self.assertEqual(loader.writing_yml(my_list, file_path), None)
