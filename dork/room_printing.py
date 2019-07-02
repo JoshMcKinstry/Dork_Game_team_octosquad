@@ -64,14 +64,10 @@ class Room1Printing():
         if room == "room 1":
             if direction in direction_room1:
                 print(direction_room1[direction])
-            else:
-                print("None")
 
         elif room == "room 2":
             if direction in direction_room2:
                 print(direction_room2[direction])
-            else:
-                print("None")
 
         elif room == "room 3":
             if direction in direction_room3:

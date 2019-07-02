@@ -16,7 +16,7 @@ def test_print_move(run):
                    "has eggs that look about \nready to hatch but no " +
                    "roadrunner parent to be seen.\n")
     out, _, _ = run(Room1Printing.print_move, 'room 1', 'invalid')
-    assert out == 'None\n'
+    assert out == ''
     out, _, _ = run(Room1Printing.print_move, 'room 2', 'north')
     assert out == (
         "You are in the dean’s office. The dean is irritated " +
@@ -34,97 +34,132 @@ def test_print_move(run):
         "It looks starving and nervous. \nThere is a " +
         "piece of paper next to the cage.\n")
     out, _, _ = run(Room1Printing.print_move, 'room 2', 'invalid')
-    assert out == "None\n"
-
-    assert Room1Printing.print_move("room 3", "north") == print(
-        "You are in the dean’s office. The dean is irritated" +
-        " that you are in \nthe room. You have 1 minute to " +
-        "make him happy; otherwise, \ncampus security " +
-        "will arrive and take you away.")
-    assert Room1Printing.print_move("room 3", "south") == print(
-        "You are unable to go South.")
-    assert Room1Printing.print_move("room 3", "east") == print(
+    assert out == ''
+    out, _, _ = run(Room1Printing.print_move, 'room 3', 'north')
+    assert out == (
+        "You are in the dean’s office. The dean is irritated " +
+        "that you are \nin the room. You have 1 minute to " +
+        "make him happy; otherwise, campus \nsecurity will " +
+        "arrive and take you away.\n")
+    out, _, _ = run(Room1Printing.print_move, 'room 3', 'south')
+    assert out == "You are unable to go South.\n"
+    out, _, _ = run(Room1Printing.print_move, 'room 3', 'east')
+    assert out == (
         "You are inside the Student Success Building. There " +
         "is a locked cage \nwith a roadrunner inside. " +
         "It looks starving and nervous. \nThere is a " +
-        "piece of paper next to the cage.")
-    assert Room1Printing.print_move("room 3", "west") == print(
-        "You are unable to go West.")
-    assert Room1Printing.print_move("room 4", "north") == print(
+        "piece of paper next to the cage.\n")
+    out, _, _ = run(Room1Printing.print_move, 'room 3', 'west')
+    assert out == "You are unable to go West.\n"
+    out, _, _ = run(Room1Printing.print_move, 'room 3', 'invalid')
+    assert out == ''
+    out, _, _ = run(Room1Printing.print_move, 'room 4', 'north')
+    assert out == (
         "The blue door is unlocked, and you enter a room " +
         "with a gold key." + "The dean is blocking the door and " +
-        "does not let you through. You cannot enter this room.")
-    assert Room1Printing.print_move("room 4", "south") == print(
+        "does not let you through. You cannot enter this room.\n")
+    out, _, _ = run(Room1Printing.print_move, 'room 4', 'south')
+    assert out == (
         "You are inside the Student Success Building. " +
         "There is a locked cage \nwith a roadrunner inside. " +
         "It looks starving and nervous. \nThere is a " +
-        "piece of paper next to the cage.")
-    assert Room1Printing.print_move("room 4", "east") == print(
-        "There is a table in the room with a donut on top.")
-    assert Room1Printing.print_move("room 4", "west") == print(
+        "piece of paper next to the cage.\n")
+    out, _, _ = run(Room1Printing.print_move, 'room 4', 'east')
+    assert out == "There is a table in the room with a donut on top.\n"
+    out, _, _ = run(Room1Printing.print_move, 'room 4', 'west')
+    assert out == (
         "There is a beautiful garden with the roadrunner's " +
         "nest right \nin the center of the garden. The nest " +
         "has eggs that look about \nready to hatch but no " +
-        "roadrunner parent to be seen.")
-    assert Room1Printing.print_move("room 5", "north") == print(
-        "You are unable to go North.")
-    assert Room1Printing.print_move("room 5", "south") == print(
+        "roadrunner parent to be seen.\n")
+    out, _, _ = run(Room1Printing.print_move, 'room 4', 'invalid')
+    assert out == ''
+    out, _, _ = run(Room1Printing.print_move, 'room 5', 'north')
+    assert out == "You are unable to go North.\n"
+    out, _, _ = run(Room1Printing.print_move, 'room 5', 'south')
+    assert out == (
         "You are in the dean’s office. The dean is irritated" +
         " that you are in \nthe room. You have 1 minute to " +
         "make him happy; otherwise, \ncampus security " +
-        "will arrive and take you away.")
-    assert Room1Printing.print_move("room 5", "east") == print(
-        "You are unable to go East.")
-    assert Room1Printing.print_move("room 5", "west") == print(
-        "You are unable to go West.")
+        "will arrive and take you away.\n")
+    out, _, _ = run(Room1Printing.print_move, 'room 5', 'east')
+    assert out == "You are unable to go East.\n"
+    out, _, _ = run(Room1Printing.print_move, 'room 5', 'west')
+    assert out == "You are unable to go West.\n"
 
 
 def test_print_look(run):
     """Tests print_look"""
     out, _, _ = run(Room1Printing.print_look, 'room 1', 'north')
     assert out == 'There is a door with a sign that says DANGER.\n'
-    assert Room1Printing.print_look("room 1", "south") == print(
+    out, _, _ = run(Room1Printing.print_look, 'room 1', 'south')
+    assert out == (
         "There is bag of bird food with all sorts of " +
-        "insects that roadrunners love to eat.")
-    assert Room1Printing.print_look("room 1", "east") == print(
-        "To the East, there is a sign that says Lounge.")
-    assert Room1Printing.print_look("room 1", "west") == print(
+        "insects that roadrunners love to eat.\n")
+    out, _, _ = run(Room1Printing.print_look, 'room 1', 'east')
+    assert out == "To the East, there is a sign that says Lounge.\n"
+    out, _, _ = run(Room1Printing.print_look, 'room 1', 'west')
+    assert out == (
         "To the West, there is a sign that says " +
-        "Roadrunner's Nest")
-    assert Room1Printing.print_look("room 2", "north") == print(
-        "There is a sign that says DANGER!!")
-    assert Room1Printing.print_look("room 2", "south") == print(
-        "There is a 1000 ft cliff with spikes.")
-    assert Room1Printing.print_look("room 2", "east") == print(
-        "There is an empty wall.")
-    assert Room1Printing.print_look("room 2", "west") == print(
+        "Roadrunner's Nest\n")
+    out, _, _ = run(Room1Printing.print_look, 'room 1', 'invalid')
+    assert out == ''
+    out, _, _ = run(Room1Printing.print_look, 'room 2', 'north')
+    assert out == "There is a sign that says DANGER!!\n"
+    out, _, _ = run(Room1Printing.print_look, 'room 2', 'south')
+    assert out == "There is a 1000 ft cliff with spikes.\n"
+    out, _, _ = run(Room1Printing.print_look, 'room 2', 'east')
+    assert out == "There is an empty wall.\n"
+    out, _, _ = run(Room1Printing.print_look, 'room 2', 'west')
+    assert out == (
         "There is a sign that says Student Success " +
-        "Building.")
-    assert Room1Printing.print_look("room 3", "north") == print(
-        "There is a sign that says DANGER!!")
-    assert Room1Printing.print_look("room 3", "south") == print(
-        "There is an empty wall.")
-    assert Room1Printing.print_look("room 3", "east") == print(
-        "There is a sign that says Student Success Building.")
-    assert Room1Printing.print_look("room 3", "west") == print(
-        "There is an empty wall.")
-    assert Room1Printing.print_look("room 4", "north") == print(
-        "There is blue door that is being guarded by the dean.")
-    assert Room1Printing.print_look("room 4", "south") == print(
-        "There is a sign that says Student Success Building.")
-    assert Room1Printing.print_look("room 4", "east") == print(
-        "To the East, there is a sign that says Lounge.")
-    assert Room1Printing.print_look("room 4", "west") == print(
+        "Building.\n")
+    out, _, _ = run(Room1Printing.print_look, 'room 2', 'invalid')
+    assert out == ''
+    out, _, _ = run(Room1Printing.print_look, 'room 3', 'north')
+    assert out == "There is a sign that says DANGER!!\n"
+    out, _, _ = run(Room1Printing.print_look, 'room 3', 'south')
+    assert out == "There is an empty wall.\n"
+    out, _, _ = run(Room1Printing.print_look, 'room 3', 'east')
+    assert out == "There is a sign that says Student Success Building.\n"
+    out, _, _ = run(Room1Printing.print_look, 'room 3', 'west')
+    assert out == "There is an empty wall.\n"
+    out, _, _ = run(Room1Printing.print_look, 'room 3', 'invalid')
+    assert out == ''
+    out, _, _ = run(Room1Printing.print_look, 'room 4', 'north')
+    assert out == "There is blue door that is being guarded by the dean.\n"
+    out, _, _ = run(Room1Printing.print_look, 'room 4', 'south')
+    assert out == "There is a sign that says Student Success Building.\n"
+    out, _, _ = run(Room1Printing.print_look, 'room 4', 'east')
+    assert out == "To the East, there is a sign that says Lounge.\n"
+    out, _, _ = run(Room1Printing.print_look, 'room 4', 'west')
+    assert out == (
         "To the West, there is a sign that says " +
-        "Roadrunner’s Nest.")
-    assert Room1Printing.print_look("room 5", "north") == print(
-        "There is an empty wall.")
-    assert Room1Printing.print_look("room 5", "south") == print(
-        "There is a blue door")
-    assert Room1Printing.print_look("room 5", "east") == print(
-        "There is an empty wall.")
-    assert Room1Printing.print_look("room 5", "west") == print(
-        "There is an empty wall.")
+        "Roadrunner’s Nest.\n")
+    out, _, _ = run(Room1Printing.print_look, 'room 4', 'invalid')
+    assert out == ''
+    out, _, _ = run(Room1Printing.print_look, 'room 5', 'north')
+    assert out == "There is an empty wall.\n"
+    out, _, _ = run(Room1Printing.print_look, 'room 5', 'south')
+    assert out == "There is a blue door\n"
+    out, _, _ = run(Room1Printing.print_look, 'room 5', 'east')
+    assert out == "There is an empty wall.\n"
+    out, _, _ = run(Room1Printing.print_look, 'room 5', 'west')
+    assert out == "There is an empty wall.\n"
+
+
+def test_print_invalid(run):
+    """
+    Test invalid arguments
+    """
+    out, _, _ = run(Room1Printing.print_move, 'room 5', 'invalid')
+    assert out == ''
+    out, _, _ = run(Room1Printing.print_move, 'invalid', 'invalid')
+    assert out == ''
+    out, _, _ = run(Room1Printing.print_look, 'room 5', 'invalid')
+    assert out == ''
+    out, _, _ = run(Room1Printing.print_look, 'invalid', 'invalid')
+    assert out == ''
 
 
 def test_print_score(run):
