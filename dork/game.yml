@@ -1,27 +1,73 @@
----
-Rooms:
+State of Game:
   Entrance:
-    north: "Boss"
-    east: "Lounge"
-    south: null
-    west: "Roadrunner's Nest"
-  Boss:
-    north: "Treasure Room"
-    east: "Lounge"
-    south: "Entrance"
-    west: "Roadrunner's Nest"
+    Description: "You are inside the Student Success Building. There " +
+                 "is a locked cage \nwith a roadrunner inside. " +
+                 "It looks starving and nervous. \nThere is a " +
+                 "piece of paper next to the cage."
+    Items:
+      Shield: false
+      Sword: false
+      Donut: false
+    Neighbors:
+      east: Lounge
+      north: Boss
+      south: null
+      west: Roadrunner's Nest
   Lounge:
-    north: "Boss"
-    east: null
-    south: null
-    west: "Entrance"
+    Description: "There is a table in the room with a donut on top."
+    Items:
+      Shield: false
+      Sword: false
+      Donut: false
+    Neighbors:
+      east: null
+      north: Boss
+      south: null
+      west: Entrance
   Roadrunner's Nest:
-    north: "Boss"
-    east: "Entrance"
-    south: null
-    west: null
+    Description: "There is a beautiful garden with the roadrunner's" +
+                 "nest right \nin the center of the garden. The nest " +
+                 "has eggs that look about \nready to hatch but no " +
+                 "roadrunner parent to be seen."
+    Items:
+      Shield: false
+      Sword: false
+      Donut: false
+    Neighbors:
+      east: Entrance
+      north: Boss
+      south: null
+      west: null
+  Boss:
+    Description: "You are in the dean’s office. The dean is irritated " +
+                 "that you are \nin the room. You have 1 minute to " +
+                 "make him happy; otherwise, campus \nsecurity will " +
+                 "arrive and take you away."
+    Items:
+      Shield: false
+      Sword: false
+      Donut: false
+    Neighbors:
+      east: Lounge
+      north: null
+      south: Entrance
+      west: Roadrunner's Nest
   Treasure Room:
-    north: null
-    east: null
-    south: "Boss"
-    west: null
+    Description: "You are inside a room filled with gold walls." +
+                 " There is a key on the floor."
+    Items:
+      Shield: false
+      Sword: false
+      Donut: false
+    Neighbors:
+      east: null
+      north: null
+      south: Boss
+      west: null
+  Player:
+    Health: '87'
+    Inventory:
+    - Shield
+    - Sword
+    - Donut
+    Position: Boss

@@ -1,0 +1,25 @@
+State of Game:
+  Boss:
+    Items:
+      Shield: false
+      Sword: false
+    Neighbors:
+      east: null
+      north: null
+      south: Cave
+      west: null
+  Cave:
+    Items:
+      Shield: false
+      Sword: false
+    Neighbors:
+      east: null
+      north: Boss
+      south: null
+      west: null
+  Player:
+    Health: '87'
+    Inventory:
+    - Shield
+    - Sword
+    Position: Boss
