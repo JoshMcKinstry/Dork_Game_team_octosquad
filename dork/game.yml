@@ -5,9 +5,9 @@ State of Game:
                  "It looks starving and nervous. \nThere is a " +
                  "piece of paper next to the cage."
     Items:
-      Shield: false
-      Sword: false
       Donut: false
+      Student ID: true
+      Dean ID: false
     Neighbors:
       east: Lounge
       north: Boss
@@ -16,9 +16,9 @@ State of Game:
   Lounge:
     Description: "There is a table in the room with a donut on top."
     Items:
-      Shield: false
-      Sword: false
       Donut: false
+      Student ID: true
+      Dean ID: false
     Neighbors:
       east: null
       north: Boss
@@ -30,9 +30,9 @@ State of Game:
                  "has eggs that look about \nready to hatch but no " +
                  "roadrunner parent to be seen."
     Items:
-      Shield: false
-      Sword: false
       Donut: false
+      Student ID: true
+      Dean ID: false
     Neighbors:
       east: Entrance
       north: Boss
@@ -44,9 +44,9 @@ State of Game:
                  "make him happy; otherwise, campus \nsecurity will " +
                  "arrive and take you away."
     Items:
-      Shield: false
-      Sword: false
       Donut: false
+      Student ID: true
+      Dean ID: false
     Neighbors:
       east: Lounge
       north: null
@@ -56,9 +56,9 @@ State of Game:
     Description: "You are inside a room filled with gold walls." +
                  " There is a key on the floor."
     Items:
-      Shield: false
-      Sword: false
       Donut: false
+      Student ID: true
+      Dean ID: false
     Neighbors:
       east: null
       north: null
@@ -66,6 +66,7 @@ State of Game:
       west: null
   Player:
     Health: '87'
+    Points: '50'
     Inventory:
     - Shield
     - Sword
