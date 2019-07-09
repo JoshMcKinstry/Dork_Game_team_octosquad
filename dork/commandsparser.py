@@ -21,11 +21,13 @@ def move_east():
     Room1Printing.print_move(PLAYER_ROOM, "east")
     return "", False
 
+
 def move_west():
     """Interprets print statement for moving west based on location
     """
     Room1Printing.print_move(PLAYER_ROOM, "west")
     return "", False
+
 
 def move_north():
     """Interprets print statement for moving north based on location
@@ -33,11 +35,13 @@ def move_north():
     Room1Printing.print_move(PLAYER_ROOM, "north")
     return "", False
 
+
 def move_south():
     """Interprets print statement for moving south based on location
     """
     Room1Printing.print_move(PLAYER_ROOM, "south")
     return "", False
+
 
 def get_item():
     """Interprets print statement for south based on location
@@ -57,17 +61,20 @@ def look_east():
     Room1Printing.print_look(PLAYER_ROOM, "east")
     return "", False
 
+
 def look_west():
     """Interprets print statement for looking west based on location
     """
     Room1Printing.print_look(PLAYER_ROOM, "west")
     return "", False
 
+
 def look_north():
     """Interprets print statement for looking north based on location
     """
     Room1Printing.print_look(PLAYER_ROOM, "north")
     return "", False
+
 
 def look_south():
     """Interprets print statement for looking south based on location

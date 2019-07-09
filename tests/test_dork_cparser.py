@@ -6,6 +6,7 @@ from unittest.mock import patch
 import pytest
 from dork import commandsparser
 
+
 def test_repl_exists():
     """the dork repl should exist
     """
@@ -45,6 +46,7 @@ def test_move_north():
         mock.call.write("\n")
     ])
 
+
 def test_move_south():
     """the commandsparser should ask room_printing to print
     """
@@ -57,6 +59,8 @@ def test_move_south():
         mock.call.write("You cannot go/move south."),
         mock.call.write("\n")
     ])
+
+
 def test_move_east():
     """the commandsparser should ask room_printing to print
     """
@@ -70,6 +74,7 @@ def test_move_east():
         mock.call.write("\n")
     ])
 
+
 def test_move_west():
     """the commandsparser should ask room_printing to print
     """
@@ -79,11 +84,13 @@ def test_move_west():
     with patch('sys.stdout') as mock_print:
         commandsparser.move_west()
     mock_print.assert_has_calls([
-        mock.call.write("There is a beautiful garden with the roadrunner'snest "+
-                        "right \nin the center of the garden. The nest has eggs "+
-                        "that look about \nready to hatch but no roadrunner parent to be seen."),
+        mock.call.write('There is a beautiful garden with the roadrunner'+"'"+"s nest" +
+                        " right \nin the center of the garden." +
+                        " The nest has eggs "+"that look about \nready" +
+                        " to hatch but no roadrunner parent to be seen."),
         mock.call.write("\n")
     ])
+
 
 def test_look_north():
     """the commandsparser should ask room_printing to print
@@ -97,6 +104,8 @@ def test_look_north():
         mock.call.write("There is a door with a sign that says DANGER."),
         mock.call.write("\n")
     ])
+
+
 def test_look_south():
     """the commandsparser should ask room_printing to print
     """
@@ -110,6 +119,8 @@ def test_look_south():
                         "insects that roadrunners love to eat."),
         mock.call.write("\n")
     ])
+
+
 def test_look_east():
     """the commandsparser should ask room_printing to print
     """
@@ -122,6 +133,8 @@ def test_look_east():
         mock.call.write("To the East, there is a sign that says Lounge."),
         mock.call.write("\n")
     ])
+
+
 def test_look_west():
     """the commandsparser should ask room_printing to print
     """
@@ -136,12 +149,14 @@ def test_look_west():
         mock.call.write("\n")
     ])
 
+
 def test_read_exists():
     """the commandsparser.read should exist
     """
     expect = "Dork.commandsparser should define a read method"
     assert "read" in vars(commandsparser), expect
     assert isinstance(commandsparser.read, FunctionType)
+
 
 @pytest.mark.parametrize("expected, actual", [
     ("", ""),
