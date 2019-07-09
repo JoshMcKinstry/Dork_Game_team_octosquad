@@ -84,8 +84,8 @@ def test_move_west():
     with patch('sys.stdout') as mock_print:
         commandsparser.move_west()
     mock_print.assert_has_calls([
-        mock.call.write('There is a beautiful garden with the roadrunner'+"'"+"s nest" +
-                        " right \nin the center of the garden." +
+        mock.call.write("There is a beautiful garden with the roadrunner's" +
+                        " nest right \nin the center of the garden." +
                         " The nest has eggs "+"that look about \nready" +
                         " to hatch but no roadrunner parent to be seen."),
         mock.call.write("\n")
