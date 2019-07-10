@@ -5,7 +5,7 @@ import unittest
 from dork.gameitem import Items
 
 
-class TestValidMaze(unittest.TestCase):
+class TestValidItem(unittest.TestCase):
     '''
     A testing class for the Items class
     '''
