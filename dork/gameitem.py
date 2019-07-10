@@ -15,15 +15,3 @@ class Items:
         self.name = name
         self.description = description
         self.properties = properties
-
-    def use(self):
-        '''
-        Using item method
-        '''
-        return 'You used the ' + self.name + ' item'
-
-    def store(self):
-        '''
-        Storing item method
-        '''
-        return 'You stored the ' + self.name + ' into your inventory'
