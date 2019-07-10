@@ -13,8 +13,9 @@ class TestValidMaze(unittest.TestCase):
         '''
         testing the __init__ method
         '''
-        testing_item = Items('name')
+        testing_item = Items('name', 'description')
         self.assertEqual(testing_item.name, 'name')
+        self.assertTrue(testing_item.description, 'description')
 
     def test_use(self):
         '''

@@ -8,11 +8,12 @@ class Items:
     Creates, uses and stores item objects
     '''
 
-    def __init__(self, name):
+    def __init__(self, name, description):
         '''
         Constructor for items
         '''
         self.name = name
+        self.description = description
 
     def use(self):
         '''
