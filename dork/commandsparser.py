@@ -1,6 +1,9 @@
 """REPL and commands parser for dork game
 """
 import sys
+from dork.room_printing import Room1Printing
+
+PLAYER_ROOM = "room 1"
 
 
 def _start_game():
@@ -11,39 +14,78 @@ def _quit_game():
     return "Leaving the game of Dork.", True
 
 
-def _move_east():
-    return "you have moved east", False
+def move_east():
+    """Interprets print statement for moving east based on location
+    """
+    # return "you have moved east", False
+    Room1Printing.print_move(PLAYER_ROOM, "east")
+    return "", False
 
 
-def _move_west():
-    return "you have moved west", False
+def move_west():
+    """Interprets print statement for moving west based on location
+    """
+    Room1Printing.print_move(PLAYER_ROOM, "west")
+    return "", False
 
 
-def _move_north():
-    return "you have moved north", False
+def move_north():
+    """Interprets print statement for moving north based on location
+    """
+    Room1Printing.print_move(PLAYER_ROOM, "north")
+    return "", False
 
 
-def _move_south():
-    return "you have moved south", False
+def move_south():
+    """Interprets print statement for moving south based on location
+    """
+    Room1Printing.print_move(PLAYER_ROOM, "south")
+    return "", False
 
 
-def _get_item():
+def get_item():
+    """Interprets print statement for south based on location
+    """
     return "you picked up an item", False
 
 
-def _use_item():
+def use_item():
+    """Logic for using an item based on inventory
+    """
     return "you used an item", False
 
 
-def _look():
-    return "you are in an empty room", False
+def look_east():
+    """Interprets print statement for looking east based on location
+    """
+    Room1Printing.print_look(PLAYER_ROOM, "east")
+    return "", False
 
 
-def _open():
-    return "you opened a door", False
+def look_west():
+    """Interprets print statement for looking west based on location
+    """
+    Room1Printing.print_look(PLAYER_ROOM, "west")
+    return "", False
 
 
-def _drop():
+def look_north():
+    """Interprets print statement for looking north based on location
+    """
+    Room1Printing.print_look(PLAYER_ROOM, "north")
+    return "", False
+
+
+def look_south():
+    """Interprets print statement for looking south based on location
+    """
+    Room1Printing.print_look(PLAYER_ROOM, "south")
+    return "", False
+
+
+def drop():
+    """Interprets logic for dropping an item
+    """
     return "you dropped an item", False
 
 
@@ -60,16 +102,20 @@ def evaluate(command):
     words_in_command = [words.casefold() for words in command.split()]
     player_commands = {
         "go": {
-            "north": _move_north,
-            "south": _move_south,
-            "west": _move_west,
-            "east": _move_east
+            "north": move_north,
+            "south": move_south,
+            "west": move_west,
+            "east": move_east
         },
-        "get": {"object": _get_item},
-        "use": {"object": _use_item},
-        "look": {"around": _look},
-        "open": {"object": _open},
-        "drop": {"object": _drop}
+        "get": {"object": get_item},
+        "use": {"object": use_item},
+        "look": {
+            "north": look_north,
+            "south": look_south,
+            "west": look_west,
+            "east": look_east
+        },
+        "drop": {"object": drop}
     }
     game_commands = {
         "start": {"dork": _start_game},
@@ -94,7 +140,7 @@ def evaluate(command):
 def repl():
     """repl for dork game
     """
-    print("starting repl...")
+    print("Welcome to Dork!")
     while True:
         command = read()
         output, should_exit = evaluate(command)

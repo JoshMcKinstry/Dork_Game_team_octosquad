@@ -4,7 +4,6 @@ from types import FunctionType
 from unittest import mock
 from unittest.mock import patch
 import pytest
-
 from dork import commandsparser
 
 
@@ -25,11 +24,128 @@ def test_repl_runs_with_input(_mock_read, _mock_evaluate):
     with patch('sys.stdout') as mock_print:
         commandsparser.repl()
     mock_print.assert_has_calls([
-        mock.call.write("starting repl..."),
+        mock.call.write("Welcome to Dork!"),
         mock.call.write("\n"),
         mock.call.write("game is saved"),
         mock.call.write("\n"),
         mock.call.write("ending repl..."),
+        mock.call.write("\n")
+    ])
+
+
+def test_move_north():
+    """the commandsparser should ask room_printing to print
+    """
+    expect = "Dork.commandsparser should define a _move_north method"
+    assert "move_north" in vars(commandsparser), expect
+    assert isinstance(commandsparser.move_north, FunctionType)
+    with patch('sys.stdout') as mock_print:
+        commandsparser.move_north()
+    mock_print.assert_has_calls([
+        mock.call.write('You enter the boss room.'),
+        mock.call.write("\n")
+    ])
+
+
+def test_move_south():
+    """the commandsparser should ask room_printing to print
+    """
+    expect = "Dork.commandsparser should define a _move_north method"
+    assert "move_south" in vars(commandsparser), expect
+    assert isinstance(commandsparser.move_south, FunctionType)
+    with patch('sys.stdout') as mock_print:
+        commandsparser.move_south()
+    mock_print.assert_has_calls([
+        mock.call.write("You cannot go/move south."),
+        mock.call.write("\n")
+    ])
+
+
+def test_move_east():
+    """the commandsparser should ask room_printing to print
+    """
+    expect = "Dork.commandsparser should define a move_east method"
+    assert "move_east" in vars(commandsparser), expect
+    assert isinstance(commandsparser.move_east, FunctionType)
+    with patch('sys.stdout') as mock_print:
+        commandsparser.move_east()
+    mock_print.assert_has_calls([
+        mock.call.write("There is a table in the room with a donut on top."),
+        mock.call.write("\n")
+    ])
+
+
+def test_move_west():
+    """the commandsparser should ask room_printing to print
+    """
+    expect = "Dork.commandsparser should define a move_west method"
+    assert "move_west" in vars(commandsparser), expect
+    assert isinstance(commandsparser.move_west, FunctionType)
+    with patch('sys.stdout') as mock_print:
+        commandsparser.move_west()
+    mock_print.assert_has_calls([
+        mock.call.write("There is a beautiful garden with the roadrunner's" +
+                        " nest right \nin the center of the garden." +
+                        " The nest has eggs "+"that look about \nready" +
+                        " to hatch but no roadrunner parent to be seen."),
+        mock.call.write("\n")
+    ])
+
+
+def test_look_north():
+    """the commandsparser should ask room_printing to print
+    """
+    expect = "Dork.commandsparser should define a look_north method"
+    assert "look_north" in vars(commandsparser), expect
+    assert isinstance(commandsparser.look_north, FunctionType)
+    with patch('sys.stdout') as mock_print:
+        commandsparser.look_north()
+    mock_print.assert_has_calls([
+        mock.call.write("There is a door with a sign that says DANGER."),
+        mock.call.write("\n")
+    ])
+
+
+def test_look_south():
+    """the commandsparser should ask room_printing to print
+    """
+    expect = "Dork.commandsparser should define a look_south method"
+    assert "look_south" in vars(commandsparser), expect
+    assert isinstance(commandsparser.look_south, FunctionType)
+    with patch('sys.stdout') as mock_print:
+        commandsparser.look_south()
+    mock_print.assert_has_calls([
+        mock.call.write("There is bag of bird food with all sorts of " +
+                        "insects that roadrunners love to eat."),
+        mock.call.write("\n")
+    ])
+
+
+def test_look_east():
+    """the commandsparser should ask room_printing to print
+    """
+    expect = "Dork.commandsparser should define a look_east method"
+    assert "look_east" in vars(commandsparser), expect
+    assert isinstance(commandsparser.look_east, FunctionType)
+    with patch('sys.stdout') as mock_print:
+        commandsparser.look_east()
+    mock_print.assert_has_calls([
+        mock.call.write("To the East, there is a sign that says Lounge."),
+        mock.call.write("\n")
+    ])
+
+
+def test_look_west():
+    """the commandsparser should ask room_printing to print
+    """
+    expect = "Dork.commandsparser should define a look_west method"
+    assert "look_west" in vars(commandsparser), expect
+    assert isinstance(commandsparser.look_west, FunctionType)
+    with patch('sys.stdout') as mock_print:
+        commandsparser.look_west()
+    mock_print.assert_has_calls([
+        mock.call.write("To the West, there is a sign that says " +
+                        "Roadrunner's Nest"),
         mock.call.write("\n")
     ])
 
@@ -63,10 +179,10 @@ def test_evaluate_exists():
 
 
 @pytest.mark.parametrize("command,response", [
-    ("go north", ("you have moved north", False)),
-    ("go east", ("you have moved east", False)),
-    ("go west", ("you have moved west", False)),
-    ("go south", ("you have moved south", False))
+    ("go north", ("", False)),
+    ("go east", ("", False)),
+    ("go west", ("", False)),
+    ("go south", ("", False))
 ])
 def test_evaluate_go_commands(command, response):
     """dork go commands should be correctly evaluated
@@ -77,8 +193,7 @@ def test_evaluate_go_commands(command, response):
 @pytest.mark.parametrize("command,response", [
     ("get object", ("you picked up an item", False)),
     ("use object", ("you used an item", False)),
-    ("look around", ("you are in an empty room", False)),
-    ("open object", ("you opened a door", False)),
+    ("look around", ("Unknown Command", False)),
     ("drop object", ("you dropped an item", False))
 ])
 def test_evaluate_action_commands(command, response):
@@ -98,10 +213,10 @@ def test_evaluate_starting_and_ending_dork(command, response):
 
 
 @pytest.mark.parametrize("command,response", [
-    ("Go north", ("you have moved north", False)),
-    ("GO eaST", ("you have moved east", False)),
+    ("Go north", ("", False)),
+    ("GO eaST", ("", False)),
     ("gEt obJecT", ("you picked up an item", False)),
-    ("lOOk ArouNd", ("you are in an empty room", False)),
+    ("lOOk ArouNd", ("Unknown Command", False)),
     ("sTART dOrK", ("Welcome to Dork!", False)),
     ("QUIT DORK", ("Leaving the game of Dork.", True))
 ])

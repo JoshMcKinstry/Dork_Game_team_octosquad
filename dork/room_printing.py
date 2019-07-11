@@ -14,7 +14,7 @@ class Room1Printing():
             'south': "You cannot go/move south.",
             'east': "There is a table in the room with a donut on top.",
             'west': "There is a beautiful garden with the roadrunner's" +
-                    "nest right \nin the center of the garden. The nest " +
+                    " nest right \nin the center of the garden. The nest " +
                     "has eggs that look about \nready to hatch but no " +
                     "roadrunner parent to be seen."}
         direction_room2 = {
