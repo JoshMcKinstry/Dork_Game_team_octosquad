@@ -2,6 +2,7 @@
 A room module that creates an abstract representation of a room
 '''
 
+
 class Room():
     '''
     A class that models an room object
@@ -12,42 +13,57 @@ class Room():
         self.door = door
         self.items = items
 
-
     def has_door_at(self, cardinal):
+        """
+        Returns true if there is a door. False otherwise.
+        """
         if self.door == None:
             return False
         else:
             return True
 
-
     def has_item(self, item_name):
+        """
+        Returns true if the item is in the room. False otherwise.
+        """
         return item_name in self.items
 
-
     def has_neighbor(self, cardinal):
-        return self.neighbors[cardinal] != None 
-
+        """
+        Returns true if the room has a neighboor at a cardinal. 
+        Returns false if there is no neighboring room at the cardinal.
+        """
+        return self.neighbors[cardinal] != None
 
     def has_closed_door(self, cardinal):
+        """
+        Returns true if the door is closed. False if door is open.
+        """
         return self.door['State'] == 'Closed'
 
-
     def get_door_status(self, cardinal):
+        """
+        Checks the status of the door.
+        """
         if self.has_door_at(cardinal):
             return self.door['Status']
         else:
             return None
 
-
     def delete_item(self, item_name):
+        """
+        Delete item from room if it is found inside of room.
+        """
         if self.has_item(item_name):
             self.items.remove(item_name)
             return item_name + ' has been picked up from ' +  self.name
         else:
             return item_name + 'is not in ' + self.name
 
-
     def add_item(self, item_name):
+        """
+        Adds item to the room.
+        """
         self.items.append(item_name)
         return item_name + ' has been dropped in ' +  self.name
 
@@ -55,9 +71,9 @@ class Room():
 if __name__ == "__main__":
     name = 'Entrance'
     neighbors = {'East': 'Hallway',
-      'North': None,
-      'South': None,
-      'West': 'Trail'}
+                 'North': None,
+                 'South': None,
+                'West': 'Trail'}
     doors = None
     items = ['Donut', 'Paper']
 
