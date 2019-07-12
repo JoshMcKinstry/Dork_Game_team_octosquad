@@ -6,6 +6,7 @@ dict_items ={ }
 
 def assembling_items(names, descriptions, properties):
     """
+    Constructs item objects for all items in game
     """
     scope = range(len(names))
     for i in scope:
