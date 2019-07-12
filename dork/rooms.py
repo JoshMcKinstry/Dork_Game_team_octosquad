@@ -40,11 +40,11 @@ class Room():
         """
         return self.door['State'] == 'Closed'
 
-    def get_door_status(self, cardinal):
+    def get_door_status(self):
         """
         Checks the status of the door.
         """
-        if self.has_door_at(cardinal):
+        if self.has_door_at():
             return self.door['Status']
         return None
 
