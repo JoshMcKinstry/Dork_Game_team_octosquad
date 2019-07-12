@@ -13,11 +13,13 @@ class Room():
         self.door = door
         self.items = items
 
-    def has_door_at(self):
+    def has_door_at(self, cardinal):
         """
-        Returns true if there is a door. False otherwise.
+        Returns true if there is a door at the specific cardinal. False otherwise.
         """
         if self.door is None:
+            return False
+        elif self.door['Cardinal'] != cardinal:
             return False
         return True
 
@@ -34,19 +36,22 @@ class Room():
         """
         return self.neighbors[cardinal] is not None
 
-    def has_closed_door(self):
+    def has_closed_door(self, cardinal):
         """
         Returns true if the door is closed. False if door is open.
         """
-        return self.door['State'] == 'Closed'
+        if self.has_door_at(cardinal):
+            return self.door['State'] == 'Closed'
+        return False
 
-    def get_door_status(self):
+    def get_door_status(self, cardinal):
         """
         Checks the status of the door.
         """
-        if self.has_door_at():
+        if self.has_door_at(cardinal):
             return self.door['Status']
         return None
+
 
     def delete_item(self, item_name):
         """
