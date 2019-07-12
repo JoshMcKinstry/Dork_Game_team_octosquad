@@ -9,11 +9,15 @@ class TestValidItem(unittest.TestCase):
     '''
     A testing class for the Items class
     '''
+    def setUp(self):
+        properties = {
+            'isRemoveable' : 'null'
+        }
     def test_constructor(self):
         '''
         testing the __init__ method
         '''
-        testing_item = Items('name', 'description', 'properties')
+        testing_item = Items('name', 'description', **properties)
         self.assertTrue(testing_item.name, 'name')
         self.assertTrue(testing_item.description, 'description')
-        self.assertTrue(testing_item.properties, 'properties')
+        self.assertIn('isRemoveable', attributes)
