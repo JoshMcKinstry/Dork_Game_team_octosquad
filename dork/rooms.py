@@ -13,14 +13,13 @@ class Room():
         self.door = door
         self.items = items
 
-    def has_door_at(self, cardinal):
+    def has_door_at(self):
         """
         Returns true if there is a door. False otherwise.
         """
-        if self.door == None:
+        if self.door is None:
             return False
-        else:
-            return True
+        return True
 
     def has_item(self, item_name):
         """
@@ -30,12 +29,12 @@ class Room():
 
     def has_neighbor(self, cardinal):
         """
-        Returns true if the room has a neighboor at a cardinal. 
+        Returns true if the room has a neighboor at a cardinal.
         Returns false if there is no neighboring room at the cardinal.
         """
-        return self.neighbors[cardinal] != None
+        return self.neighbors[cardinal] is not None
 
-    def has_closed_door(self, cardinal):
+    def has_closed_door(self):
         """
         Returns true if the door is closed. False if door is open.
         """
@@ -47,8 +46,7 @@ class Room():
         """
         if self.has_door_at(cardinal):
             return self.door['Status']
-        else:
-            return None
+        return None
 
     def delete_item(self, item_name):
         """
@@ -57,8 +55,7 @@ class Room():
         if self.has_item(item_name):
             self.items.remove(item_name)
             return item_name + ' has been picked up from ' +  self.name
-        else:
-            return item_name + 'is not in ' + self.name
+        return item_name + 'is not in ' + self.name
 
     def add_item(self, item_name):
         """
@@ -69,24 +66,23 @@ class Room():
 
 
 if __name__ == "__main__":
-    name = 'Entrance'
-    neighbors = {'East': 'Hallway',
-                 'North': None,
-                 'South': None,
-                'West': 'Trail'}
-    doors = None
-    items = ['Donut', 'Paper']
-
-    room = Room(name, neighbors, doors, items)
-
-    print(room.has_door_at('East'))
-    print(room.has_item('Donut'))
-    print(room.has_item('Badge'))
-    print(room.has_neighbor('North'))
-    print(room.has_neighbor('West'))
-    print(room.has_closed_door('East'))
-    print(room.add_item('Cage'))
-    print(room.items)
-    print(room.delete_item('Cage'))
-    print(room.items)
-    print(room.get_door_status('East'))
+    #name = 'Entrance'
+    #neighbors = {'East': 'Hallway',
+    #             'North': None,
+    #             'South': None,
+    #             'West': 'Trail'}
+    #doors = None
+    #items = ['Donut', 'Paper']
+    #room = Room(name, neighbors, doors, items)
+    #print(room.has_door_at('East'))
+    #print(room.has_item('Donut'))
+    #print(room.has_item('Badge'))
+    #print(room.has_neighbor('North'))
+    #print(room.has_neighbor('West'))
+    #print(room.has_closed_door('East'))
+    #print(room.add_item('Cage'))
+    #print(room.items)
+    #print(room.delete_item('Cage'))
+    #print(room.items)
+    #print(room.get_door_status('East'))
+    pass
