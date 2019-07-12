@@ -8,7 +8,11 @@ Rooms:
     Door: 
       Cardinal: East
       Status: Freshman
-      State: Closed 
+      State: Closed
+    Items:
+    - Paper
+    - Cage
+    - Freshman Badge
     Description:
       Welcome the campus entrance! You are in the student success building. 
       There are walls on the north and south ends of the room.
@@ -21,6 +25,9 @@ Rooms:
       South: null
       West: Entrance
     Door: null
+    Items:
+    - Flower
+    - Cellphone
     Description:
       You are inside a long hallway with a door on the east side of the room
       and a green door leading to the entrance on the west side. There are 
@@ -36,7 +43,10 @@ Rooms:
     Door: 
       Cardinal: North
       Status: Sophomore
-      State: Closed      
+      State: Closed
+    Items:
+    - Donut
+    - Sophomore Badge  
     Description:
       You are inside the lounge room of the campus. The air smells of poison.
       There are empty walls on the east and south side of the room.
@@ -49,6 +59,8 @@ Rooms:
       South: null
       West: Bird's Nest
     Door: null
+    Items:
+    - Flower
     Description:
       You are on a dirt trail. There are lots of pebbles and trees, and the
       sun is making you sweat.
@@ -65,6 +77,9 @@ Rooms:
       Cardinal: North
       Status: Junior
       State: Closed
+    Items:
+    - Nest
+    - Junior Badge
     Description:
       You are inside a beautiful garden. The smell of nature makes you
       energized. There is a door to the north, and the trail to the east.
@@ -80,6 +95,8 @@ Rooms:
       Cardinal: North
       Status: Senior
       State: Closed
+    Items:
+    - Dean's Badge
     Description:
       You are inside the Dean's Office, a dangerous room for troublesome
       students like you.
@@ -93,6 +110,8 @@ Rooms:
       South: Dean's Office
       West: null
     Door: null
+    Items:
+    - Key
     Description:
       You are inside a room painted with gold everything.
       Everything is enclosed in this room but it's south end which has
@@ -102,42 +121,99 @@ Items:
     Paper:
       Description: 
         I will hand this bird over to the exterminators soon – Dean
+      Properties:
+      - Storeable
+      - Droppable
+      - Examineable
     Cage:
       Description: 
         The cage is tight, dirty, and locked. There is also a bird inside
         the cage and it looks starving and nervous.
+      Properties:
+      - Storeable
+      - Droppable
+      - Examineable
+      - Openneable
     Freshman Badge:
       Description: 
         First year students are given this badge. It is used to open doors.
+      Properties:
+      - Storeable
+      - Droppable
+      - Examineable
+      - Useable
     Flyer:
       Description:
         Want to be a better programmer? Call us at 111-111-1111
+      Properties:
+      - Storeable
+      - Droppable
+      - Examineable
     Donut:
       Description: 
         The donut is chocolate flavored with sprinkles on top. There seems to
         be a purple powder on it as well.
+      Properties:
+      - Storeable
+      - Droppable
+      - Examineable
+      - Eattable
+      - Giveable
     Sophomore Badge:
       Description:
         Second year students are given this badge. It is used to open doors.
+      Properties:
+      - Storeable
+      - Droppable
+      - Examineable
+      - Useable
     Flower:
       Description: 
         The flower is red, and it smells like a strawberry cupcake.
+      Properties:
+      - Storeable
+      - Droppable
+      - Examineable
     Nest:
       Description:
         The nest has eggs that look about ready to hatch but no bird 
-        parent to be seen. 
+        parent to be seen.
+      Properties:
+      - Storeable
+      - Droppable
+      - Examineable
     Junior Badge:
       Description:
         Third year students are given this badge. It is used to open doors.
+      Properties:
+      - Storeable
+      - Droppable
+      - Examineable
+      - Useable
     Cellphone:
       Description: 
         The phone is dead.
+      Properties:
+      - Storeable
+      - Droppable
+      - Examineable
+      - Useable
     Dean's Badge:
       Description:
         This is the dean's badge. It seems to have access to all the rooms.
+      Properties:
+      - Storeable
+      - Droppable
+      - Examineable
+      - Useable
     Key:
       Description:
         The key looks like it would open the cage.
+      Properties:
+      - Storeable
+      - Droppable
+      - Examineable
+      - Useable
 State:
   Player:
     Points: '50'
