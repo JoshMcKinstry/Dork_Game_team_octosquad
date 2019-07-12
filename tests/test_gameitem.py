@@ -18,4 +18,3 @@ class TestValidItem(unittest.TestCase):
         self.assertTrue(testing_item.name, 'name')
         self.assertTrue(testing_item.description, 'description')
         self.assertIn('isRemoveable', properties)
-        #self.assertEquals(attributes.get('isRemoveable'), False)
