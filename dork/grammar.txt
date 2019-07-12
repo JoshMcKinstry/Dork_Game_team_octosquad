@@ -1,8 +1,9 @@
-[statement] -> [command] | [imperative] | [action]
-[command] -> [imperative] [target] | [action] [target] | [option]
-[imperative] -> [movement] | "open" | "take" | "drop" | "use"           /// an imperative is any command that alters the state of the game
-[action] -> "look"          /// an action is any command that does not affect the state of the game
-[option] -> "help" [imperative] | "help" [action] | "save" | "load" | "quit"            /// an option is any command that deals with the operation of the game
-[movement] -> "go" [cardinal]
+[statement] -> [command] | [action] | [assist]
+[command] -> [action] [target] | [assist] [target] | [option]
+[action] -> [movement] | "open" | "take" | "drop" | "use"           /// an action is any command that alters the state of the game
+[assist] -> "look"          /// an assist is any command that does not affect the state of the game, used to help the player
+[option] -> "help" [action] | "help" [assist] | "help" [option] | "save" | "load" | "quit"            /// an option is any command that deals with the operation of the game
+[movement] -> [movetoken] [cardinal]
 [target] -> [item] | [player] | "room"
+[movetoken] -> "go" | "move" | "travel"
 [cardinal] -> "north" | "south" | "east" | "west"
