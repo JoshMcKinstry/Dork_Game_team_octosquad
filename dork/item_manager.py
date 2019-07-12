@@ -1,8 +1,8 @@
 """
 A module that handles the functionality of items
 """
-from items import Item
-dict_items ={ }
+from dork.items import Item
+DICT_ITEMS = {}
 
 def assembling_items(names, descriptions, properties):
     """
@@ -12,4 +12,4 @@ def assembling_items(names, descriptions, properties):
     scope = range(len(names))
     for i in scope:
         item = Item(names[i], descriptions[i], properties[i])
-        dict_items.update({item.name: item})
+        DICT_ITEMS.update({item.name: item})

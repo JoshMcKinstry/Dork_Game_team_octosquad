@@ -1,5 +1,5 @@
 """
-A module that loads and validate the game data.
+A class that validates a maze coming from a .yml/.yaml file
 """
 
 def load_rooms(data):
@@ -56,7 +56,7 @@ def load_list_room_items(data, room_names):
 
 def load_items(data):
     """
-    Loading items into the game 
+    Loading items into the game
     """
     items_name = list(data['Items'].keys())
     return items_name
