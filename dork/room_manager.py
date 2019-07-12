@@ -1,9 +1,9 @@
 """
 A module that handles the functionality of rooms
 """
-from rooms import Room
-dict_rooms ={}
-dict_descrips = {}
+from dork.rooms import Room
+DICT_ROOMS ={}
+DICT_DESCRIPTIONS = {}
 
 
 def assembling_rooms(names, neighbors, doors, items):
@@ -14,7 +14,7 @@ def assembling_rooms(names, neighbors, doors, items):
     scope = range(len(names))
     for i in scope:
         room = Room(names[i], neighbors[i], doors[i], items[i])
-        dict_rooms.update({room.name: room})
+        DICT_ROOMS.update({room.name: room})
   
 def assembling_descriptions(names, descriptions):
     """
@@ -22,13 +22,13 @@ def assembling_descriptions(names, descriptions):
     """
     scope = range(len(names))
     for i in scope:
-        dict_descrips.update({names[i] : descriptions[i]})
+        DICT_DESCRIPTIONS.update({names[i] : descriptions[i]})
 
 def current_room(name):
     """
     The current room the player is in.
     """
-    return dict_rooms[name]
+    return DICT_ROOMS[name]
 
 def move(cardinal, name):
     """
