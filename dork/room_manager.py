@@ -2,7 +2,7 @@
 A module that handles the functionality of rooms
 """
 from dork.rooms import Room
-DICT_ROOMS ={}
+DICT_ROOMS = {}
 DICT_DESCRIPTIONS = {}
 
 
@@ -15,7 +15,7 @@ def assembling_rooms(names, neighbors, doors, items):
     for i in scope:
         room = Room(names[i], neighbors[i], doors[i], items[i])
         DICT_ROOMS.update({room.name: room})
-  
+ 
 def assembling_descriptions(names, descriptions):
     """
     Adds the room descriptions for all rooms inside a dictionary.
@@ -30,15 +30,22 @@ def current_room(name):
     """
     return DICT_ROOMS[name]
 
+def current_description(name):
+    """
+    """
+    return DICT_DESCRIPTIONS[name]
+
+
 def move(cardinal, name):
     """
     Returns the current room of the player after the player moves
     a certain direction.
     """
+    current_room_name = None
     if current_room(name).has_door_at(cardinal):
         return 'Closed door'
     elif not current_room(name).has_neighbor(cardinal):
         return 'No neighbor'
     else:
-        current_key = current_room(name).neighbors[cardinal]
-        return current_key
+        current_room_name = current_room(name).neighbors[cardinal]
+        return current_room_name
