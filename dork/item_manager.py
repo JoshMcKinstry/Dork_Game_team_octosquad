@@ -1,3 +1,4 @@
+"""
 A module that handles the functionality of items
 """
 from items import Item
