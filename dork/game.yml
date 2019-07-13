@@ -17,7 +17,6 @@ Rooms:
       Welcome the campus entrance! You are in the student success building. 
       There are walls on the north and south ends of the room.
       There is a door in the east and a trail in the west.
-      You noticed the following items - 
   Hallway:
     Neighbors:
       East: Lounge
@@ -33,7 +32,6 @@ Rooms:
       and a green door leading to the entrance on the west side. There are 
       blank walls in the north and south ends of this room.
       The hallway is giving you chills, and you want to leave the room ASAP.
-      You noticed the following items - 
   Lounge:
     Neighbors:
       East: null
@@ -51,7 +49,6 @@ Rooms:
       You are inside the lounge room of the campus. The air smells of poison.
       There are empty walls on the east and south side of the room.
       There is a hallway in the west and a door in the north.
-      You noticed the following items - 
   Trail:
     Neighbors:
       East: Entrance
@@ -66,7 +63,6 @@ Rooms:
       sun is making you sweat.
       To the east is the entrance and to the west is the bird nest.
       You cannot go north or south because the trees are blocking the way.
-      You noticed the following items - 
   Bird Nest:
     Neighbors:
       East: Trail
@@ -84,7 +80,6 @@ Rooms:
       You are inside a beautiful garden. The smell of nature makes you
       energized. There is a door to the north, and the trail to the east.
       There are 1000 ft walls on the south and west side of this garden.
-      You noticed the following items - 
   Dean Office:
     Neighbors:
       East: Lounge
@@ -102,7 +97,6 @@ Rooms:
       students like you.
       The east, west, and north sides of this room have doors, but the south
       end is a spiky wall.
-      You noticed the following items - 
   Treasure Room:
     Neighbors:
       East: null
@@ -116,7 +110,6 @@ Rooms:
       You are inside a room painted with gold everything.
       Everything is enclosed in this room but its south end which has
       a door.
-      You noticed the following items - 
 Items:
     Paper:
       Description: 
@@ -216,6 +209,5 @@ Items:
       - Useable
 Player:
     Inventory:
-    - Donut
-    - Freshman Badge
+    - Help Guide
     Position: Entrance

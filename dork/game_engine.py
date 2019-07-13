@@ -47,13 +47,21 @@ def __current_position():
     return char_m.player_position()
 
 
+def display_inventory():
+    """
+    Prints the current player inventory
+    """
+    print(char_m.player_inventory())
+
+
 def room_to_screen():
     """
     Prints the room name, room description and room items.
     """
     print('**' + __current_position() + '**')
-    print(room_m.current_description(__current_position()))
-    print('---' + room_m.to_string_current_items(__current_position()))
+    print(room_m.room_description(__current_position()))
+    if room_m.not_empty_room(__current_position()):
+     print(room_m.to_string_current_items(__current_position()))
 
 
 def move(cardinal):
@@ -69,6 +77,17 @@ def move(cardinal):
         char_m.update_player_position(room_after_mov)
         room_to_screen()
 
+def pick_up(item_name):
+    """
+    Picks up items from current room
+    """
+    (not_in_room, picked_up) = room_m.delete_item(__current_position(), item_name)
+
+    if picked_up:
+        print(char_m.update_player_inventory(item_name))
+    else:
+        print(not_in_room)
+
 
 if __name__ == "__main__":
     PATH = 'C:\\CS 3250 Individual Repository\\Team 34 Repository\\team34\dork\\game.yml'
@@ -77,4 +96,10 @@ if __name__ == "__main__":
     loading_item(DATA)
     loading_player(DATA)
     room_to_screen()
+    pick_up('Paper')
     move('West')
+    pick_up('Flower')
+    move('West')
+    display_inventory()
+    move('East')
+    move('East')

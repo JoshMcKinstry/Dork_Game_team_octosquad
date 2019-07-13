@@ -26,32 +26,41 @@ def assembling_descriptions(names, descriptions):
         DICT_DESCRIPTIONS.update({names[i] : descriptions[i]})
 
 
-def current_room(name):
+def current_room(room_name):
     """
     The current room the player is in.
     """
-    return DICT_ROOMS[name]
+    return DICT_ROOMS[room_name]
 
 
-def current_description(name):
+def room_description(room_name):
     """
     """
-    return DICT_DESCRIPTIONS[name]
+    return DICT_DESCRIPTIONS[room_name]
 
 
-def current_items(name):
+def items_in_room(room_name):
     """
     """
-    return DICT_ROOMS[name].items
+    return DICT_ROOMS[room_name].items
 
-def delete_item(name):
-        pass
+def delete_item(room_name, item_name):
+    """
+    """
+    return DICT_ROOMS[room_name].delete_item(item_name)
+
+
+def not_empty_room(room_name):
+    """
+    """
+    return len(items_in_room(room_name)) != 0
+
 
 def to_string_current_items(name):
     """
     Returns a string that lists the items in the selected room
     """
-    item_list = ''
+    item_list = 'You notice the following items--- '
     scope = range(len(DICT_ROOMS[name].items)-1)
     for i in scope:
         item_list += DICT_ROOMS[name].items[i] + ', '

@@ -23,7 +23,14 @@ def update_player_position(room_name):
     """
     DICT_CHARACTERS['Player'].position = room_name
 
+
 def player_inventory():
     """
     """
     return DICT_CHARACTERS['Player'].inventory
+
+
+def update_player_inventory(item_name):
+    """
+    """
+    return DICT_CHARACTERS['Player'].add_item(item_name)
