@@ -21,6 +21,7 @@ def loading_map(data):
     room_m.assembling_rooms(names, neighbors, doors, items)
     room_m.assembling_descriptions(names, descriptions)
 
+
 def loading_item(data):
     """
     Loads all the items available for the game.
@@ -30,6 +31,7 @@ def loading_item(data):
     properties = game_data.load_items_properties(data, names)
     item_m.assembling_items(names, descriptions, properties)
 
+
 def loading_player(data):
     """
     Load the player specs to the game
@@ -37,19 +39,21 @@ def loading_player(data):
     player = game_data.load_player(data)
     char_m.assembling_player(player[0], player[1])
 
+
 def __current_position():
     """
     Returns the player current position
     """
     return char_m.player_position()
 
-def starting_room():
+
+def room_to_screen():
     """
+    Prints the room name, room description and room items.
     """
     print('**' + __current_position() + '**')
-    checkpoint_room = __current_position()
-    print(room_m.current_description(checkpoint_room))
-    print('---' + room_m.to_string_current_items(checkpoint_room))
+    print(room_m.current_description(__current_position()))
+    print('---' + room_m.to_string_current_items(__current_position()))
 
 
 def move(cardinal):
@@ -63,16 +67,14 @@ def move(cardinal):
         print('No movement was made!')
     else:
         char_m.update_player_position(room_after_mov)
-        print('**' + __current_position() + '**')
-        print(room_m.current_description(room_after_mov))
-        print('---' + room_m.to_string_current_items(room_after_mov))
+        room_to_screen()
 
-    
+
 if __name__ == "__main__":
-    path = 'C:\\CS 3250 Individual Repository\\Team 34 Repository\\team34\dork\\game.yml'
-    data = reader.reading_yml(path)
-    loading_map(data)
-    loading_item(data)
-    loading_player(data)
-    starting_room()
+    PATH = 'C:\\CS 3250 Individual Repository\\Team 34 Repository\\team34\dork\\game.yml'
+    DATA = reader.reading_yml(PATH)
+    loading_map(DATA)
+    loading_item(DATA)
+    loading_player(DATA)
+    room_to_screen()
     move('West')
