@@ -15,7 +15,8 @@ def assembling_rooms(names, neighbors, doors, items):
     for i in scope:
         room = Room(names[i], neighbors[i], doors[i], items[i])
         DICT_ROOMS.update({room.name: room})
- 
+
+
 def assembling_descriptions(names, descriptions):
     """
     Adds the room descriptions for all rooms inside a dictionary.
@@ -23,6 +24,7 @@ def assembling_descriptions(names, descriptions):
     scope = range(len(names))
     for i in scope:
         DICT_DESCRIPTIONS.update({names[i] : descriptions[i]})
+
 
 def current_room(name):
     """
@@ -47,6 +49,7 @@ def delete_item(name):
 
 def to_string_current_items(name):
     """
+    Returns a string that lists the items in the selected room
     """
     item_list = ''
     scope = range(len(DICT_ROOMS[name].items)-1)

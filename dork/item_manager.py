@@ -17,5 +17,6 @@ def assembling_items(names, descriptions, properties):
 
 def is_item(item_name):
     """
+    
     """ 
     return item_name in DICT_ITEMS.keys()
