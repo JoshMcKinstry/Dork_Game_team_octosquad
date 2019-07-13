@@ -1,11 +1,11 @@
 """
 A module that works as an interface between the main classes in the game
 """
-import dork.incoming_data as game_data
-import dork.item_manager as item_m
-import dork.room_manager as room_m
-import dork.yamlreader as reader
-from dork.player import Player
+import incoming_data as game_data
+import item_manager as item_m
+import room_manager as room_m
+import yamlreader as reader
+from player import Player
 
 DICT_PLAYERS = {}
 
@@ -35,22 +35,15 @@ def loading_players():
     """
     """
     user = Player('User', 'Entrance', ['Cage', 'Lamp', 'Gun'])
-    DICT_PLAYERS.update({user.name: user})
+    DICT_PLAYERS.update({ user.name: user})
 
 
-def current_player_status(position, items):
+def current_player_position():
     """
     """
-    print
+    print(DICT_PLAYERS['User'].position)
 
 
-def loading_current_room():
-    """
-    Loads the current room of the player.
-    """
-    pass
-  
-    
 def move(cardinal):
     """
     Moves the player from one room to another if room exists and door is
@@ -63,7 +56,7 @@ def move(cardinal):
     else:
         DICT_PLAYERS['User'].position = room_after_mov
         print(room_m.current_description(room_after_mov))
-    
+        print(room_m.current_items(room_after_mov))
 
 def use_item(item_name, action):
     """
@@ -77,4 +70,12 @@ if __name__ == "__main__":
     data = reader.reading_yml('C:\Python Scripts\Yaml Loader\saved_progress.yml')
     loading_map(data)
     loading_item(data)
+    loading_players()
+    current_player_position()
     move('West')
+    print('\n ')
+    current_player_position()
+    move('West')
+    current_player_position()
+    print('\n')
+    

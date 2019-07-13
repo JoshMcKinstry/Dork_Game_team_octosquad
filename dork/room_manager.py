@@ -1,7 +1,7 @@
 """
 A module that handles the functionality of rooms
 """
-from dork.rooms import Room
+from rooms import Room
 DICT_ROOMS = {}
 DICT_DESCRIPTIONS = {}
 
@@ -30,10 +30,22 @@ def current_room(name):
     """
     return DICT_ROOMS[name]
 
+
 def current_description(name):
     """
     """
     return DICT_DESCRIPTIONS[name]
+
+
+def current_items(name):
+    """
+    """
+    item_list = ''
+    scope = range(len(DICT_ROOMS[name].items)-1)
+    for i in scope:
+        item_list += DICT_ROOMS[name].items[i] + ', '
+    item_list += DICT_ROOMS[name].items[-1] + '.'
+    return item_list
 
 
 def move(cardinal, name):
