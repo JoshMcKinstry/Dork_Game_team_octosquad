@@ -214,10 +214,8 @@ Items:
       - Droppable
       - Examineable
       - Useable
-State:
-  Player:
-    Points: '50'
+Player:
     Inventory:
     - Donut
     - Freshman Badge
-    Position: Hallway
+    Position: Entrance

@@ -1,6 +1,7 @@
 """
-A class that validates a maze coming from a .yml/.yaml file
+A module that loads and validates the game information
 """
+import yamlreader as reader
 
 def load_rooms(data):
     """
@@ -83,6 +84,23 @@ def load_items_properties(data, items_name):
         item_properties.append(attribute)
     return item_properties
 
+
+def load_player(data):
+    """
+    Loading the player specs
+    """
+    player_specs = (data['Player']['Position'], data['Player']['Inventory'])
+    return player_specs
+
+
+def load_characters(data):
+    """
+    Loading the character names into the game
+    """
+    character_names = list(data['Characters'].keys())
+    return character_names
+
+
 def check_rooms(room_names):
     """
     Checking room names for valid names
@@ -139,3 +157,7 @@ def check_connections(room_names, room_cardinals):
             isolated_room = True
             break
     return dual_pointer or invalid_direction or isolated_room
+
+if __name__ == "__main__":
+    game_data = reader.reading_yml('C:\Python Scripts\Yaml Loader\game.yml')
+    print(load_player(game_data))

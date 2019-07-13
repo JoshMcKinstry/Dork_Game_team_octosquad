@@ -66,9 +66,9 @@ def move(cardinal, name):
     """
     current_room_name = None
     if current_room(name).has_door_at(cardinal):
-        return 'Closed door'
+        print('Closed door')
     elif not current_room(name).has_neighbor(cardinal):
-        return 'No neighbor'
+        print('No neighbor')
     else:
         current_room_name = current_room(name).neighbors[cardinal]
-        return current_room_name
+    return current_room_name
