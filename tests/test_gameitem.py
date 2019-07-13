@@ -13,8 +13,11 @@ class TestValidItem(unittest.TestCase):
         '''
         testing the __init__ method
         '''
-        properties = {'isRemoveable': False}
-        testing_item = Items('name', 'description', **properties)
+        properties = ['Storeable', 'Droppable', 'Examineable']
+        testing_item = Items('name', 'description', properties)
         self.assertTrue(testing_item.name, 'name')
         self.assertTrue(testing_item.description, 'description')
-        self.assertIn('isRemoveable', properties)
+        self.assertIn('Storeable', properties)
+        self.assertIn('Droppable', properties)
+        self.assertIn('Examineable', properties)
+        
