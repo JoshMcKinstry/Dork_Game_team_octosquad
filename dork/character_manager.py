@@ -30,6 +30,12 @@ def player_inventory():
     return DICT_CHARACTERS['Player'].inventory
 
 
+def player_has_item(item_name):
+    """
+    """
+    return item_name in player_inventory()
+
+
 def update_player_inventory(item_name):
     """
     """

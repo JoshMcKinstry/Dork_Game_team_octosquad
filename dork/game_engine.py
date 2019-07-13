@@ -77,6 +77,20 @@ def move(cardinal):
         char_m.update_player_position(room_after_mov)
         room_to_screen()
 
+def examine(item_name):
+    """
+    Prints a detailed description of an item
+    """
+    valid_item = item_m.is_item(item_name)
+    item_in_room = room_m.is_item_in_room(__current_position(), item_name)
+    item_in_inventory = char_m.player_has_item(item_name)
+
+    if valid_item and (item_in_room or item_in_inventory):
+       print(item_m.item_description(item_name))
+    else:
+        print('No item called ' + item_name + ' is available at the moment.' )
+
+
 def pick_up(item_name):
     """
     Picks up items from current room
@@ -97,9 +111,13 @@ if __name__ == "__main__":
     loading_player(DATA)
     room_to_screen()
     pick_up('Paper')
+    pick_up('Cage')
     move('West')
     pick_up('Flower')
     move('West')
     display_inventory()
     move('East')
     move('East')
+    examine('Paper')
+    examine('Cage')
+    examine('Freshman Badge')
