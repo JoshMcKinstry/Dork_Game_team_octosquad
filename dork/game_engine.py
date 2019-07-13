@@ -35,13 +35,13 @@ def loading_players():
     """
     """
     user = Player('User', 'Entrance', ['Cage', 'Lamp', 'Gun'])
-    DICT_PLAYERS.update({ user.name: user})
+    DICT_PLAYERS.update({user.name: user})
 
 
-def current_player_position():
+def current_position():
     """
     """
-    print(DICT_PLAYERS['User'].position)
+    return DICT_PLAYERS['User'].position
 
 
 def move(cardinal):
@@ -49,33 +49,35 @@ def move(cardinal):
     Moves the player from one room to another if room exists and door is
     open.
     """
-    room_before_mov = DICT_PLAYERS['User'].position
+    room_before_mov = current_position()
     room_after_mov = room_m.move(cardinal, room_before_mov)
     if room_after_mov is None:
         print('No movement was made!')
     else:
         DICT_PLAYERS['User'].position = room_after_mov
         print(room_m.current_description(room_after_mov))
-        print(room_m.current_items(room_after_mov))
+        print(room_m.to_string_current_items(room_after_mov))
 
-def use_item(item_name, action):
+
+def item_to_player(item_name):
     """
-    Anytime a player uses an item, the action and the item the action is
-    executed on is called here.
     """
-    pass
+    if not item_name in room_m.current_items():
+        print('No such item in current room')
+    else:
+        pass
 
-
+    
 if __name__ == "__main__":
     data = reader.reading_yml('C:\Python Scripts\Yaml Loader\saved_progress.yml')
     loading_map(data)
     loading_item(data)
     loading_players()
-    current_player_position()
+    print(current_position())
     move('West')
     print('\n ')
-    current_player_position()
+    print(current_position())
     move('West')
-    current_player_position()
+    print(current_position())
     print('\n')
     

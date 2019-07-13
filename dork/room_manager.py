@@ -40,6 +40,14 @@ def current_description(name):
 def current_items(name):
     """
     """
+    return DICT_ROOMS[name].items
+
+def delete_item(name):
+        pass
+
+def to_string_current_items(name):
+    """
+    """
     item_list = ''
     scope = range(len(DICT_ROOMS[name].items)-1)
     for i in scope:

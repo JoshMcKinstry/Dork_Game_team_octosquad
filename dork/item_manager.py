@@ -13,3 +13,9 @@ def assembling_items(names, descriptions, properties):
     for i in scope:
         item = Item(names[i], descriptions[i], properties[i])
         DICT_ITEMS.update({item.name: item})
+
+
+def is_item(item_name):
+    """
+    """ 
+    return item_name in DICT_ITEMS.keys()
