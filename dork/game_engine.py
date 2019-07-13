@@ -88,19 +88,31 @@ def examine(item_name):
     if valid_item and (item_in_room or item_in_inventory):
        print(item_m.item_description(item_name))
     else:
-        print('No item called ' + item_name + ' is available at the moment.' )
+        print('No item called ' + item_name + ' is available at the moment.')
 
 
 def pick_up(item_name):
     """
     Picks up items from current room
     """
-    (not_in_room, picked_up) = room_m.delete_item(__current_position(), item_name)
-
+    (message, picked_up) = room_m.delete_item(__current_position(), item_name)
     if picked_up:
         print(char_m.update_player_inventory(item_name))
+        print(message)
     else:
-        print(not_in_room)
+        print(message)
+
+    
+def drop(item_name):
+    """
+    Drops items into current room
+    """
+    (message, dropped) = char_m.remove_item_from_inventory(item_name)
+    if dropped:
+        print(message)
+        print(room_m.append_item(__current_position(), item_name))
+    else:
+        print(message)
 
 
 if __name__ == "__main__":
@@ -121,3 +133,6 @@ if __name__ == "__main__":
     examine('Paper')
     examine('Cage')
     examine('Freshman Badge')
+    drop('Cage')
+    drop('Paper')
+    

@@ -40,3 +40,9 @@ def update_player_inventory(item_name):
     """
     """
     return DICT_CHARACTERS['Player'].add_item(item_name)
+
+def remove_item_from_inventory(item_name):
+    """
+    """
+    return DICT_CHARACTERS['Player'].delete_item(item_name)
+

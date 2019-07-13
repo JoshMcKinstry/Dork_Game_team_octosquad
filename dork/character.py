@@ -26,8 +26,8 @@ class Character():
         """
         if self.has_item(item_name):
             self.inventory.remove(item_name)
-            return self.name + ' has lost ' + item_name
-        return self.name + ' does not hold ' + item_name
+            return (self.name + ' has lost ' + item_name + '.', True)
+        return (self.name + ' does not hold ' + item_name + '.', False)
 
 
     def add_item(self, item_name):

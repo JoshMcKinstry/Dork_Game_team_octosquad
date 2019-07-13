@@ -49,6 +49,11 @@ def is_item_in_room(room_name, item_name):
     """
     return item_name in items_in_room(room_name)
 
+def append_item(room_name, item_name):
+    """
+    """
+    return DICT_ROOMS[room_name].add_item(item_name)
+
 
 def delete_item(room_name, item_name):
     """
