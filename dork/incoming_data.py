@@ -1,7 +1,7 @@
 """
 A module that loads the game information
 """
-import yamlreader as reader
+
 
 def load_rooms(data):
     """
@@ -91,16 +91,3 @@ def load_player(data):
     """
     player_specs = (data['Player']['Position'], data['Player']['Inventory'])
     return player_specs
-
-
-def load_characters(data):
-    """
-    Loading the character names into the game
-    """
-    character_names = list(data['Characters'].keys())
-    return character_names
-
-
-if __name__ == "__main__":
-    PATH = 'C:\\CS 3250 Individual Repository\\Team 34 Repository\\team34\dork\\game.yml'
-    DATA = reader.reading_yml(PATH)
