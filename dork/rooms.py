@@ -77,4 +77,3 @@ class Room():
         self.items.append(item_name)
         return item_name + ' has been dropped in ' +  self.name + '.'
 
- 
