@@ -1,7 +1,7 @@
 """
 A module that handles the functionality of player both NPCs and Player
 """
-from character import Character
+from dork.character import Character
 DICT_CHARACTERS = {}
 
 
