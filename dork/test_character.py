@@ -9,11 +9,23 @@ def test_init_method():
     name = 'Hallway'
     position = 'Entrance'
     inventory =['Paper', 'Cage', 'Freshman Badge']
-    character = Character(name, position, inventory) 
-    assert character.name == name
-    assert character.position == position
-    assert character.inventory == inventory
+    main_character = Character(name, position, inventory) 
+    assert main_character.name == name
+    assert main_character.position == position
+    assert main_character.inventory == inventory
 
-'''def test_has_item():'''
+def test_has_item():
+    name = 'Hallway'
+    position = 'Entrance'
+    inventory =['Paper', 'Cage', 'Freshman Badge']
+    main_character = Character(name, position, inventory)
+    assert main_character.has_item('Paper') == True
+    assert main_character.has_item('Donut') == False
 
-    
+
+
+
+
+
+
+
