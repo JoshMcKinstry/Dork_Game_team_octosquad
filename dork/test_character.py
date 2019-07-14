@@ -24,6 +24,14 @@ def test_has_item():
 
 
 
+def test_delete_item():
+    name = 'Hallway'
+    position = 'Entrance'
+    inventory =['Paper', 'Cage', 'Freshman Badge']
+    main_character = Character(name, position, inventory) 
+    main_character.delete_item('Paper')
+    assert main_character.inventory == ['Cage', 'Freshman Badge']
+
 
 
 
