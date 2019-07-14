@@ -107,6 +107,7 @@ class TestValidMaze(unittest.TestCase):
         out_put = game_data.load_items_properties(data, ['item_1'])
         self.assertEqual(out_put, expected)
 
+
     def test_load_player(self):
         """
         Testing the Loading of the player specs
