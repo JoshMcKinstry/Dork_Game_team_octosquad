@@ -22,8 +22,6 @@ def test_has_item():
     assert main_character.has_item('Paper') == True
     assert main_character.has_item('Donut') == False
 
-
-
 def test_delete_item():
     name = 'Hallway'
     position = 'Entrance'
@@ -32,7 +30,14 @@ def test_delete_item():
     main_character.delete_item('Paper')
     assert main_character.inventory == ['Cage', 'Freshman Badge']
 
-
+def test_add_item():
+    name = 'Hallway'
+    position = 'Entrance'
+    inventory =['Paper', 'Cage', 'Freshman Badge']
+    main_character = Character(name, position, inventory)
+    main_character.add_item('Donut')
+    assert main_character.has_item('Donut') == True
+    assert main_character.has_item('Key') == False
 
 
 
