@@ -36,8 +36,8 @@ def loading_player(data):
     """
     Load the player specs to the game
     """
-    player = game_data.load_player(data)
-    char_m.assembling_player(player[0], player[1])
+    (position, inventory) = game_data.load_player(data)
+    char_m.assembling_player(position, inventory)
 
 
 def __current_position():
@@ -61,7 +61,7 @@ def room_to_screen():
     print('**' + __current_position() + '**')
     print(room_m.room_description(__current_position()))
     if room_m.not_empty_room(__current_position()):
-     print(room_m.to_string_current_items(__current_position()))
+        print(room_m.to_string_current_items(__current_position()))
 
 
 def move(cardinal):
@@ -77,6 +77,7 @@ def move(cardinal):
         char_m.update_player_position(room_after_mov)
         room_to_screen()
 
+
 def examine(item_name):
     """
     Prints a detailed description of an item
@@ -86,7 +87,7 @@ def examine(item_name):
     item_in_inventory = char_m.player_has_item(item_name)
 
     if valid_item and (item_in_room or item_in_inventory):
-       print(item_m.item_description(item_name))
+        print(item_m.item_description(item_name))
     else:
         print('No item called ' + item_name + ' is available at the moment.')
 
@@ -102,7 +103,7 @@ def pick_up(item_name):
     else:
         print(message)
 
-    
+
 def drop(item_name):
     """
     Drops items into current room
@@ -135,4 +136,5 @@ if __name__ == "__main__":
     examine('Freshman Badge')
     drop('Cage')
     drop('Paper')
+    pick_up('Paper')
     
