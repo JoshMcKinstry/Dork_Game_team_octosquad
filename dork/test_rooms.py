@@ -64,10 +64,14 @@ def test_has_closed_door():
     name = 'Entrance'
     neighbors = {'North': 'Trail', 'East': None, 'South': None, 'West': 'Lake'}
     door = {'Cardinal': 'North', 'Status': 'Dean Badge', 'State': 'Closed'}
+    door_open = {'Cardinal': 'North', 'Status': 'Dean Badge', 'State': 'Open'}
     items = ['Paper', 'Donut']
     room = Room(name, neighbors, door, items)
+    room2 = Room(name, neighbors, door_open, items)
+    assert room.has_closed_door('North') == True
+    assert room2.has_closed_door('North') == False
     assert room.has_closed_door('East') == False
-    assert room.door['State'] == 'Closed'
+
 
 def test_get_door_status():
     """
@@ -79,22 +83,47 @@ def test_get_door_status():
     items = ['Paper', 'Donut']
     room = Room(name, neighbors, door, items)
     assert room.get_door_status('East') == None
-    assert room.
+    assert room.get_door_status('North') == 'Dean Badge'
+
 
 def test_update_door_status():
     """
     Test if the door status updates
     """
-    pass
+    name = 'Entrance'
+    neighbors = {'North': 'Trail', 'East': None, 'South': None, 'West': 'Lake'}
+    door = {'Cardinal': 'North', 'Status': 'Dean Badge', 'State': 'Closed'}
+    items = ['Paper', 'Donut']
+    room = Room(name, neighbors, door, items)
+    room.update_door_status()
+    assert room.door['State'] == 'Open'
+    assert room.update_door_status() == (
+        'Door in ' + room.name + ' at ' + room.door['Cardinal'] 
+        + ' is now open.')
 
 def test_delete_item():
     """
     Test if the item was deleted was in room
     """
-    pass
+    name = 'Entrance'
+    neighbors = {'North': 'Trail', 'East': None, 'South': None, 'West': 'Lake'}
+    door = {'Cardinal': 'North', 'Status': 'Dean Badge', 'State': 'Closed'}
+    items = ['Paper', 'Donut']
+    room = Room(name, neighbors, door, items)
+    assert room.delete_item('Donut') == (
+        'Donut' + ' has been picked up from ' +  room.name + '.', True)
+    assert room.delete_item('Flyer') == (
+        'No item called ' + 'Flyer' + ' is in ' + room.name + '.', False)
 
 def test_add_item():
     """
     Test if the item was added to the room
     """
-    pass
+    name = 'Entrance'
+    neighbors = {'North': 'Trail', 'East': None, 'South': None, 'West': 'Lake'}
+    door = {'Cardinal': 'North', 'Status': 'Dean Badge', 'State': 'Closed'}
+    items = ['Paper', 'Donut']
+    room = Room(name, neighbors, door, items)
+    assert room.add_item('Flyer') == (
+        'Flyer' + ' has been dropped in ' +  room.name + '.')
+    assert room.items == ['Paper', 'Donut', 'Flyer']
