@@ -1,13 +1,13 @@
 """
-A test for mapvalidation
+A module that test the incoming_data module
 """
 import unittest
 import incoming_data as game_data
 
 
-class TestValidMaze(unittest.TestCase):
+class TestIncomingData(unittest.TestCase):
     """
-    A testing class for ValidMaze
+    A testing class for the incoming_data module
     """
   
 

@@ -1,7 +1,6 @@
 """
 A test for item_manager
 """
-import unittest
 import item_manager as item_m
 
 
@@ -17,6 +16,7 @@ def test_assembling_item():
     assert item_m.DICT_ITEMS['donut'].description == 'This is a donut'
     assert item_m.DICT_ITEMS['donut'].properties == 'openable'
 
+
 def test_is_item():
     """
     Test for if the item is an item
@@ -25,8 +25,9 @@ def test_is_item():
     list_description = ['This is a donut']
     list_property = ['openable']
     item_m.assembling_items(list_item, list_description, list_property)
-    assert item_m.is_item('donut') == True
-    assert item_m.is_item('sword') == False
+    assert item_m.is_item('donut')
+    assert not item_m.is_item('sword')
+
 
 def test_item_description():
     """
