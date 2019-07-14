@@ -1,7 +1,7 @@
 """
 A module that handles the functionality of items
 """
-from items import Item
+from dork.items import Item
 DICT_ITEMS = {}
 
 def assembling_items(names, descriptions, properties):

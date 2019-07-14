@@ -1,7 +1,7 @@
 """
 A test for items
 """
-from items import Item
+from dork.items import Item
 
 def test_init_method():
     """
