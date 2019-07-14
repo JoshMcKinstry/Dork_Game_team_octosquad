@@ -2,7 +2,7 @@
 A module that test the incoming_data module
 """
 import unittest
-import incoming_data as game_data
+import dork.incoming_data as game_data
 
 
 class TestIncomingData(unittest.TestCase):

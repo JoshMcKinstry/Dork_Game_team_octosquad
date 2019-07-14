@@ -2,7 +2,7 @@
 A test for character_manager
 """
 
-import character_manager as character_m
+import dork.character_manager as character_m
 
 def test_assembling_player():
     """
