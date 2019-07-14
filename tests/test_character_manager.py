@@ -4,6 +4,7 @@ A test for character_manager
 
 import dork.character_manager as character_m
 
+
 def test_assembling_player():
     """
     Test for assembling player
@@ -13,7 +14,7 @@ def test_assembling_player():
     character_m.assembling_player(position, inventory)
     assert character_m.DICT_CHARACTERS['Player'].position == 'Entrance'
     assert character_m.DICT_CHARACTERS['Player'].inventory == 'Donut'
-    
+
 
 def test_player_position():
     """
@@ -23,7 +24,7 @@ def test_player_position():
     inventory = 'Donut'
     character_m.assembling_player(position, inventory)
     assert character_m.player_position() == 'Entrance'
-    
+
 
 def test_player_inventory():
     """
@@ -43,7 +44,7 @@ def test_update_player_position():
     inventory = 'Donut'
     character_m.assembling_player(position, inventory)
     character_m.update_player_position('Trail')
-    assert  character_m.DICT_CHARACTERS['Player'].position == 'Trail'
+    assert character_m.DICT_CHARACTERS['Player'].position == 'Trail'
 
 
 def test_player_has_item():
