@@ -85,10 +85,20 @@ def move(cardinal, name):
     a certain direction.
     """
     current_room_name = None
-    if current_room(name).has_door_at(cardinal):
+    if current_room(name).has_closed_door(cardinal):
         print('Closed door')
     elif not current_room(name).has_neighbor(cardinal):
         print('No neighbor')
     else:
         current_room_name = current_room(name).neighbors[cardinal]
     return current_room_name
+
+def open_door(room_name, cardinal, key):
+    """
+    """
+    if current_room(room_name).has_closed_door(cardinal):
+        door_status = DICT_ROOMS[room_name].get_door_status(cardinal)
+        if door_status == key:
+            return DICT_ROOMS[room_name].update_door_status()
+        return 'Invalid key for door at ' + cardinal + '!'
+    return 'There is no closed door at the ' + cardinal + '!'

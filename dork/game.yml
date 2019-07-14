@@ -7,7 +7,7 @@ Rooms:
       West: Trail
     Door: 
       Cardinal: East
-      Status: Freshman
+      Status: Freshman Badge
       State: Closed
     Items:
     - Paper
@@ -40,7 +40,7 @@ Rooms:
       West: Hallway
     Door: 
       Cardinal: North
-      Status: Sophomore
+      Status: Sophomore Badge
       State: Closed
     Items:
     - Donut
@@ -71,7 +71,7 @@ Rooms:
       West: null
     Door:
       Cardinal: North
-      Status: Junior
+      Status: Junior Badge
       State: Closed
     Items:
     - Nest
@@ -88,7 +88,7 @@ Rooms:
       West: Bird Nest
     Door:
       Cardinal: North
-      Status: Senior
+      Status: Dean Badge
       State: Closed
     Items:
     - Dean Badge

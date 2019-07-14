@@ -115,6 +115,13 @@ def drop(item_name):
     else:
         print(message)
 
+def use_key(cardinal, key):
+    """
+    """
+    if char_m.player_has_item(key):
+        print(room_m.open_door(__current_position(), cardinal, key))
+    else:
+        print('You do not have ' + key + ' in your inventory')
 
 if __name__ == "__main__":
     PATH = 'C:\\CS 3250 Individual Repository\\Team 34 Repository\\team34\dork\\game.yml'
@@ -123,18 +130,8 @@ if __name__ == "__main__":
     loading_item(DATA)
     loading_player(DATA)
     room_to_screen()
-    pick_up('Paper')
-    pick_up('Cage')
+    pick_up('Freshman Badge')
     move('West')
-    pick_up('Flower')
     move('West')
-    display_inventory()
-    move('East')
-    move('East')
-    examine('Paper')
-    examine('Cage')
-    examine('Freshman Badge')
-    drop('Cage')
-    drop('Paper')
-    pick_up('Paper')
-    
+    pick_up('Junior Badge')
+    use_key('North', 'Freshman Badge')
