@@ -2,4 +2,4 @@
 A test for rooms
 """
 import unittest
-import dork.rooms as rooms
+import rooms as rooms
