@@ -53,6 +53,13 @@ class Room():
             return self.door['Status']
         return None
 
+    def update_door_status(self):
+        """
+        """
+        self.door['State'] = 'Open'
+        return ('Door in ' + self.name + ' at ' + self.door['Cardinal'] 
+                + ' is now open.')
+
 
     def delete_item(self, item_name):
         """
