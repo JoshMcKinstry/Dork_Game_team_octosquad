@@ -1,7 +1,7 @@
 """
 A module that handles the functionality of rooms
 """
-from rooms import Room
+from dork.rooms import Room
 DICT_ROOMS = {}
 DICT_DESCRIPTIONS = {}
 

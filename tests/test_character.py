@@ -2,8 +2,8 @@
 A test for character
 """
 import unittest
-import character as character
-from character import Character
+import dork.character as character
+from dork.character import Character
 
 name = 'Hallway'
 position = 'Entrance'
