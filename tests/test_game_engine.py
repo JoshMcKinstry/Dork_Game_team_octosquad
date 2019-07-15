@@ -45,7 +45,7 @@ class TestValidMaze(unittest.TestCase):
         data = {'Player': player}
         self.assertIsNone(engine.loading_player(data))
 
-    @patch('character_manager.player_inventory')
+    @patch('dork.character_manager.player_inventory')
     def test_display_inventory(self, mock_inventory):
         """
         Testing the method that prints the player inventory
@@ -53,10 +53,10 @@ class TestValidMaze(unittest.TestCase):
         mock_inventory.return_value = ['Flower', 'Donut']
         self.assertIsNone(engine.display_inventory())
 
-    @patch('room_manager.to_string_current_items')
-    @patch('room_manager.room_description')
-    @patch('game_engine.__current_position')
-    @patch('room_manager.not_empty_room')
+    @patch('dork.room_manager.to_string_current_items')
+    @patch('dork.room_manager.room_description')
+    @patch('dork.game_engine.__current_position')
+    @patch('dork.room_manager.not_empty_room')
     def test_room_to_screen(self, room, current, description, to_string):
         """
         Testing the method that prints the room name,
@@ -68,10 +68,10 @@ class TestValidMaze(unittest.TestCase):
         to_string.return_value = 'To the screen'
         self.assertIsNone(engine.room_to_screen())
 
-    @patch('game_engine.room_to_screen')
-    @patch('character_manager.update_player_position')
-    @patch('room_manager.move')
-    @patch('game_engine.__current_position')
+    @patch('dork.game_engine.room_to_screen')
+    @patch('dork.character_manager.update_player_position')
+    @patch('dork.room_manager.move')
+    @patch('dork.game_engine.__current_position')
     def test_move(self, position, moved, new_pos, to_screen):
         """
         Testing the method that moves the player around
@@ -85,10 +85,10 @@ class TestValidMaze(unittest.TestCase):
         to_screen.return_value = 'To screen'
         self.assertIsNone(engine.move('East'))
 
-    @patch('item_manager.item_description')
-    @patch('character_manager.player_has_item')
-    @patch('room_manager.is_item_in_room')
-    @patch('item_manager.is_item')
+    @patch('dork.item_manager.item_description')
+    @patch('dork.character_manager.player_has_item')
+    @patch('dork.room_manager.is_item_in_room')
+    @patch('dork.item_manager.is_item')
     def test_examine(self, is_item, in_room, in_player, descrip):
         """
         Testing the method that examine the items.
@@ -102,7 +102,7 @@ class TestValidMaze(unittest.TestCase):
         self.assertIsNone(engine.examine('Flower'))
 
     @patch('builtins.print')
-    @patch('room_manager.delete_item')
+    @patch('dork.room_manager.delete_item')
     def test_pick_up(self, was_deleted, printed):
         """
         Testing the method that picks up items from current room
@@ -113,9 +113,9 @@ class TestValidMaze(unittest.TestCase):
         was_deleted.return_value = ('Not Deleted', False)
         self.assertIsNone(engine.pick_up('Donut'))
 
-    @patch('room_manager.append_item')
+    @patch('dork.room_manager.append_item')
     @patch('builtins.print')
-    @patch('character_manager.remove_item_from_inventory')
+    @patch('dork.character_manager.remove_item_from_inventory')
     def test_drop(self, was_dropped, printed, append):
         """
         Testing the method that drops items into current room
@@ -127,8 +127,8 @@ class TestValidMaze(unittest.TestCase):
         was_dropped.return_value = ('Not Dropped', False)
         self.assertIsNone(engine.drop('Flower'))
 
-    @patch('room_manager.open_door')
-    @patch('character_manager.player_has_item')
+    @patch('dork.room_manager.open_door')
+    @patch('dork.character_manager.player_has_item')
     def test_use_key(self, item_in_player, open_door):
         """
         Testing the method that use keys in doors

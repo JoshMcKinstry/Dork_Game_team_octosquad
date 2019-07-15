@@ -125,7 +125,7 @@ def use_key(cardinal, key):
         print(room_m.open_door(__current_position(), cardinal, key))
     else:
         print('You do not have ' + key + ' in your inventory')
-
+"""
 def main():
         path = 'C:\\Users\\wjnra\\Documents\\team34\\dork\\game.yml'
         data = reader.reading_yml(path)
@@ -134,3 +134,4 @@ def main():
         loading_player(data)
         move('West')
         move('West')
+"""

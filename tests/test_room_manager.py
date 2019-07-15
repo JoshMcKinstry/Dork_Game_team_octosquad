@@ -2,7 +2,7 @@
 A test for room_manager
 """
 
-import room_manager as room_m
+import dork.room_manager as room_m
 from mock import patch
 
 def test_assembling_rooms():
@@ -118,8 +118,8 @@ def test_to_string_current_items():
     room_m.assembling_rooms(list_names, list_neighbors, list_doors, list_items)
     assert room_m.to_string_current_items('Entrance') == 'You notice the following items--- Paper, Donut.'
 
-@patch('rooms.has_closed_door')
-@patch('rooms.has_neighbors')
+@patch('dork.rooms.has_closed_door')
+@patch('dork.rooms.has_neighbors')
 def test_move(mock_has_closed_door, mock_has_neighbors):
     """
     testing move method
@@ -133,8 +133,8 @@ def test_move(mock_has_closed_door, mock_has_neighbors):
     mock_has_neighbors.return_value = False
     assert room_m.move('North', 'Entrance') == 'Trail'
 
-@patch('rooms.has_closed_door') 
-@patch('rooms.get_door_status')   
+@patch('dork.rooms.has_closed_door') 
+@patch('dork.rooms.get_door_status')   
 def test_open_door(mock_has_closed_door, mock_get_door_status):
     """
     testing open_door method
@@ -147,6 +147,3 @@ def test_open_door(mock_has_closed_door, mock_get_door_status):
     mock_has_closed_door.return_value = True
     mock_get_door_status.return_value = 'Dean Badge'
     assert room_m.open_door('Enrance', 'North', 'Dean Badge') == 'Door in Entrance at North is now open.' 
-
-
-
