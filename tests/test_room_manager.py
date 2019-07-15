@@ -81,8 +81,8 @@ def test_append_item():
     list_doors = [{'Cardinal': 'North', 'Status': 'Dean Badge', 'State': 'Closed'}]
     list_items = ['Paper']
     room_m.assembling_rooms(list_names, list_neighbors, list_doors, list_items)
-    room_m.append_item('Entrance', 'Donut')
-    assert room_m.DICT_ROOMS['Entrance'].items == 'Paper', 'Donut'
+    room_m.append_item('Entrance', ['Donut'])
+    assert room_m.DICT_ROOMS['Entrance'].items == ['Paper', 'Donut']
 
 def test_delete_item():
     """
@@ -118,23 +118,24 @@ def test_to_string_current_items():
     room_m.assembling_rooms(list_names, list_neighbors, list_doors, list_items)
     assert room_m.to_string_current_items('Entrance') == 'You notice the following items--- Paper, Donut.'
 
-@patch('dork.rooms.has_closed_door')
-@patch('dork.rooms.has_neighbors')
-def test_move(mock_has_closed_door, mock_has_neighbors):
+def test_move(run):
     """
     testing move method
     """
     list_names = ['Entrance']
-    list_neighbors = [{'North': 'Trail', 'East': None, 'South': None, 'West': 'Lake'}]
+    list_neighbors = [{'North': 'Trail', 'East': None, 'South': None, 'West': 'Lounge'}]
     list_doors = [{'Cardinal': 'North', 'Status': 'Dean Badge', 'State': 'Closed'}]
     list_items = ['Paper', 'Donut']
     room_m.assembling_rooms(list_names, list_neighbors, list_doors, list_items)
-    mock_has_closed_door.return_value = False
-    mock_has_neighbors.return_value = False
-    assert room_m.move('North', 'Entrance') == 'Trail'
+    output, _, _ = run(room_m.move, 'North', 'Entrance')
+    assert output == 'Closed door\n'
+    output, _, _ = run(room_m.move, 'South', 'Entrance')
+    assert output == 'No neighbor\n'
+    current_room = room_m.move('West', 'Entrance')
+    assert current_room == 'Lounge'
 
-@patch('dork.rooms.has_closed_door') 
-@patch('dork.rooms.get_door_status')   
+@patch('dork.rooms.Room.has_closed_door') 
+@patch('dork.rooms.Room.get_door_status')   
 def test_open_door(mock_has_closed_door, mock_get_door_status):
     """
     testing open_door method
@@ -146,4 +147,4 @@ def test_open_door(mock_has_closed_door, mock_get_door_status):
     room_m.assembling_rooms(list_names, list_neighbors, list_doors, list_items)
     mock_has_closed_door.return_value = True
     mock_get_door_status.return_value = 'Dean Badge'
-    assert room_m.open_door('Enrance', 'North', 'Dean Badge') == 'Door in Entrance at North is now open.' 
+    assert room_m.open_door('Entrance', 'North', 'Dean Badge') == 'Invalid key for door at ' + 'North' + '!' 
