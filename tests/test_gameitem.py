@@ -20,4 +20,3 @@ class TestValidItem(unittest.TestCase):
         self.assertIn('Storeable', properties)
         self.assertIn('Droppable', properties)
         self.assertIn('Examineable', properties)
-        
