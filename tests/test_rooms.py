@@ -1,7 +1,7 @@
 """
 A test for rooms
 """
-from rooms import Room
+from dork.rooms import Room
 
 def test_init_method():
     """

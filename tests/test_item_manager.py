@@ -1,7 +1,7 @@
 """
 A test for item_manager
 """
-import item_manager as item_m
+import dork.item_manager as item_m
 
 
 def test_assembling_item():
