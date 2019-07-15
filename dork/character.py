@@ -12,23 +12,24 @@ class Character():
         self.position = position
         self.inventory = inventory
 
-
     def has_item(self, item_name):
         """
         Returns true if the character holds the item. False otherwise.
         """
         return item_name in self.inventory
 
-
     def delete_item(self, item_name):
         """
-        Delete item from character if it is found inside of character inventory.
+        Delete item from character.
         """
         if self.has_item(item_name):
             self.inventory.remove(item_name)
-            return (self.name + ' has lost ' + item_name + '.', True)
-        return (self.name + ' does not hold ' + item_name + '.', False)
-
+            return (self.name
+                    + ' has lost '
+                    + item_name + '.', True)
+        return (self.name
+                + ' does not hold '
+                + item_name + '.', False)
 
     def add_item(self, item_name):
         """

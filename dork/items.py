@@ -12,7 +12,6 @@ class Item():
         self.description = description
         self.properties = properties
 
-
     def has_property(self, attribute):
         """
         Returns true if the item instance contains a specific attribute

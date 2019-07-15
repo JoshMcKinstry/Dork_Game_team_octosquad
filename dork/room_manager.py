@@ -23,7 +23,7 @@ def assembling_descriptions(names, descriptions):
     """
     scope = range(len(names))
     for i in scope:
-        DICT_DESCRIPTIONS.update({names[i] : descriptions[i]})
+        DICT_DESCRIPTIONS.update({names[i]: descriptions[i]})
 
 
 def current_room(room_name):
@@ -35,34 +35,42 @@ def current_room(room_name):
 
 def room_description(room_name):
     """
+    Returns description of current room
     """
     return DICT_DESCRIPTIONS[room_name]
 
 
 def items_in_room(room_name):
     """
+    Returns dictionary of items in room
     """
     return DICT_ROOMS[room_name].items
 
+
 def is_item_in_room(room_name, item_name):
     """
+    Retruns if item is in room
     """
     return item_name in items_in_room(room_name)
 
+
 def append_item(room_name, item_name):
     """
+    Adds item to a room
     """
     return DICT_ROOMS[room_name].add_item(item_name)
 
 
 def delete_item(room_name, item_name):
     """
+    Deletes item from room
     """
     return DICT_ROOMS[room_name].delete_item(item_name)
 
 
 def not_empty_room(room_name):
     """
+    Checks if room is empty
     """
     return len(items_in_room(room_name)) != 0
 
@@ -93,8 +101,10 @@ def move(cardinal, name):
         current_room_name = current_room(name).neighbors[cardinal]
     return current_room_name
 
+
 def open_door(room_name, cardinal, key):
     """
+    Used to open rooms
     """
     if current_room(room_name).has_closed_door(cardinal):
         door_status = DICT_ROOMS[room_name].get_door_status(cardinal)
