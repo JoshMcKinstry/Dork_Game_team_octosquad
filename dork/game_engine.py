@@ -5,6 +5,7 @@ import dork.incoming_data as game_data
 import dork.item_manager as item_m
 import dork.room_manager as room_m
 import dork.character_manager as char_m
+import dork.yamlreader as reader
 
 
 def loading_map(data):
@@ -124,3 +125,12 @@ def use_key(cardinal, key):
         print(room_m.open_door(__current_position(), cardinal, key))
     else:
         print('You do not have ' + key + ' in your inventory')
+
+def main():
+        path = 'C:\\Users\\wjnra\\Documents\\team34\\dork\\game.yml'
+        data = reader.reading_yml(path)
+        loading_map(data)
+        loading_items(data)
+        loading_player(data)
+        move('West')
+        move('West')
