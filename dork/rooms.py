@@ -55,11 +55,11 @@ class Room():
 
     def update_door_status(self):
         """
+        Updates status of door to see if open or closed
         """
         self.door['State'] = 'Open'
-        return ('Door in ' + self.name + ' at ' + self.door['Cardinal'] 
+        return ('Door in ' + self.name + ' at ' + self.door['Cardinal']
                 + ' is now open.')
-
 
     def delete_item(self, item_name):
         """
@@ -67,13 +67,14 @@ class Room():
         """
         if self.has_item(item_name):
             self.items.remove(item_name)
-            return (item_name + ' has been picked up from ' +  self.name + '.', True)
-        return ('No item called ' + item_name + ' is in ' + self.name + '.', False)
+            return (item_name + ' has been picked up from '
+                    + self.name + '.', True)
+        return ('No item called ' + item_name + ' is in '
+                + self.name + '.', False)
 
     def add_item(self, item_name):
         """
         Adds item to the room.
         """
         self.items.append(item_name)
-        return item_name + ' has been dropped in ' +  self.name + '.'
-
+        return item_name + ' has been dropped in ' + self.name + '.'

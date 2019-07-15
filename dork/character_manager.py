@@ -12,11 +12,13 @@ def assembling_player(position, inventory):
     player = Character('Player', position, inventory)
     DICT_CHARACTERS.update({player.name: player})
 
+
 def player_position():
     """
     Returns the room that the player is in.
     """
     return DICT_CHARACTERS['Player'].position
+
 
 def update_player_position(room_name):
     """
@@ -24,11 +26,13 @@ def update_player_position(room_name):
     """
     DICT_CHARACTERS['Player'].position = room_name
 
+
 def player_inventory():
     """
     Returns a list of the player's inventory.
     """
     return DICT_CHARACTERS['Player'].inventory
+
 
 def player_has_item(item_name):
     """
@@ -36,11 +40,13 @@ def player_has_item(item_name):
     """
     return item_name in player_inventory()
 
+
 def update_player_inventory(item_name):
     """
     Adds an item to the player's inventory.
     """
     return DICT_CHARACTERS['Player'].add_item(item_name)
+
 
 def remove_item_from_inventory(item_name):
     """

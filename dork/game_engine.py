@@ -126,19 +126,23 @@ def use_key(cardinal, key):
     else:
         print('You do not have ' + key + ' in your inventory')
 
+
 def main():
-        path = '.\\dork\\game.yml'
-        data = reader.reading_yml(path)
-        loading_map(data)
-        loading_items(data)
-        loading_player(data)
-        move('West')
-        move('West')
-        pick_up('Nest')
-        move('East')
-        move('West')
-        move('North')
-        pick_up('Junior Badge')
-        use_key('North', 'Junior Badge')
-        examine('Junior Badge')
-        move('North')
+    """
+    Used to create simulated game
+    """
+    path = '.\\dork\\game.yml'
+    data = reader.reading_yml(path)
+    loading_map(data)
+    loading_items(data)
+    loading_player(data)
+    move('West')
+    move('West')
+    pick_up('Nest')
+    move('East')
+    move('West')
+    move('North')
+    pick_up('Junior Badge')
+    use_key('North', 'Junior Badge')
+    examine('Junior Badge')
+    move('North')
