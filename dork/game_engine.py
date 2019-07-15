@@ -1,11 +1,10 @@
 """
 A module that works as an interface between the main classes in the game
 """
-import incoming_data as game_data
-import item_manager as item_m
-import room_manager as room_m
-import character_manager as char_m
-import yamlreader as reader
+import dork.incoming_data as game_data
+import dork.item_manager as item_m
+import dork.room_manager as room_m
+import dork.character_manager as char_m
 
 
 def loading_map(data):
@@ -22,7 +21,7 @@ def loading_map(data):
     room_m.assembling_descriptions(names, descriptions)
 
 
-def loading_item(data):
+def loading_items(data):
     """
     Loads all the items available for the game.
     """
@@ -115,23 +114,12 @@ def drop(item_name):
     else:
         print(message)
 
+
 def use_key(cardinal, key):
     """
+    Using a key at a certain door
     """
     if char_m.player_has_item(key):
         print(room_m.open_door(__current_position(), cardinal, key))
     else:
         print('You do not have ' + key + ' in your inventory')
-
-if __name__ == "__main__":
-    PATH = 'C:\\CS 3250 Individual Repository\\Team 34 Repository\\team34\dork\\game.yml'
-    DATA = reader.reading_yml(PATH)
-    loading_map(DATA)
-    loading_item(DATA)
-    loading_player(DATA)
-    room_to_screen()
-    pick_up('Freshman Badge')
-    move('West')
-    move('West')
-    pick_up('Junior Badge')
-    use_key('North', 'Freshman Badge')
