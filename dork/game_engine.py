@@ -125,13 +125,20 @@ def use_key(cardinal, key):
         print(room_m.open_door(__current_position(), cardinal, key))
     else:
         print('You do not have ' + key + ' in your inventory')
-"""
+
 def main():
-        path = 'C:\\Users\\wjnra\\Documents\\team34\\dork\\game.yml'
+        path = '.\\dork\\game.yml'
         data = reader.reading_yml(path)
         loading_map(data)
         loading_items(data)
         loading_player(data)
         move('West')
         move('West')
-"""
+        pick_up('Nest')
+        move('East')
+        move('West')
+        move('North')
+        pick_up('Junior Badge')
+        use_key('North', 'Junior Badge')
+        examine('Junior Badge')
+        move('North')
