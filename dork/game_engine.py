@@ -20,12 +20,8 @@ def loading_map(data):
     room_m.assembling_rooms(names, neighbors, doors, items)
     room_m.assembling_descriptions(names, descriptions)
 
-<<<<<<< HEAD
 
 def loading_items(data):
-=======
-def loading_item(data):
->>>>>>> 39dc63ffe5ec6a28ce9f339d87d5d3cfa5b95794
     """
     Loads all the items available for the game.
     """
@@ -34,6 +30,7 @@ def loading_item(data):
     properties = game_data.load_items_properties(data, names)
     item_m.assembling_items(names, descriptions, properties)
 
+
 def loading_player(data):
     """
     Load the player specs to the game
@@ -41,17 +38,20 @@ def loading_player(data):
     (position, inventory) = game_data.load_player(data)
     char_m.assembling_player(position, inventory)
 
+
 def __current_position():
     """
     Returns the player current position
     """
     return char_m.player_position()
 
+
 def display_inventory():
     """
     Prints the current player inventory
     """
     print(char_m.player_inventory())
+
 
 def room_to_screen():
     """
@@ -61,6 +61,7 @@ def room_to_screen():
     print(room_m.room_description(__current_position()))
     if room_m.not_empty_room(__current_position()):
         print(room_m.to_string_current_items(__current_position()))
+
 
 def move(cardinal):
     """
@@ -75,6 +76,7 @@ def move(cardinal):
         char_m.update_player_position(room_after_mov)
         room_to_screen()
 
+
 def examine(item_name):
     """
     Prints a detailed description of an item
@@ -88,6 +90,7 @@ def examine(item_name):
     else:
         print('No item called ' + item_name + ' is available at the moment.')
 
+
 def pick_up(item_name):
     """
     Picks up items from current room
@@ -98,6 +101,7 @@ def pick_up(item_name):
         print(message)
     else:
         print(message)
+
 
 def drop(item_name):
     """
@@ -113,12 +117,8 @@ def drop(item_name):
 
 def use_key(cardinal, key):
     """
-<<<<<<< HEAD
-    Using a key at a certain door
-=======
     Player uses the key which opens the door in their current room if they
     have the right key.
->>>>>>> 39dc63ffe5ec6a28ce9f339d87d5d3cfa5b95794
     """
     if char_m.player_has_item(key):
         print(room_m.open_door(__current_position(), cardinal, key))
