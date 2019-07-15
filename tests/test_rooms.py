@@ -3,6 +3,7 @@ A test for rooms
 """
 from dork.rooms import Room
 
+
 def test_init_method():
     """
     Test the constructor
@@ -17,6 +18,7 @@ def test_init_method():
     assert room.door == door
     assert room.items == items
 
+
 def test_has_door_at():
     """
     Test if the room has a door at a cardinal
@@ -28,9 +30,9 @@ def test_has_door_at():
     items = ['Paper', 'Donut']
     room = Room(name, neighbors, door, items)
     room_no_door = Room(name, neighbors, no_door, items)
-    assert room.has_door_at('North') == True
-    assert room.has_door_at('South') == False
-    assert room_no_door.has_door_at('North') == False
+    assert room.has_door_at('North') is True
+    assert room.has_door_at('South') is False
+    assert room_no_door.has_door_at('North') is False
 
 
 def test_has_item():
@@ -42,8 +44,9 @@ def test_has_item():
     door = {'Cardinal': 'North', 'Status': 'Dean Badge', 'State': 'Closed'}
     items = ['Paper', 'Donut']
     room = Room(name, neighbors, door, items)
-    assert room.has_item('Paper') == True
-    assert room.has_item('Freshman Badge') == False    
+    assert room.has_item('Paper') is True
+    assert room.has_item('Freshman Badge') is False
+
 
 def test_has_neighbor():
     """
@@ -54,9 +57,10 @@ def test_has_neighbor():
     door = {'Cardinal': 'North', 'Status': 'Dean Badge', 'State': 'Closed'}
     items = ['Paper', 'Donut']
     room = Room(name, neighbors, door, items)
-    assert room.has_neighbor('North') == True
-    assert room.has_neighbor('East') == False
-    
+    assert room.has_neighbor('North') is True
+    assert room.has_neighbor('East') is False
+
+
 def test_has_closed_door():
     """
     Test if the room has a closed door
@@ -68,9 +72,9 @@ def test_has_closed_door():
     items = ['Paper', 'Donut']
     room = Room(name, neighbors, door, items)
     room2 = Room(name, neighbors, door_open, items)
-    assert room.has_closed_door('North') == True
-    assert room2.has_closed_door('North') == False
-    assert room.has_closed_door('East') == False
+    assert room.has_closed_door('North') is True
+    assert room2.has_closed_door('North') is False
+    assert room.has_closed_door('East') is False
 
 
 def test_get_door_status():
@@ -98,8 +102,9 @@ def test_update_door_status():
     room.update_door_status()
     assert room.door['State'] == 'Open'
     assert room.update_door_status() == (
-        'Door in ' + room.name + ' at ' + room.door['Cardinal'] 
+        'Door in ' + room.name + ' at ' + room.door['Cardinal']
         + ' is now open.')
+
 
 def test_delete_item():
     """
@@ -111,9 +116,10 @@ def test_delete_item():
     items = ['Paper', 'Donut']
     room = Room(name, neighbors, door, items)
     assert room.delete_item('Donut') == (
-        'Donut' + ' has been picked up from ' +  room.name + '.', True)
+        'Donut' + ' has been picked up from ' + room.name + '.', True)
     assert room.delete_item('Flyer') == (
         'No item called ' + 'Flyer' + ' is in ' + room.name + '.', False)
+
 
 def test_add_item():
     """
@@ -125,5 +131,5 @@ def test_add_item():
     items = ['Paper', 'Donut']
     room = Room(name, neighbors, door, items)
     assert room.add_item('Flyer') == (
-        'Flyer' + ' has been dropped in ' +  room.name + '.')
+        'Flyer' + ' has been dropped in ' + room.name + '.')
     assert room.items == ['Paper', 'Donut', 'Flyer']
