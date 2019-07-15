@@ -9,7 +9,7 @@ class TestIncomingData(unittest.TestCase):
     """
     A testing class for the incoming_data module
     """
-  
+
 
     def test_load_rooms(self):
         """
@@ -93,7 +93,7 @@ class TestIncomingData(unittest.TestCase):
         expected = ['A']
         out_put = game_data.load_items_descriptions(data, ['item_1'])
         self.assertEqual(out_put, expected)
-        
+
 
 
     def test_load_items_properties(self):

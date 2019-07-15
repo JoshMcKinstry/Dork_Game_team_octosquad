@@ -24,4 +24,3 @@ def test_has_property():
     properties = ['eatable', 'pickable']
     item = Item(name, description, properties)
     assert item.has_property('eatable') is True
-    

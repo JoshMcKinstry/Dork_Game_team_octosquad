@@ -82,7 +82,7 @@ def test_get_door_status():
     door = {'Cardinal': 'North', 'Status': 'Dean Badge', 'State': 'Closed'}
     items = ['Paper', 'Donut']
     room = Room(name, neighbors, door, items)
-    assert room.get_door_status('East') == None
+    assert room.get_door_status('East') is None
     assert room.get_door_status('North') == 'Dean Badge'
 
 
