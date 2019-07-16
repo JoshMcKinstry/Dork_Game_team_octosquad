@@ -6,7 +6,7 @@ from enum import Enum
 from dork import game_engine
 
 
-def _start_game(data):
+'''def _start_game(data):
     return "Welcome to Dork!", False
 
 
@@ -105,7 +105,7 @@ def show_inventory():
     """
     game_engine.display_inventory()
     return "", False
-
+'''
 
 def read():
     """read input from console to repl
@@ -114,29 +114,42 @@ def read():
 
 
 def menu_evaluate(tokens):
-    # help load quit
+    # new load help quit
     if "quit" in tokens:
-        sys.exit(0)
+        quit_dork()
     elif "load" in tokens:
-        print()
+        return State.LOAD
     elif "help" in tokens:
         print("Main Menu Commands for Dork")
-        print("help - Prints the command list for the main menu")
-        print("load - Enters the load state for yaml input")
-        print("quit - Exits Dork")
+        print("help - Print a list of commands.")
+        print("load - Load a game save file from available saves.")
+        print("new - Start a new game on a fresh save file.")
+        print("quit - Exits the game of 'Dork'.")
+        return State.MENU
+    elif "new" in tokens:
+        print("\nStarting the game of 'Dork'.\n")
+        return State.GAME
+    else:
+        print("Please input a valid command!\nTry 'help' for more options.")
+        return State.MENU
 
 
 def game_evaluate(tokens):
-    # help save quit
+    # help load save quit
+    # move open take look use eat
     print()
 
 def load_evaluate(tokens):
     print("Select a save game and hit enter to start!")
-    print("Example: '.\\dork\\game.yml'")
 
 
 def save_evaluate(tokens):
     print()
+
+
+def quit_dork():
+    print("Leaving Dork...")
+    sys.exit(0)
 
 def evaluate(command, state):
     """command evaluating method in repl
@@ -152,30 +165,6 @@ def evaluate(command, state):
         return load_evaluate(word_list)
     elif state == State.SAVE:
         return save_evaluate(word_list)
-    player_commands = {
-        "move": {
-            "north": move_north,
-            "south": move_south,
-            "west": move_west,
-            "east": move_east
-        },
-        
-        "get": {"object": get_item},
-        "use": {"object": use_item},
-        "look": {
-            "north": look_north,
-            "south": look_south,
-            "west": look_west,
-            "east": look_east
-        },
-        "drop": {"object": drop}
-    }
-    game_commands = {
-        "start": {"dork": _start_game},
-        "quit": {"dork": _quit_game}
-    }
-    
-    return False
 
 
 def repl():
@@ -187,8 +176,7 @@ def repl():
         command = read()
         state = evaluate(command, state)
         if state == State.QUIT:
-            print("ending repl...")
-            sys.exit(0)
+            quit_dork()
 
 class State(Enum):
     """State tracker for the game
