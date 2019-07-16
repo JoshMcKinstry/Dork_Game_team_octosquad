@@ -1,12 +1,12 @@
 """REPL and commands parser for dork game
 """
+
 import sys
-from dork.room_printing import Room1Printing
+from enum import Enum
+from dork import game_engine
 
-PLAYER_ROOM = "room 1"
 
-
-def _start_game():
+def _start_game(data):
     return "Welcome to Dork!", False
 
 
@@ -14,32 +14,47 @@ def _quit_game():
     return "Leaving the game of Dork.", True
 
 
+def print_help():
+    """Prints Main Menu
+    """
+    print("Dork")
+
+
+def load(command):
+    """Logic for interpreting the game yaml to start
+    """
+    if command is not None:
+        _start_game(command)
+    else:
+        _start_game('.\\dork\\game.yml')
+
+
 def move_east():
     """Interprets print statement for moving east based on location
     """
     # return "you have moved east", False
-    Room1Printing.print_move(PLAYER_ROOM, "east")
+    game_engine.move("east")
     return "", False
 
 
 def move_west():
     """Interprets print statement for moving west based on location
     """
-    Room1Printing.print_move(PLAYER_ROOM, "west")
+    game_engine.move("west")
     return "", False
 
 
 def move_north():
     """Interprets print statement for moving north based on location
     """
-    Room1Printing.print_move(PLAYER_ROOM, "north")
+    game_engine.move("north")
     return "", False
 
 
 def move_south():
     """Interprets print statement for moving south based on location
     """
-    Room1Printing.print_move(PLAYER_ROOM, "south")
+    game_engine.move("south")
     return "", False
 
 
@@ -58,28 +73,24 @@ def use_item():
 def look_east():
     """Interprets print statement for looking east based on location
     """
-    Room1Printing.print_look(PLAYER_ROOM, "east")
     return "", False
 
 
 def look_west():
     """Interprets print statement for looking west based on location
     """
-    Room1Printing.print_look(PLAYER_ROOM, "west")
     return "", False
 
 
 def look_north():
     """Interprets print statement for looking north based on location
     """
-    Room1Printing.print_look(PLAYER_ROOM, "north")
     return "", False
 
 
 def look_south():
     """Interprets print statement for looking south based on location
     """
-    Room1Printing.print_look(PLAYER_ROOM, "south")
     return "", False
 
 
@@ -89,24 +100,66 @@ def drop():
     return "you dropped an item", False
 
 
+def show_inventory():
+    """Displays the players inventory to the console from the games engine
+    """
+    game_engine.display_inventory()
+    return "", False
+
+
 def read():
     """read input from console to repl
     """
     return input("> ")
 
 
-def evaluate(command):
+def menu_evaluate(tokens):
+    # help load quit
+    if "quit" in tokens:
+        sys.exit(0)
+    elif "load" in tokens:
+        print()
+    elif "help" in tokens:
+        print("Main Menu Commands for Dork")
+        print("help - Prints the command list for the main menu")
+        print("load - Enters the load state for yaml input")
+        print("quit - Exits Dork")
+
+
+def game_evaluate(tokens):
+    # help save quit
+    print()
+
+def load_evaluate(tokens):
+    print("Select a save game and hit enter to start!")
+    print("Example: '.\\dork\\game.yml'")
+
+
+def save_evaluate(tokens):
+    print()
+
+def evaluate(command, state):
     """command evaluating method in repl
     """
+    # ['Paper', 'Cage', 'Freshman Badge', 'Flyer', 'Donut', 'Sophomore Badge', 'Flower', 'Nest', 'Junior Badge', 'Cellphone', 'Dean Badge', 'Key']
     # https://docs.python.org/3/tutorial/datastructures.html
-    words_in_command = [words.casefold() for words in command.split()]
+    word_list = [words.casefold() for words in command.split()]
+    if state == State.MENU:
+        return menu_evaluate(word_list)
+    elif state == State.GAME:
+        return game_evaluate(word_list)
+    elif state == State.LOAD:
+        return load_evaluate(word_list)
+    elif state == State.SAVE:
+        return save_evaluate(word_list)
     player_commands = {
-        "go": {
+        "move": {
             "north": move_north,
             "south": move_south,
             "west": move_west,
             "east": move_east
         },
+        
         "get": {"object": get_item},
         "use": {"object": use_item},
         "look": {
@@ -121,40 +174,27 @@ def evaluate(command):
         "start": {"dork": _start_game},
         "quit": {"dork": _quit_game}
     }
-    for word in words_in_command:
-        if word in player_commands:
-            sub_menu = player_commands[word]
-            for sub_word in words_in_command:
-                if sub_word in sub_menu:
-                    function = sub_menu[sub_word]
-                    return function()
-        elif word in game_commands:
-            sub_menu = game_commands[word]
-            for sub_word in words_in_command:
-                if sub_word in sub_menu:
-                    function = sub_menu[sub_word]
-                    return function()
-    return "Unknown Command", False
+    
+    return False
 
 
 def repl():
     """repl for dork game
     """
+    state = State.MENU
     print("Welcome to Dork!")
     while True:
         command = read()
-        output, should_exit = evaluate(command)
-        print(output)
-        if should_exit:
-            break
-    print("ending repl...")
+        state = evaluate(command, state)
+        if state == State.QUIT:
+            print("ending repl...")
+            sys.exit(0)
 
-
-def init():
-    """initializer function
+class State(Enum):
+    """State tracker for the game
     """
-    if __name__ == "__main__":
-        sys.exit(repl())
-
-
-init()
+    MENU = 1
+    GAME = 2
+    LOAD = 3
+    SAVE = 4
+    QUIT = 5
