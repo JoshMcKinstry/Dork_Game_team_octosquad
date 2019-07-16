@@ -65,7 +65,8 @@ def test_update_player_inventory():
     inventory = ['Donut']
     character_m.assembling_player(position, inventory)
     character_m.update_player_inventory('Flower')
-    assert character_m.DICT_CHARACTERS['Player'].inventory == ['Donut', 'Flower']
+    assert character_m.DICT_CHARACTERS['Player'].inventory == [
+        'Donut', 'Flower']
 
 
 def test_remove_item_from_inventory():
