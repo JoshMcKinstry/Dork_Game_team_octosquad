@@ -10,66 +10,65 @@ class TestIncomingData(unittest.TestCase):
     A testing class for the incoming_data module
     """
 
-
     def test_load_rooms(self):
         """
         Testing the Loading of the room names
         """
-        room_1 = {'Neighbors': 'A', 'Door': 'B', 'Items': 'C', 'Description': 'D'}
+        room_1 = {'Neighbors': 'A', 'Door': 'B',
+                  'Items': 'C', 'Description': 'D'}
         rooms = {'room_1': room_1}
         data = {'Rooms': rooms}
         out_put = game_data.load_rooms(data)
         expected = ['room_1']
         self.assertEqual(out_put, expected)
 
-
     def test_load_cardinals(self):
         """
         Testing the Loading of the room cardinals
         """
-        room_1 = {'Neighbors': 'A', 'Door': 'B', 'Items': 'C', 'Description': 'D'}
+        room_1 = {'Neighbors': 'A', 'Door': 'B',
+                  'Items': 'C', 'Description': 'D'}
         rooms = {'room_1': room_1}
         data = {'Rooms': rooms}
         expected = ['A']
         out_put = game_data.load_cardinals(data, ['room_1'])
         self.assertEqual(out_put, expected)
 
-
     def test_load_doors(self):
         """
         Testing the Loading of the doors in each room
         """
-        room_1 = {'Neighbors': 'A', 'Door': 'B', 'Items': 'C', 'Description': 'D'}
+        room_1 = {'Neighbors': 'A', 'Door': 'B',
+                  'Items': 'C', 'Description': 'D'}
         rooms = {'room_1': room_1}
         data = {'Rooms': rooms}
         expected = ['B']
         out_put = game_data.load_doors(data, ['room_1'])
         self.assertEqual(out_put, expected)
 
-
     def test_load_room_descrips(self):
         """
         Testing the Loading of each room respective main description
         """
-        room_1 = {'Neighbors': 'A', 'Door': 'B', 'Items': 'C', 'Description': 'D'}
+        room_1 = {'Neighbors': 'A', 'Door': 'B',
+                  'Items': 'C', 'Description': 'D'}
         rooms = {'room_1': room_1}
         data = {'Rooms': rooms}
         expected = ['D']
         out_put = game_data.load_room_descrips(data, ['room_1'])
         self.assertEqual(out_put, expected)
 
-
     def test_load_list_room_items(self):
         """
         Testing the Loading of each room respective list of items
         """
-        room_1 = {'Neighbors': 'A', 'Door': 'B', 'Items': 'C', 'Description': 'D'}
+        room_1 = {'Neighbors': 'A', 'Door': 'B',
+                  'Items': 'C', 'Description': 'D'}
         rooms = {'room_1': room_1}
         data = {'Rooms': rooms}
         expected = ['C']
         out_put = game_data.load_list_room_items(data, ['room_1'])
         self.assertEqual(out_put, expected)
-
 
     def test_load_items(self):
         """
@@ -82,7 +81,6 @@ class TestIncomingData(unittest.TestCase):
         out_put = game_data.load_items(data)
         self.assertEqual(out_put, expected)
 
-
     def test_load_items_descriptions(self):
         """
         Testing the Loading of each item respective description
@@ -94,8 +92,6 @@ class TestIncomingData(unittest.TestCase):
         out_put = game_data.load_items_descriptions(data, ['item_1'])
         self.assertEqual(out_put, expected)
 
-
-
     def test_load_items_properties(self):
         """
         Testing the Loading of each item respective properties
@@ -106,7 +102,6 @@ class TestIncomingData(unittest.TestCase):
         expected = ['B']
         out_put = game_data.load_items_properties(data, ['item_1'])
         self.assertEqual(out_put, expected)
-
 
     def test_load_player(self):
         """
