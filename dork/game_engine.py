@@ -39,6 +39,11 @@ def loading_player(data):
     (position, inventory) = game_data.load_player(data)
     char_m.assembling_player(position, inventory)
 
+def user_command(command):
+    """
+    """
+    print(command)
+
 
 def __current_position():
     """
