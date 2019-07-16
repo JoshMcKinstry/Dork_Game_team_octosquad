@@ -3,109 +3,17 @@
 
 import sys
 from enum import Enum
-from dork import game_engine
+from dork import game_engine as ge
+
+COMMANDLIST = ["help", "load", "save", "quit",
+               "move", "open", "take", "look", "use", "eat"]
+CARDINALS = ['north', 'east', 'south', 'west']
+# will integrate with game_engine later so items can be loaded dynamically
+OBJECTS = ['cage', 'cellphone', 'dean badge', 'donut', 'flower', 'flyer', 'freshman badge',
+           'junior badge', 'key', 'nest', 'paper', 'sophomore badge']
+TARGETS = ['door', 'dean', 'cage']
 
 
-'''def _start_game(data):
-    return "Welcome to Dork!", False
-
-
-def _quit_game():
-    return "Leaving the game of Dork.", True
-
-
-def print_help():
-    """Prints Main Menu
-    """
-    print("Dork")
-
-
-def load(command):
-    """Logic for interpreting the game yaml to start
-    """
-    if command is not None:
-        _start_game(command)
-    else:
-        _start_game('.\\dork\\game.yml')
-
-
-def move_east():
-    """Interprets print statement for moving east based on location
-    """
-    # return "you have moved east", False
-    game_engine.move("east")
-    return "", False
-
-
-def move_west():
-    """Interprets print statement for moving west based on location
-    """
-    game_engine.move("west")
-    return "", False
-
-
-def move_north():
-    """Interprets print statement for moving north based on location
-    """
-    game_engine.move("north")
-    return "", False
-
-
-def move_south():
-    """Interprets print statement for moving south based on location
-    """
-    game_engine.move("south")
-    return "", False
-
-
-def get_item():
-    """Interprets print statement for south based on location
-    """
-    return "you picked up an item", False
-
-
-def use_item():
-    """Logic for using an item based on inventory
-    """
-    return "you used an item", False
-
-
-def look_east():
-    """Interprets print statement for looking east based on location
-    """
-    return "", False
-
-
-def look_west():
-    """Interprets print statement for looking west based on location
-    """
-    return "", False
-
-
-def look_north():
-    """Interprets print statement for looking north based on location
-    """
-    return "", False
-
-
-def look_south():
-    """Interprets print statement for looking south based on location
-    """
-    return "", False
-
-
-def drop():
-    """Interprets logic for dropping an item
-    """
-    return "you dropped an item", False
-
-
-def show_inventory():
-    """Displays the players inventory to the console from the games engine
-    """
-    game_engine.display_inventory()
-    return "", False
-'''
 
 def read():
     """read input from console to repl
@@ -114,6 +22,8 @@ def read():
 
 
 def menu_evaluate(tokens):
+    """token evaluater for the main menu state
+    """
     # new load help quit
     if "quit" in tokens:
         quit_dork()
@@ -135,9 +45,23 @@ def menu_evaluate(tokens):
 
 
 def game_evaluate(tokens):
+    """token evaluater for the in-game state
+    """
+    action = ""
+    obj = ""
+    target = ""
+    targets = TARGETS + OBJECTS
     # help load save quit
     # move open take look use eat
+    for token in tokens:
+        if token in COMMANDLIST:
+            action = token
+        elif token in OBJECTS:
+            obj = token
+        elif token in CARDINALS or token in targets:
+            target = token
     print()
+
 
 def load_evaluate(tokens):
     print("Select a save game and hit enter to start!")
@@ -148,22 +72,22 @@ def save_evaluate(tokens):
 
 
 def quit_dork():
-    print("Leaving Dork...")
-    sys.exit(0)
+    print("Leaving Dork...\n\n")
+    sys.exit()
+
 
 def evaluate(command, state):
     """command evaluating method in repl
     """
-    # ['Paper', 'Cage', 'Freshman Badge', 'Flyer', 'Donut', 'Sophomore Badge', 'Flower', 'Nest', 'Junior Badge', 'Cellphone', 'Dean Badge', 'Key']
     # https://docs.python.org/3/tutorial/datastructures.html
     word_list = [words.casefold() for words in command.split()]
     if state == State.MENU:
         return menu_evaluate(word_list)
-    elif state == State.GAME:
+    if state == State.GAME:
         return game_evaluate(word_list)
-    elif state == State.LOAD:
+    if state == State.LOAD:
         return load_evaluate(word_list)
-    elif state == State.SAVE:
+    if state == State.SAVE:
         return save_evaluate(word_list)
 
 
