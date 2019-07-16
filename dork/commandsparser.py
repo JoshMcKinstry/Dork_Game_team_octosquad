@@ -6,7 +6,7 @@ from enum import Enum
 from dork import game_engine as ge
 
 COMMANDLIST = ["help", "load", "save", "quit",
-               "move", "open", "take", "look", "use", "eat"]
+               "move", "open", "take", "drop", "examine", "use", "eat"]
 CARDINALS = ['north', 'east', 'south', 'west']
 # will integrate with game_engine later so items can be loaded dynamically
 OBJECTS = ['cage', 'cellphone', 'dean badge', 'donut', 'flower', 'flyer', 'freshman badge',
@@ -21,12 +21,12 @@ def read():
     return input("> ")
 
 
-def menu_evaluate(tokens):
+def _menu_evaluate(tokens):
     """token evaluater for the main menu state
     """
     # new load help quit
     if "quit" in tokens:
-        quit_dork()
+        _quit_dork()
     elif "load" in tokens:
         return State.LOAD
     elif "help" in tokens:
@@ -44,15 +44,13 @@ def menu_evaluate(tokens):
         return State.MENU
 
 
-def game_evaluate(tokens):
+def _game_evaluate(tokens):
     """token evaluater for the in-game state
     """
     action = ""
     obj = ""
     target = ""
     targets = TARGETS + OBJECTS
-    # help load save quit
-    # move open take look use eat
     for token in tokens:
         if token in COMMANDLIST:
             action = token
@@ -60,23 +58,37 @@ def game_evaluate(tokens):
             obj = token
         elif token in CARDINALS or token in targets:
             target = token
-    print()
+    if len(action) == 0:
+        print("Please provide a command.")
+        return State.GAME
+    if action == "quit":
+        _quit_dork()
+    if obj == target:
+        print("You can't {} {} on {}".format(action, obj, target))
+        return State.GAME
+    ge.user_command((action, obj.title(), target.title()))
+    return State.GAME
 
 
-def load_evaluate(tokens):
+def _load_evaluate(path):
     """token evaluater for the load screen state
     """
-    print("Select a save game and hit enter to start!")
+    if ge.game_loader(path):
+        return State.GAME
+    return State.MENU
 
 
-def save_evaluate(tokens):
+def _save_evaluate(tokens):
     print()
 
 
-def quit_dork():
+def _quit_dork():
     print("Leaving Dork...\n\n")
     sys.exit()
 
+
+def _print_load():
+    print("Select a save game and hit enter to start!")
 
 def evaluate(command, state):
     """command evaluating method in repl
@@ -84,13 +96,13 @@ def evaluate(command, state):
     # https://docs.python.org/3/tutorial/datastructures.html
     word_list = [words.casefold() for words in command.split()]
     if state == State.MENU:
-        return menu_evaluate(word_list)
+        return _menu_evaluate(word_list)
     if state == State.GAME:
-        return game_evaluate(word_list)
+        return _game_evaluate(word_list)
     if state == State.LOAD:
-        return load_evaluate(word_list)
+        return _load_evaluate(command)
     if state == State.SAVE:
-        return save_evaluate(word_list)
+        return _save_evaluate(word_list)
 
 
 def repl():
@@ -102,7 +114,9 @@ def repl():
         command = read()
         state = evaluate(command, state)
         if state == State.QUIT:
-            quit_dork()
+            _quit_dork()
+        if state == State.LOAD:
+            _print_load()
 
 class State(Enum):
     """State tracker for the game

@@ -8,6 +8,7 @@ import dork.character_manager as char_m
 import dork.yamlreader as reader
 
 
+
 def loading_map(data):
     """
     Loads the map of the game. All the rooms are created along with their
@@ -42,7 +43,13 @@ def loading_player(data):
 def user_command(command):
     """
     """
-    print(command)
+    (verb, obj, target) = command
+    if verb == "open" or verb == "use":
+        COMMAND_LIB[verb](target, obj)
+    elif verb == "move":
+        COMMAND_LIB[verb](target)
+    else: 
+        COMMAND_LIB[verb](obj)
 
 
 def __current_position():
@@ -132,22 +139,24 @@ def use_key(cardinal, key):
         print('You do not have ' + key + ' in your inventory')
 
 
-def main():
-    """
-    Used to create simulated game
-    """
-    path = '.\\dork\\game.yml'
+def game_loader(path):
     data = reader.reading_yml(path)
-    loading_map(data)
-    loading_items(data)
-    loading_player(data)
-    move('West')
-    move('West')
-    pick_up('Nest')
-    move('East')
-    move('West')
-    move('North')
-    pick_up('Junior Badge')
-    use_key('North', 'Junior Badge')
-    examine('Junior Badge')
-    move('North')
+    if data is not None:
+        loading_map(data)
+        loading_items(data)
+        loading_player(data)
+        print("Game Successfully Loaded.")
+        room_to_screen()
+        return True
+    else:
+        print("Invalid path for save file.")
+        return False
+
+
+COMMAND_LIB = {"move": move,
+              "open": use_key,
+              "take": pick_up,
+              "drop": drop,
+              "examine": examine,
+              "eat" : None,
+              "use" : use_key}
