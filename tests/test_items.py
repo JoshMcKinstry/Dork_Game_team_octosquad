@@ -3,6 +3,7 @@ A test for items
 """
 from dork.items import Item
 
+
 def test_init_method():
     """
     Testing the constructor
@@ -14,6 +15,7 @@ def test_init_method():
     assert item.name == name
     assert item.description == description
     assert item.properties == properties
+
 
 def test_has_property():
     """
