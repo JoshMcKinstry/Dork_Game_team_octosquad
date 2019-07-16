@@ -7,12 +7,12 @@ Rooms:
       West: Trail
     Door: 
       Cardinal: East
-      Status: Freshman Badge
+      Status: Freshman-Badge
       State: Closed
     Items:
     - Paper
     - Cage
-    - Freshman Badge
+    - Freshman-Badge
     Description:
       Welcome the campus entrance! You are in the student success building. 
       There are walls on the north and south ends of the room.
@@ -25,7 +25,7 @@ Rooms:
       West: Entrance
     Door: null
     Items:
-    - Flower
+    - Flyer
     - Cellphone
     Description:
       You are inside a long hallway with a door on the east side of the room
@@ -40,11 +40,11 @@ Rooms:
       West: Hallway
     Door: 
       Cardinal: North
-      Status: Sophomore Badge
+      Status: Sophomore-Badge
       State: Closed
     Items:
     - Donut
-    - Sophomore Badge  
+    - Sophomore-Badge  
     Description:
       You are inside the lounge room of the campus. The air smells of poison.
       There are empty walls on the east and south side of the room.
@@ -71,11 +71,11 @@ Rooms:
       West: null
     Door:
       Cardinal: North
-      Status: Junior Badge
+      Status: Junior-Badge
       State: Closed
     Items:
     - Nest
-    - Junior Badge
+    - Junior-Badge
     Description:
       You are inside a beautiful garden. The smell of nature makes you
       energized. There is a door to the north, and the trail to the east.
@@ -88,10 +88,10 @@ Rooms:
       West: Bird Nest
     Door:
       Cardinal: North
-      Status: Dean Badge
+      Status: Dean-Badge
       State: Closed
     Items:
-    - Dean Badge
+    - Dean-Badge
     Description:
       You are inside the Dean Office, a dangerous room for troublesome
       students like you.
@@ -127,7 +127,7 @@ Items:
       - Droppable
       - Examineable
       - Openneable
-    Freshman Badge:
+    Freshman-Badge:
       Description: 
         First year students are given this badge. It is used to open doors.
       Properties:
@@ -152,7 +152,7 @@ Items:
       - Examineable
       - Eattable
       - Giveable
-    Sophomore Badge:
+    Sophomore-Badge:
       Description:
         Second year students are given this badge. It is used to open doors.
       Properties:
@@ -175,7 +175,7 @@ Items:
       - Storeable
       - Droppable
       - Examineable
-    Junior Badge:
+    Junior-Badge:
       Description:
         Third year students are given this badge. It is used to open doors.
       Properties:
@@ -191,7 +191,7 @@ Items:
       - Droppable
       - Examineable
       - Useable
-    Dean Badge:
+    Dean-Badge:
       Description:
         This is the dean badge. It seems to have access to all the rooms.
       Properties:

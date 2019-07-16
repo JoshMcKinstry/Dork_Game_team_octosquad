@@ -8,7 +8,6 @@ import dork.character_manager as char_m
 import dork.yamlreader as reader
 
 
-
 def loading_map(data):
     """
     Loads the map of the game. All the rooms are created along with their
@@ -40,16 +39,24 @@ def loading_player(data):
     (position, inventory) = game_data.load_player(data)
     char_m.assembling_player(position, inventory)
 
+
 def user_command(command):
     """
     """
+    commands_lib = {"move": move,
+                    "open": use_key,
+                    "take": pick_up,
+                    "drop": drop,
+                    "examine": examine,
+                    "use" : use_key}
+
     (verb, obj, target) = command
     if verb == "open" or verb == "use":
-        COMMAND_LIB[verb](target, obj)
+       commands_lib[verb](target, obj)
     elif verb == "move":
-        COMMAND_LIB[verb](target)
+       commands_lib[verb](target)
     else: 
-        COMMAND_LIB[verb](obj)
+       commands_lib[verb](obj)
 
 
 def __current_position():
@@ -140,6 +147,9 @@ def use_key(cardinal, key):
 
 
 def game_loader(path):
+    """
+    Methods that loads the game from the CLI
+    """
     data = reader.reading_yml(path)
     if data is not None:
         loading_map(data)
@@ -148,15 +158,5 @@ def game_loader(path):
         print("Game Successfully Loaded.")
         room_to_screen()
         return True
-    else:
-        print("Invalid path for save file.")
-        return False
-
-
-COMMAND_LIB = {"move": move,
-              "open": use_key,
-              "take": pick_up,
-              "drop": drop,
-              "examine": examine,
-              "eat" : None,
-              "use" : use_key}
+    print("Invalid path for save file.")
+    return False

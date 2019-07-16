@@ -78,3 +78,12 @@ class Room():
         """
         self.items.append(item_name)
         return item_name + ' has been dropped in ' + self.name + '.'
+
+    def yaml_representation(self):
+        """
+        Creates a yml compatible representation of a room object
+        """
+
+        room_attributes = {'Neighbors': self.neighbors, 'Items': self.items, 'Door':self.door}
+        room = {self.name: room_attributes}
+        return room

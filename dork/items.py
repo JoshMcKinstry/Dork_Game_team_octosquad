@@ -17,3 +17,12 @@ class Item():
         Returns true if the item instance contains a specific attribute
         """
         return attribute in self.properties
+
+    def yaml_representation(self):
+        """
+        Creates a yml compatible representation of a item object
+        """
+
+        item_attributes = {'Description': self.description, 'Properties': self.properties}
+        item = {self.name: item_attributes}
+        return item

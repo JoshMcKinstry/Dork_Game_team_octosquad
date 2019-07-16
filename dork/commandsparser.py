@@ -9,9 +9,8 @@ COMMANDLIST = ["help", "load", "save", "quit",
                "move", "open", "take", "drop", "examine", "use", "eat"]
 CARDINALS = ['north', 'east', 'south', 'west']
 # will integrate with game_engine later so items can be loaded dynamically
-OBJECTS = ['cage', 'cellphone', 'dean badge', 'donut', 'flower', 'flyer', 'freshman badge',
-           'junior badge', 'key', 'nest', 'paper', 'sophomore badge']
-TARGETS = ['door', 'dean', 'cage']
+OBJECTS = ['cage', 'cellphone', 'dean-badge', 'donut', 'flower', 'flyer', 'freshman-badge',
+           'junior-badge', 'key', 'nest', 'paper', 'sophomore-badge']
 
 
 
@@ -50,13 +49,12 @@ def _game_evaluate(tokens):
     action = ""
     obj = ""
     target = ""
-    targets = TARGETS + OBJECTS
     for token in tokens:
         if token in COMMANDLIST:
             action = token
         elif token in OBJECTS:
             obj = token
-        elif token in CARDINALS or token in targets:
+        elif token in CARDINALS:
             target = token
     if len(action) == 0:
         print("Please provide a command.")
