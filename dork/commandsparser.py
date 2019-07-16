@@ -9,9 +9,9 @@ COMMANDLIST = ["help", "load", "save", "quit",
                "move", "open", "take", "drop", "examine", "use", "eat"]
 CARDINALS = ['north', 'east', 'south', 'west']
 # will integrate with game_engine later so items can be loaded dynamically
-OBJECTS = ['cage', 'cellphone', 'dean-badge', 'donut', 'flower', 'flyer', 'freshman-badge',
+OBJECTS = ['cage', 'cellphone', 'dean-badge', 'donut',
+           'flower', 'flyer', 'freshman-badge',
            'junior-badge', 'key', 'nest', 'paper', 'sophomore-badge']
-
 
 
 def read():
@@ -88,6 +88,7 @@ def _quit_dork():
 def _print_load():
     print("Select a save game and hit enter to start!")
 
+
 def evaluate(command, state):
     """command evaluating method in repl
     """
@@ -115,6 +116,7 @@ def repl():
             _quit_dork()
         if state == State.LOAD:
             _print_load()
+
 
 class State(Enum):
     """State tracker for the game

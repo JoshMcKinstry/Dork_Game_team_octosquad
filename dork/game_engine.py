@@ -42,21 +42,22 @@ def loading_player(data):
 
 def user_command(command):
     """
+    Parses user input to proper format
     """
     commands_lib = {"move": move,
                     "open": use_key,
                     "take": pick_up,
                     "drop": drop,
                     "examine": examine,
-                    "use" : use_key}
+                    "use": use_key}
 
     (verb, obj, target) = command
     if verb == "open" or verb == "use":
-       commands_lib[verb](target, obj)
+        commands_lib[verb](target, obj)
     elif verb == "move":
-       commands_lib[verb](target)
-    else: 
-       commands_lib[verb](obj)
+        commands_lib[verb](target)
+    else:
+        commands_lib[verb](obj)
 
 
 def __current_position():

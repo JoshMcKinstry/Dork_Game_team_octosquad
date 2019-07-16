@@ -6,6 +6,6 @@
 import dork.commandsparser as cli
 
 # if __name__ == '__main__':
-    # main_game_engine()
+# main_game_engine()
 if __name__ == '__main__':
     cli.repl()

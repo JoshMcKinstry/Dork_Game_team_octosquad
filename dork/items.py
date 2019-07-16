@@ -23,6 +23,7 @@ class Item():
         Creates a yml compatible representation of a item object
         """
 
-        item_attributes = {'Description': self.description, 'Properties': self.properties}
+        item_attributes = {'Description': self.description,
+                           'Properties': self.properties}
         item = {self.name: item_attributes}
         return item
