@@ -7,16 +7,17 @@ Rooms:
       West: Trail
     Door: 
       Cardinal: East
-      Status: Freshman-Badge
+      Status: Freshman
       State: Closed
     Items:
     - Paper
     - Cage
-    - Freshman-Badge
+    - Freshman Badge
     Description:
       Welcome the campus entrance! You are in the student success building. 
       There are walls on the north and south ends of the room.
       There is a door in the east and a trail in the west.
+      You noticed the following items - 
   Hallway:
     Neighbors:
       East: Lounge
@@ -25,95 +26,101 @@ Rooms:
       West: Entrance
     Door: null
     Items:
-    - Flyer
+    - Flower
     - Cellphone
     Description:
       You are inside a long hallway with a door on the east side of the room
       and a green door leading to the entrance on the west side. There are 
       blank walls in the north and south ends of this room.
       The hallway is giving you chills, and you want to leave the room ASAP.
+      You noticed the following items - 
   Lounge:
     Neighbors:
       East: null
-      North: Dean Office
+      North: Dean's Office
       South: null
       West: Hallway
     Door: 
       Cardinal: North
-      Status: Sophomore-Badge
+      Status: Sophomore
       State: Closed
     Items:
     - Donut
-    - Sophomore-Badge  
+    - Sophomore Badge  
     Description:
       You are inside the lounge room of the campus. The air smells of poison.
       There are empty walls on the east and south side of the room.
       There is a hallway in the west and a door in the north.
+      You noticed the following items - 
   Trail:
     Neighbors:
       East: Entrance
       North: null
       South: null
-      West: Bird Nest
+      West: Bird's Nest
     Door: null
     Items:
     - Flower
     Description:
       You are on a dirt trail. There are lots of pebbles and trees, and the
       sun is making you sweat.
-      To the east is the entrance and to the west is the bird nest.
+      To the east is the entrance and to the west is the bird's nest.
       You cannot go north or south because the trees are blocking the way.
-  Bird Nest:
+      You noticed the following items - 
+  Bird's Nest:
     Neighbors:
       East: Trail
-      North: Dean Office
+      North: Dean's Office
       South: null
       West: null
     Door:
       Cardinal: North
-      Status: Junior-Badge
+      Status: Junior
       State: Closed
     Items:
     - Nest
-    - Junior-Badge
+    - Junior Badge
     Description:
       You are inside a beautiful garden. The smell of nature makes you
       energized. There is a door to the north, and the trail to the east.
       There are 1000 ft walls on the south and west side of this garden.
-  Dean Office:
+      You noticed the following items - 
+  Dean's Office:
     Neighbors:
       East: Lounge
       North: Treasure Room
       South: null
-      West: Bird Nest
+      West: Bird's Nest
     Door:
       Cardinal: North
-      Status: Dean-Badge
+      Status: Senior
       State: Closed
     Items:
-    - Dean-Badge
+    - Dean's Badge
     Description:
-      You are inside the Dean Office, a dangerous room for troublesome
+      You are inside the Dean's Office, a dangerous room for troublesome
       students like you.
       The east, west, and north sides of this room have doors, but the south
       end is a spiky wall.
+      You noticed the following items - 
   Treasure Room:
     Neighbors:
       East: null
       North: null
-      South: Dean Office
+      South: Dean's Office
       West: null
     Door: null
     Items:
     - Key
     Description:
       You are inside a room painted with gold everything.
-      Everything is enclosed in this room but its south end which has
+      Everything is enclosed in this room but it's south end which has
       a door.
+      You noticed the following items - 
 Items:
     Paper:
       Description: 
-        I will hand this bird over to the exterminators soon."Dean"
+        I will hand this bird over to the exterminators soon – Dean
       Properties:
       - Storeable
       - Droppable
@@ -127,7 +134,7 @@ Items:
       - Droppable
       - Examineable
       - Openneable
-    Freshman-Badge:
+    Freshman Badge:
       Description: 
         First year students are given this badge. It is used to open doors.
       Properties:
@@ -152,7 +159,7 @@ Items:
       - Examineable
       - Eattable
       - Giveable
-    Sophomore-Badge:
+    Sophomore Badge:
       Description:
         Second year students are given this badge. It is used to open doors.
       Properties:
@@ -175,7 +182,7 @@ Items:
       - Storeable
       - Droppable
       - Examineable
-    Junior-Badge:
+    Junior Badge:
       Description:
         Third year students are given this badge. It is used to open doors.
       Properties:
@@ -191,9 +198,9 @@ Items:
       - Droppable
       - Examineable
       - Useable
-    Dean-Badge:
+    Dean's Badge:
       Description:
-        This is the dean badge. It seems to have access to all the rooms.
+        This is the dean's badge. It seems to have access to all the rooms.
       Properties:
       - Storeable
       - Droppable
@@ -207,7 +214,10 @@ Items:
       - Droppable
       - Examineable
       - Useable
-Player:
+State:
+  Player:
+    Points: '50'
     Inventory:
-    - Help Guide
-    Position: Entrance
+    - Donut
+    - Freshman Badge
+    Position: Hallway

@@ -1,92 +1,16 @@
 """REPL and commands parser for dork game
 """
 import sys
-from dork.room_printing import Room1Printing
+from enum import Enum
+from dork import game_engine as ge
 
-PLAYER_ROOM = "room 1"
-
-
-def _start_game():
-    return "Welcome to Dork!", False
-
-
-def _quit_game():
-    return "Leaving the game of Dork.", True
-
-
-def move_east():
-    """Interprets print statement for moving east based on location
-    """
-    # return "you have moved east", False
-    Room1Printing.print_move(PLAYER_ROOM, "east")
-    return "", False
-
-
-def move_west():
-    """Interprets print statement for moving west based on location
-    """
-    Room1Printing.print_move(PLAYER_ROOM, "west")
-    return "", False
-
-
-def move_north():
-    """Interprets print statement for moving north based on location
-    """
-    Room1Printing.print_move(PLAYER_ROOM, "north")
-    return "", False
-
-
-def move_south():
-    """Interprets print statement for moving south based on location
-    """
-    Room1Printing.print_move(PLAYER_ROOM, "south")
-    return "", False
-
-
-def get_item():
-    """Interprets print statement for south based on location
-    """
-    return "you picked up an item", False
-
-
-def use_item():
-    """Logic for using an item based on inventory
-    """
-    return "you used an item", False
-
-
-def look_east():
-    """Interprets print statement for looking east based on location
-    """
-    Room1Printing.print_look(PLAYER_ROOM, "east")
-    return "", False
-
-
-def look_west():
-    """Interprets print statement for looking west based on location
-    """
-    Room1Printing.print_look(PLAYER_ROOM, "west")
-    return "", False
-
-
-def look_north():
-    """Interprets print statement for looking north based on location
-    """
-    Room1Printing.print_look(PLAYER_ROOM, "north")
-    return "", False
-
-
-def look_south():
-    """Interprets print statement for looking south based on location
-    """
-    Room1Printing.print_look(PLAYER_ROOM, "south")
-    return "", False
-
-
-def drop():
-    """Interprets logic for dropping an item
-    """
-    return "you dropped an item", False
+COMMANDLIST = ["help", "load", "save", "quit",
+               "move", "open", "take", "drop", "examine", "use", "eat"]
+CARDINALS = ['north', 'east', 'south', 'west']
+# will integrate with game_engine later so items can be loaded dynamically
+OBJECTS = ['cage', 'cellphone', 'dean-badge', 'donut',
+           'flower', 'flyer', 'freshman-badge',
+           'junior-badge', 'key', 'nest', 'paper', 'sophomore-badge']
 
 
 def read():
@@ -95,66 +19,109 @@ def read():
     return input("> ")
 
 
-def evaluate(command):
+def _menu_evaluate(tokens):
+    """token evaluater for the main menu state
+    """
+    # new load help quit
+    if "quit" in tokens:
+        _quit_dork()
+    elif "load" in tokens:
+        return State.LOAD
+    elif "help" in tokens:
+        print("Main Menu Commands for Dork")
+        print("help - Print a list of commands.")
+        print("load - Load a game save file from available saves.")
+        print("new - Start a new game on a fresh save file.")
+        print("quit - Exits the game of 'Dork'.")
+        return State.MENU
+    elif "new" in tokens:
+        print("\nStarting the game of 'Dork'.\n")
+        return State.GAME
+    else:
+        print("Please input a valid command!\nTry 'help' for more options.")
+        return State.MENU
+
+
+def _game_evaluate(tokens):
+    """token evaluater for the in-game state
+    """
+    action = ""
+    obj = ""
+    target = ""
+    for token in tokens:
+        if token in COMMANDLIST:
+            action = token
+        elif token in OBJECTS:
+            obj = token
+        elif token in CARDINALS:
+            target = token
+    if len(action) == 0:
+        print("Please provide a command.")
+        return State.GAME
+    if action == "quit":
+        _quit_dork()
+    if obj == target:
+        print("You can't {} {} on {}".format(action, obj, target))
+        return State.GAME
+    ge.user_command((action, obj.title(), target.title()))
+    return State.GAME
+
+
+def _load_evaluate(path):
+    """token evaluater for the load screen state
+    """
+    if ge.game_loader(path):
+        return State.GAME
+    return State.MENU
+
+
+def _save_evaluate(tokens):
+    print()
+
+
+def _quit_dork():
+    print("Leaving Dork...\n\n")
+    sys.exit()
+
+
+def _print_load():
+    print("Select a save game and hit enter to start!")
+
+
+def evaluate(command, state):
     """command evaluating method in repl
     """
     # https://docs.python.org/3/tutorial/datastructures.html
-    words_in_command = [words.casefold() for words in command.split()]
-    player_commands = {
-        "go": {
-            "north": move_north,
-            "south": move_south,
-            "west": move_west,
-            "east": move_east
-        },
-        "get": {"object": get_item},
-        "use": {"object": use_item},
-        "look": {
-            "north": look_north,
-            "south": look_south,
-            "west": look_west,
-            "east": look_east
-        },
-        "drop": {"object": drop}
-    }
-    game_commands = {
-        "start": {"dork": _start_game},
-        "quit": {"dork": _quit_game}
-    }
-    for word in words_in_command:
-        if word in player_commands:
-            sub_menu = player_commands[word]
-            for sub_word in words_in_command:
-                if sub_word in sub_menu:
-                    function = sub_menu[sub_word]
-                    return function()
-        elif word in game_commands:
-            sub_menu = game_commands[word]
-            for sub_word in words_in_command:
-                if sub_word in sub_menu:
-                    function = sub_menu[sub_word]
-                    return function()
-    return "Unknown Command", False
+    word_list = [words.casefold() for words in command.split()]
+    if state == State.MENU:
+        return _menu_evaluate(word_list)
+    if state == State.GAME:
+        return _game_evaluate(word_list)
+    if state == State.LOAD:
+        return _load_evaluate(command)
+    if state == State.SAVE:
+        return _save_evaluate(word_list)
 
 
 def repl():
     """repl for dork game
     """
+    state = State.MENU
     print("Welcome to Dork!")
     while True:
         command = read()
-        output, should_exit = evaluate(command)
-        print(output)
-        if should_exit:
-            break
-    print("ending repl...")
+        state = evaluate(command, state)
+        if state == State.QUIT:
+            _quit_dork()
+        if state == State.LOAD:
+            _print_load()
 
 
-def init():
-    """initializer function
+class State(Enum):
+    """State tracker for the game
     """
-    if __name__ == "__main__":
-        sys.exit(repl())
-
-
-init()
+    MENU = 1
+    GAME = 2
+    LOAD = 3
+    SAVE = 4
+    QUIT = 5
