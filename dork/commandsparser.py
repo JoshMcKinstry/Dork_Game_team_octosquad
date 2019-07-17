@@ -42,7 +42,6 @@ COMMANDDICT = {"help": "---HELP---\n\
                        USAGE: 'use' [item] on [direction]\n{}\
                        see also - 'help open'"}
 CARDINALS = ['north', 'east', 'south', 'west']
-# will integrate with game_engine later so items can be loaded dynamically
 OBJECTS = ['cage', 'cellphone', 'dean-badge', 'donut',
            'flower', 'flyer', 'freshman-badge',
            'junior-badge', 'key', 'nest', 'paper', 'sophomore-badge']
@@ -127,11 +126,11 @@ def _safe_quit():
     response = input("y/n\n>").casefold()
     if response == "y":
         return State.SAVE
-    elif response == "n":
+    if response == "n":
         print("Returning to Main Menu.")
         return State.MENU
-    else:
-        print("Invalid Response.\nReturning to Game")
+    print("Invalid Response.\nReturning to Game")
+    return State.GAME
 
 
 def _quit_dork():
