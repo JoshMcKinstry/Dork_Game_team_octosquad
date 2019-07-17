@@ -53,3 +53,14 @@ def remove_item_from_inventory(item_name):
     Removes the item from the player's inventory.
     """
     return DICT_CHARACTERS['Player'].delete_item(item_name)
+
+
+def player_yaml_representation():
+    """
+    Returns a friendly yaml representation of the player.
+    """
+    inventory = DICT_CHARACTERS['Player'].inventory
+    position = DICT_CHARACTERS['Player'].position
+    player = {'Inventory': inventory, 'Position' : position}
+    player_repr = {'Player': player}
+    return player_repr

@@ -1,0 +1,192 @@
+Items:
+  Cage:
+    Description: The cage is tight, dirty, and locked. There is also a bird inside
+      the cage and it looks starving and nervous.
+    Properties:
+    - Storeable
+    - Droppable
+    - Examineable
+    - Openneable
+  Cellphone:
+    Description: The phone is dead.
+    Properties:
+    - Storeable
+    - Droppable
+    - Examineable
+    - Useable
+  Dean-Badge:
+    Description: This is the dean badge. It seems to have access to all the rooms.
+    Properties:
+    - Storeable
+    - Droppable
+    - Examineable
+    - Useable
+  Donut:
+    Description: The donut is chocolate flavored with sprinkles on top. There seems
+      to be a purple powder on it as well.
+    Properties:
+    - Storeable
+    - Droppable
+    - Examineable
+    - Eattable
+    - Giveable
+  Flower:
+    Description: The flower is red, and it smells like a strawberry cupcake.
+    Properties:
+    - Storeable
+    - Droppable
+    - Examineable
+  Flyer:
+    Description: Want to be a better programmer? Call us at 111-111-1111
+    Properties:
+    - Storeable
+    - Droppable
+    - Examineable
+  Freshman-Badge:
+    Description: First year students are given this badge. It is used to open doors.
+    Properties:
+    - Storeable
+    - Droppable
+    - Examineable
+    - Useable
+  Junior-Badge:
+    Description: Third year students are given this badge. It is used to open doors.
+    Properties:
+    - Storeable
+    - Droppable
+    - Examineable
+    - Useable
+  Key:
+    Description: The key looks like it would open the cage.
+    Properties:
+    - Storeable
+    - Droppable
+    - Examineable
+    - Useable
+  Nest:
+    Description: The nest has eggs that look about ready to hatch but no bird parent
+      to be seen.
+    Properties:
+    - Storeable
+    - Droppable
+    - Examineable
+  Paper:
+    Description: I will hand this bird over to the exterminators soon."Dean"
+    Properties:
+    - Storeable
+    - Droppable
+    - Examineable
+  Sophomore-Badge:
+    Description: Second year students are given this badge. It is used to open doors.
+    Properties:
+    - Storeable
+    - Droppable
+    - Examineable
+    - Useable
+Player:
+  Inventory:
+  - Help Guide
+  - Paper
+  - Cage
+  - Freshman-Badge
+  Position: Dean Office
+Rooms:
+  Bird Nest:
+    Door:
+      Cardinal: North
+      State: Closed
+      Status: Junior-Badge
+    Items:
+    - Nest
+    - Junior-Badge
+    Neighbors:
+      East: Trail
+      North: Dean Office
+      South: null
+      West: null
+  Dean Office:
+    Door:
+      Cardinal: North
+      State: Closed
+      Status: Dean-Badge
+    Items:
+    - Dean-Badge
+    Neighbors:
+      East: Lounge
+      North: Treasure Room
+      South: null
+      West: Bird Nest
+  Entrance:
+    Door:
+      Cardinal: East
+      State: Closed
+      Status: Freshman-Badge
+    Items: []
+    Neighbors:
+      East: Hallway
+      North: null
+      South: null
+      West: Trail
+  Hallway:
+    Door: null
+    Items:
+    - Flyer
+    - Cellphone
+    Neighbors:
+      East: Lounge
+      North: null
+      South: null
+      West: Entrance
+  Lounge:
+    Door:
+      Cardinal: North
+      State: Closed
+      Status: Sophomore-Badge
+    Items:
+    - Donut
+    - Sophomore-Badge
+    Neighbors:
+      East: null
+      North: Dean Office
+      South: null
+      West: Hallway
+  Trail:
+    Door: null
+    Items:
+    - Flower
+    Neighbors:
+      East: Entrance
+      North: null
+      South: null
+      West: Bird Nest
+  Treasure Room:
+    Door: null
+    Items:
+    - Key
+    Neighbors:
+      East: null
+      North: null
+      South: Dean Office
+      West: null
+Rooms Descriptions:
+  Bird Nest: You are inside a beautiful garden. The smell of nature makes you energized.
+    There is a door to the north, and the trail to the east. There are 1000 ft walls
+    on the south and west side of this garden.
+  Dean Office: You are inside the Dean Office, a dangerous room for troublesome students
+    like you. The east, west, and north sides of this room have doors, but the south
+    end is a spiky wall.
+  Entrance: Welcome the campus entrance! You are in the student success building.
+    There are walls on the north and south ends of the room. There is a door in the
+    east and a trail in the west.
+  Hallway: You are inside a long hallway with a door on the east side of the room
+    and a green door leading to the entrance on the west side. There are blank walls
+    in the north and south ends of this room. The hallway is giving you chills, and
+    you want to leave the room ASAP.
+  Lounge: You are inside the lounge room of the campus. The air smells of poison.
+    There are empty walls on the east and south side of the room. There is a hallway
+    in the west and a door in the north.
+  Trail: You are on a dirt trail. There are lots of pebbles and trees, and the sun
+    is making you sweat. To the east is the entrance and to the west is the bird nest.
+    You cannot go north or south because the trees are blocking the way.
+  Treasure Room: You are inside a room painted with gold everything. Everything is
+    enclosed in this room but its south end which has a door.

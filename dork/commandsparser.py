@@ -36,7 +36,7 @@ def _menu_evaluate(tokens):
         return State.MENU
     elif "new" in tokens:
         print("\nStarting the game of 'Dork'.\n")
-        evaluate("./dork/game.yml", State.LOAD)
+        evaluate("./dork/state files/game.yml", State.LOAD)
         return State.GAME
     else:
         print("Please input a valid command!\nTry 'help' for more options.")
@@ -61,6 +61,11 @@ def _game_evaluate(tokens):
         return State.GAME
     if action == "quit":
         return _safe_quit()
+    if action == "save":
+        return State.SAVE
+    if action == "load":
+        return State.LOAD
+        #Validation Needed For Objects Objects and Targets
     ge.user_command((action, obj.title(), target.title()))
     return State.GAME
 
@@ -73,8 +78,9 @@ def _load_evaluate(path):
     return State.MENU
 
 
-def _save_evaluate(tokens):
-    print()
+def _save_evaluate():
+    ge.saving()
+    return State.GAME
 
 
 def _safe_quit():
@@ -107,7 +113,7 @@ def evaluate(command, state):
     if state == State.LOAD:
         return _load_evaluate(command)
     if state == State.SAVE:
-        return _save_evaluate(word_list)
+        return _save_evaluate()
 
 
 def repl():

@@ -6,6 +6,7 @@ import dork.item_manager as item_m
 import dork.room_manager as room_m
 import dork.character_manager as char_m
 import dork.yamlreader as reader
+import dork.yamlloader as loader
 
 
 def game_loader(path):
@@ -55,6 +56,18 @@ def loading_player(data):
     (position, inventory) = game_data.load_player(data)
     char_m.assembling_player(position, inventory)
 
+def saving():
+    """
+    Saving your progress at any given time
+    """
+    saved_data = {}
+    saved_map = room_m.map_yaml_representation()
+    saved_items = item_m.items_yaml_representation()
+    saved_char = char_m.player_yaml_representation()
+    saved_data.update(saved_map)
+    saved_data.update(saved_char)
+    saved_data.update(saved_items)
+    loader.writing_yml(saved_data, './dork/state files/last_checkpoint.yml')
 
 def user_command(command):
     """
@@ -65,11 +78,14 @@ def user_command(command):
                     "take": pick_up,
                     "drop": drop,
                     "examine": examine,
-                    "use": use_key}
+                    "use": use_key,
+                    "save": saving}
 
     (verb, obj, target) = command
     if verb == "open" or verb == "use":
         commands_lib[verb](target, obj)
+    elif verb == 'save':
+        commands_lib[verb](target)
     elif verb == "move":
         commands_lib[verb](target)
     else:

@@ -112,3 +112,32 @@ def open_door(room_name, cardinal, key):
             return DICT_ROOMS[room_name].update_door_status()
         return 'Invalid key for door at ' + cardinal + '!'
     return 'There is no closed door at the ' + cardinal + '!'
+
+
+def __rooms_yaml_representation():
+    """
+    Creates a yaml friendly representation of the set of rooms
+    """
+    rooms = {}
+    rooms_repr = {'Rooms': rooms}
+    for room_obj in list(DICT_ROOMS.values()):
+        rooms.update(room_obj.yaml_representation())
+    return rooms_repr
+
+
+def __description_yaml_representation():
+    """
+    Creates a yaml friendly representation of the set of descriptions
+    """
+    descrip_repr = {'Rooms Descriptions': DICT_DESCRIPTIONS}     
+    return descrip_repr
+
+
+def map_yaml_representation():
+    """
+    Creates a yaml friendly representation of the room with descriptions
+    """
+    map_representation = {}
+    map_representation.update(__rooms_yaml_representation())
+    map_representation.update(__description_yaml_representation())
+    return map_representation
