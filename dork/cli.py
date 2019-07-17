@@ -5,42 +5,42 @@ from enum import Enum
 from dork import game_engine as ge
 
 DIRECTIONS = "[direction] --> north\n\
-                              east\n\
-                              south\n\
-                              west\n"
+                east\n\
+                south\n\
+                west\n"
 COMMANDDICT = {"help": "---HELP---\n\
-                        Prints a helper list of commands.\n\
-                        USAGE: 'help'\n\
-                               'help' [command]",
+Prints a helper list of commands.\n\
+USAGE: 'help'\n\
+       'help' [command]\n",
                "load": "---LOAD---\n\
-                        Load the last saved checkpoint.\n\
-                        USAGE: 'load'",
+Load the last saved checkpoint.\n\
+USAGE: 'load'\n",
                "save": "---SAVE---\n\
-                        Save the game. Overrides last save.\n\
-                        USAGE: 'save'",
+Save the game. Overrides last save.\n\
+USAGE: 'save'\n",
                "quit": "---QUIT---\n\
-                        Return to the Dork Main Menu. Saving game is optional\n\
-                        USAGE: 'quit'",
+Return to the Dork Main Menu. Saving game is optional\n\
+USAGE: 'quit'\n",
                "move": "---MOVE---\n\
-                        Move between rooms in the Dork Game.\n\
-                        USAGE: 'move' [direction]\n{}".format(DIRECTIONS),
+Move between rooms in the Dork Game.\n\
+USAGE: 'move' [direction]\n{}".format(DIRECTIONS),
                "open": "---OPEN---\n\
-                        Open a locked door in the Dork Game.\n\
-                        USAGE: 'open' [direction] with [item]\n{}\
-                        see also - 'help use'".format(DIRECTIONS),
+Open a locked door in the Dork Game.\n\
+USAGE: 'open' [direction] with [item]\n{}\
+see also - 'help use'\n".format(DIRECTIONS),
                "take": "---TAKE---\n\
-                        Pick up an item that is in the room.\n\
-                        USAGE: 'take' [item]",
+Pick up an item that is in the room.\n\
+USAGE: 'take' [item]\n",
                "drop": "---DROP---\n\
-                        Drop an item that is in your inventory.\n\
-                        USAGE: 'drop' [item]",
+Drop an item that is in your inventory.\n\
+USAGE: 'drop' [item]",
                "examine": "---EXAMINE---\n\
-                        Inspect an item.\n\
-                        USAGE: 'examine' [item]",
+Inspect an item.\n\
+USAGE: 'examine' [item]",
                "use": "---USE---\n\
-                       Use a key on a door.\n\
-                       USAGE: 'use' [item] on [direction]\n{}\
-                       see also - 'help open'"}
+Use a key on a door.\n\
+USAGE: 'use' [item] on [direction]\n{}\
+see also - 'help open'\n".format(DIRECTIONS),}
 CARDINALS = ['north', 'east', 'south', 'west']
 OBJECTS = ['cage', 'cellphone', 'dean-badge', 'donut',
            'flower', 'flyer', 'freshman-badge',
@@ -85,11 +85,11 @@ def _game_evaluate(tokens):
     obj = ""
     target = ""
     for token in tokens:
-        if token in COMMANDDICT:
+        if token in COMMANDDICT and not action:
             action = token
         elif token in OBJECTS:
             obj = token
-        elif token in CARDINALS:
+        elif token in CARDINALS or token in COMMANDDICT:
             target = token
     if not action:
         print("Please provide a command.\n\
@@ -124,8 +124,8 @@ def _save_evaluate():
 
 
 def _safe_quit():
-    print("Would you like to save the game?")
-    response = input("y/n\n>").casefold()
+    print("Would you like to save the game?(y/n)")
+    response = input(">").casefold()
     if response == "y":
         return State.SAVE
     if response == "n":

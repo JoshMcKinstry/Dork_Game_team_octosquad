@@ -43,45 +43,52 @@ def test_evaluate_exists():
 
 
 def test_print_load(run):
+    """Test _print_load outputs correctly
+    """
     output, _, _ = run(parser._print_load)
     assert output == ("Select a save game and hit enter to start!\n")
 
 
 def test_menu_evaluate(run):
-    """
-    Test the menu evaluate method
+    """Test the menu evaluate method
     """
     output, _, _ = run(parser._menu_evaluate, ['help'])
     assert output == ("Main Menu Commands for Dork\n" +
-        "help - Print a list of commands.\n" +
-        "load - Load a game save file from available saves.\n" +
-        "new - Start a new game on a fresh save file.\n" +
-        "quit - Exits the game of 'Dork'.\n")
+                      "help - Print a list of commands.\n" +
+                      "load - Load a game save file from available saves.\n" +
+                      "new - Start a new game on a fresh save file.\n" +
+                      "quit - Exits the game of 'Dork'.\n")
     output, _, _ = run(parser._menu_evaluate, ['new'])
-    assert output == ("\nStarting the game of 'Dork'.\n\n" + 
-        "Game Successfully Loaded.\n" + "**Entrance**\n" +
-        "Welcome the campus entrance! You are in the student success building. " +
-        "There are walls on the north and south ends of the " + 
-        "room. There is a door in the east and a trail in the west.\n" +
-        "You notice the following items--- Paper, Cage, Freshman-Badge.\n")
+    assert output == ("\nStarting the game of 'Dork'.\n\n" +
+                      "Game Successfully Loaded.\n" + "**Entrance**\n" +
+                      "Welcome the campus entrance! You are in the student success building. " +
+                      "There are walls on the north and south ends of the " + 
+                      "room. There is a door in the east and a trail in the west.\n" +
+                      "You notice the following items--- Paper, Cage, Freshman-Badge.\n")
     output, _, _ = run(parser._menu_evaluate, ['impossible'])
     assert output == ("Please input a valid command!\nTry 'help' for more options.\n")
 
 
 def test_game_evaluate(run):
+    """Test
+    """
     output, _, _ = run(parser._game_evaluate, ['notaction'])
     assert output == ("Please provide a command.\n")
 
 def test_safe_quit(run):
+    """Test
+    """
     output, _, _ = run(parser._safe_quit)
     assert output == ("Would you like to save the game?\n")
 
 def test_repl(run):
+    """Test
+    """
     output, _, _ = run(parser.repl, input_side_effect=['quit'])
-    assert output == ("Welcome to Dork!\n")    
+    assert output == ("Welcome to Dork!\n")
 
 
-# Got from https://stackoverflow.com/questions/15672151/is-it-possible-for-a-unit-test-to-assert-that-a-method-calls-sys-exit
+# https://stackoverflow.com/questions/15672151/is-it-possible-for-a-unit-test-to-assert-that-a-method-calls-sys-exit
 #def test_quit_dork(run):
 #    with assertRaises(SystemExit):
 #        output, _, _ = run(parser._quit_dork)
