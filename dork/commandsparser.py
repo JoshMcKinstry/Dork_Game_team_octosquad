@@ -59,21 +59,23 @@ def _menu_evaluate(tokens):
     # new load help quit
     if "quit" in tokens:
         _quit_dork()
-    elif "load" in tokens:
+    if "load" in tokens:
         return State.LOAD
-    elif "help" in tokens:
+    if "help" in tokens:
         print("Main Menu Commands for Dork")
         print("help - Print a list of commands.")
         print("load - Load a game save file from available saves.")
         print("new - Start a new game on a fresh save file.")
         print("quit - Exits the game of 'Dork'.")
         return State.MENU
-    elif "new" in tokens:
+    if "new" in tokens:
         print("\nStarting the game of 'Dork'.\n")
         return evaluate("./dork/state files/game.yml", State.LOAD)
-    else:
-        print("Please input a valid command!\nTry 'help' for more options.")
+    if "info" in tokens:
+        _print_info()
         return State.MENU
+    print("Please input a valid command!\nTry 'help' for more options.")
+    return State.MENU
 
 
 def _game_evaluate(tokens):
@@ -141,6 +143,19 @@ def _quit_dork():
 def _print_load():
     print("Select a save game and hit enter to start!")
 
+def _print_menu():
+    print("Welcome to the Game of Dork!\n\
+        -- NEW\n\
+        -- LOAD\n\
+        -- HELP\n\
+        -- INFO\n\
+        -- QUIT")
+
+
+def _print_info():
+    print("-----------------------------------------------------\n\
+        What is Dork?\n\
+        ")
 
 def _game_helper(command):
     if not command:
@@ -170,7 +185,7 @@ def repl():
     """repl for dork game
     """
     state = State.MENU
-    print("Welcome to Dork!")
+    _print_menu()
     while True:
         command = read()
         state = evaluate(command, state)
@@ -188,5 +203,3 @@ class State(Enum):
     LOAD = 3
     SAVE = 4
     QUIT = 5
-    MISSINGOBJ = 6
-    MISSINGTARGET = 7
