@@ -67,6 +67,20 @@ def test_menu_evaluate(run):
     output, _, _ = run(parser._menu_evaluate, ['impossible'])
     assert output == ("Please input a valid command!\nTry 'help' for more options.\n")
 
+
+def test_game_evaluate(run):
+    output, _, _ = run(parser._game_evaluate, ['notaction'])
+    assert output == ("Please provide a command.\n")
+
+def test_safe_quit(run):
+    output, _, _ = run(parser._safe_quit)
+    assert output == ("Would you like to save the game?\n")
+
+def test_repl(run):
+    output, _, _ = run(parser.repl, input_side_effect=['quit'])
+    assert output == ("Welcome to Dork!\n")    
+
+
 # Got from https://stackoverflow.com/questions/15672151/is-it-possible-for-a-unit-test-to-assert-that-a-method-calls-sys-exit
 #def test_quit_dork(run):
 #    with assertRaises(SystemExit):
