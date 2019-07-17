@@ -8,6 +8,22 @@ import dork.character_manager as char_m
 import dork.yamlreader as reader
 
 
+def game_loader(path):
+    """
+    Methods that loads the game from the CLI
+    """
+    data = reader.reading_yml(path)
+    if data is not None:
+        loading_map(data)
+        loading_items(data)
+        loading_player(data)
+        print("Game Successfully Loaded.")
+        room_to_screen()
+        return True
+    print("Invalid path for save file.")
+    return False
+
+
 def loading_map(data):
     """
     Loads the map of the game. All the rooms are created along with their
@@ -145,19 +161,3 @@ def use_key(cardinal, key):
         print(room_m.open_door(__current_position(), cardinal, key))
     else:
         print('You do not have ' + key + ' in your inventory')
-
-
-def game_loader(path):
-    """
-    Methods that loads the game from the CLI
-    """
-    data = reader.reading_yml(path)
-    if data is not None:
-        loading_map(data)
-        loading_items(data)
-        loading_player(data)
-        print("Game Successfully Loaded.")
-        room_to_screen()
-        return True
-    print("Invalid path for save file.")
-    return False

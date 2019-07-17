@@ -133,3 +133,15 @@ def test_add_item():
     assert room.add_item('Flyer') == (
         'Flyer' + ' has been dropped in ' + room.name + '.')
     assert room.items == ['Paper', 'Donut', 'Flyer']
+
+
+def test_yaml_representation():
+    """
+    Test for the yaml_representation method
+    """
+    name = 'Entrance'
+    neighbors = {'North': 'Trail', 'East': None, 'South': None, 'West': 'Lake'}
+    door = {'Cardinal': 'North', 'Status': 'Dean Badge', 'State': 'Closed'}
+    items = ['Paper', 'Donut']
+    room = Room(name, neighbors, door, items)
+    assert isinstance(room.yaml_representation(), dict)

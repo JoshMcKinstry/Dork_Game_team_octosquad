@@ -33,12 +33,16 @@ def test_delete_item():
     """
     Test to see if items delete
     """
-    name = 'Hallway'
+    name = 'Player'
     position = 'Entrance'
     inventory = ['Paper', 'Cage', 'Freshman Badge']
     main_character = Character(name, position, inventory)
-    main_character.delete_item('Paper')
-    assert main_character.inventory == ['Cage', 'Freshman Badge']
+    out_put = main_character.delete_item('Paper')
+    expected = ('Player has lost Paper.', True)
+    assert out_put == expected
+    out_put_2 = main_character.delete_item('Key')
+    expected_2 = ('Player does not hold Key.', False)
+    assert out_put_2 == expected_2
 
 
 def test_add_item():

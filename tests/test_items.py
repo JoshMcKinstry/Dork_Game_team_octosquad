@@ -26,3 +26,14 @@ def test_has_property():
     properties = ['eatable', 'pickable']
     item = Item(name, description, properties)
     assert item.has_property('eatable') is True
+
+
+def test_yaml_representation():
+    """
+    Testing the yaml_representation method
+    """
+    name = 'Donut'
+    description = {'This is an old fasion donut'}
+    properties = ['eatable', 'pickable']
+    item = Item(name, description, properties)
+    assert isinstance(item.yaml_representation(), dict)

@@ -1,7 +1,6 @@
 """
 A test for room_manager
 """
-from mock import patch
 import dork.room_manager as room_m
 
 
@@ -26,7 +25,7 @@ def test_assembling_rooms():
 
 def test_assembling_descriptions():
     """
-    Testing aseembling_descriptions method
+    Testing assembling_descriptions method
     """
     list_names = ['Entrance']
     list_descriptions = ['This is the entrance']
@@ -104,7 +103,7 @@ def test_append_item():
         {'North': 'Trail', 'East': None, 'South': None, 'West': 'Lake'}]
     list_doors = [
         {'Cardinal': 'North', 'Status': 'Dean Badge', 'State': 'Closed'}]
-    list_items = ['Paper', 'Donut']
+    list_items = [['Paper', 'Donut']]
     room_m.assembling_rooms(
         list_names, list_neighbors, list_doors, list_items)
     room_m.append_item('Entrance', 'Cellphone')
@@ -158,7 +157,7 @@ def test_to_string_current_items():
         'You notice the following items--- P, a, p, e, r.')
 
 
-def test_move(run):
+def test_move():
     """
     testing move method
     """
@@ -167,20 +166,15 @@ def test_move(run):
         {'North': 'Trail', 'East': None, 'South': None, 'West': 'Lounge'}]
     list_doors = [
         {'Cardinal': 'North', 'Status': 'Dean Badge', 'State': 'Closed'}]
-    list_items = ['Paper', 'Donut']
+    list_items = [['Paper', 'Donut']]
     room_m.assembling_rooms(
         list_names, list_neighbors, list_doors, list_items)
-    output, _, _ = run(room_m.move, 'North', 'Entrance')
-    assert output == 'Closed door\n'
-    output, _, _ = run(room_m.move, 'South', 'Entrance')
-    assert output == 'No neighbor\n'
-    current_room = room_m.move('West', 'Entrance')
-    assert current_room == 'Lounge'
+    assert room_m.move('West', 'Entrance') == 'Lounge'
+    assert room_m.move('East', 'Entrance') is None
+    assert room_m.move('North', 'Entrance') is None
 
 
-@patch('dork.rooms.Room.has_closed_door')
-@patch('dork.rooms.Room.get_door_status')
-def test_open_door(mock_has_closed_door, mock_get_door_status):
+def test_open_door():
     """
     testing open_door method
     """
@@ -192,7 +186,12 @@ def test_open_door(mock_has_closed_door, mock_get_door_status):
     list_items = ['Paper', 'Donut', 'Dean Badge']
     room_m.assembling_rooms(
         list_names, list_neighbors, list_doors, list_items)
-    mock_has_closed_door.return_value = True
-    mock_get_door_status.return_value = 'Dean Badge'
-    assert room_m.open_door('Entrance', 'North', 'Dean Badge') == (
-        'Invalid key for door at ' + 'North' + '!')
+    out_put_2 = room_m.open_door('Entrance', 'North', 'Junior Badge')
+    expected_2 = 'Invalid key for door at North!'
+    assert out_put_2 == expected_2
+    out_put_3 = room_m.open_door('Entrance', 'South', 'Dean Badge')
+    expected_3 = 'There is no closed door at the South!'
+    assert out_put_3 == expected_3
+    out_put_1 = room_m.open_door('Entrance', 'North', 'Dean Badge')
+    expected_1 = 'Door in Entrance at North is now open.'
+    assert out_put_1 == expected_1

@@ -1,7 +1,6 @@
 """Tests for repl and command parser in dork
 """
 from types import FunctionType
-from unittest import mock
 from unittest.mock import patch
 import pytest
 import dork.commandsparser as parser
