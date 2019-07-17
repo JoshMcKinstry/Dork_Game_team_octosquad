@@ -39,7 +39,7 @@ def load_room_descrips(data, room_names):
     """
     room_descrips = []
     for name in room_names:
-        descrip = data['Rooms'][name]['Description']
+        descrip = data['Rooms Descriptions'][name]
         room_descrips.append(descrip)
     return room_descrips
 

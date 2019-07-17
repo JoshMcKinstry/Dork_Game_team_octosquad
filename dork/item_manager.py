@@ -28,3 +28,14 @@ def item_description(item_name):
     Returns description of room
     """
     return DICT_ITEMS[item_name].description
+
+
+def items_yaml_representation():
+    """
+    Creates a yaml friendly representation of the set of items
+    """
+    items = {}
+    items_repr = {'Items': items}
+    for item_obj in list(DICT_ITEMS.values()):
+        items.update(item_obj.yaml_representation())
+    return items_repr
