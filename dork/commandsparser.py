@@ -4,8 +4,43 @@ import sys
 from enum import Enum
 from dork import game_engine as ge
 
-COMMANDLIST = ["help", "load", "save", "quit",
-               "move", "open", "take", "drop", "examine", "use", "eat"]
+DIRECTIONS = "[direction] --> north\n\
+                              east\n\
+                              south\n\
+                              west\n"
+COMMANDDICT = {"help": "---HELP---\n\
+                        Prints a helper list of commands.\n\
+                        USAGE: 'help'\n\
+                               'help' [command]",
+               "load": "---LOAD---\n\
+                        Load the last saved checkpoint.\n\
+                        USAGE: 'load'",
+               "save": "---SAVE---\n\
+                        Save the game. Overrides last save.\n\
+                        USAGE: 'save'",
+               "quit": "---QUIT---\n\
+                        Return to the Dork Main Menu. Saving game is optional\n\
+                        USAGE: 'quit'",
+               "move": "---MOVE---\n\
+                        Move between rooms in the Dork Game.\n\
+                        USAGE: 'move' [direction]\n{}".format(DIRECTIONS),
+               "open": "---OPEN---\n\
+                        Open a locked door in the Dork Game.\n\
+                        USAGE: 'open' [direction] with [item]\n{}\
+                        see also - 'help use'".format(DIRECTIONS),
+               "take": "---TAKE---\n\
+                        Pick up an item that is in the room.\n\
+                        USAGE: 'take' [item]",
+               "drop": "---DROP---\n\
+                        Drop an item that is in your inventory.\n\
+                        USAGE: 'drop' [item]",
+               "examine": "---EXAMINE---\n\
+                        Inspect an item.\n\
+                        USAGE: 'examine' [item]",
+               "use": "---USE---\n\
+                       Use a key on a door.\n\
+                       USAGE: 'use' [item] on [direction]\n{}\
+                       see also - 'help open'"}
 CARDINALS = ['north', 'east', 'south', 'west']
 # will integrate with game_engine later so items can be loaded dynamically
 OBJECTS = ['cage', 'cellphone', 'dean-badge', 'donut',
@@ -36,8 +71,7 @@ def _menu_evaluate(tokens):
         return State.MENU
     elif "new" in tokens:
         print("\nStarting the game of 'Dork'.\n")
-        evaluate("./dork/state files/game.yml", State.LOAD)
-        return State.GAME
+        return evaluate("./dork/state files/game.yml", State.LOAD)
     else:
         print("Please input a valid command!\nTry 'help' for more options.")
         return State.MENU
@@ -50,14 +84,15 @@ def _game_evaluate(tokens):
     obj = ""
     target = ""
     for token in tokens:
-        if token in COMMANDLIST:
+        if token in COMMANDDICT:
             action = token
         elif token in OBJECTS:
             obj = token
         elif token in CARDINALS:
             target = token
     if not action:
-        print("Please provide a command.")
+        print("Please provide a command.\n\
+              Try 'help' for a list of available commands.")
         return State.GAME
     if action == "quit":
         return _safe_quit()
@@ -65,6 +100,9 @@ def _game_evaluate(tokens):
         return State.SAVE
     if action == "load":
         return State.LOAD
+    if action == "help":
+        _game_helper(target)
+        return State.GAME
         #Validation Needed For Objects Objects and Targets
     ge.user_command((action, obj.title(), target.title()))
     return State.GAME
@@ -79,17 +117,21 @@ def _load_evaluate(path):
 
 
 def _save_evaluate():
+    print("Saving Game...")
     ge.saving()
-    return State.GAME
+    return State.MENU
 
 
 def _safe_quit():
     print("Would you like to save the game?")
-    response = input("y/n\n>")
+    response = input("y/n\n>").casefold()
     if response == "y":
         return State.SAVE
-    else:
+    elif response == "n":
+        print("Returning to Main Menu.")
         return State.MENU
+    else:
+        print("Invalid Response.\nReturning to Game")
 
 
 def _quit_dork():
@@ -100,6 +142,15 @@ def _quit_dork():
 def _print_load():
     print("Select a save game and hit enter to start!")
 
+
+def _game_helper(command):
+    if not command:
+        print(COMMANDDICT["help"])
+        print("List of in game commands.")
+        for commands in COMMANDDICT:
+            print(commands)
+    else:
+        print(COMMANDDICT[command])
 
 def evaluate(command, state):
     """command evaluating method in repl
@@ -138,3 +189,5 @@ class State(Enum):
     LOAD = 3
     SAVE = 4
     QUIT = 5
+    MISSINGOBJ = 6
+    MISSINGTARGET = 7
