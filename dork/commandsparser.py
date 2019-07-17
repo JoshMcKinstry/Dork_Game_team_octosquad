@@ -36,6 +36,7 @@ def _menu_evaluate(tokens):
         return State.MENU
     elif "new" in tokens:
         print("\nStarting the game of 'Dork'.\n")
+        evaluate("./dork/game.yml", State.LOAD)
         return State.GAME
     else:
         print("Please input a valid command!\nTry 'help' for more options.")
@@ -55,14 +56,11 @@ def _game_evaluate(tokens):
             obj = token
         elif token in CARDINALS:
             target = token
-    if len(action) == 0:
+    if not action:
         print("Please provide a command.")
         return State.GAME
     if action == "quit":
-        _quit_dork()
-    if obj == target:
-        print("You can't {} {} on {}".format(action, obj, target))
-        return State.GAME
+        return _safe_quit()
     ge.user_command((action, obj.title(), target.title()))
     return State.GAME
 
@@ -77,6 +75,15 @@ def _load_evaluate(path):
 
 def _save_evaluate(tokens):
     print()
+
+
+def _safe_quit():
+    print("Would you like to save the game?")
+    response = input("y/n\n>")
+    if response == "y":
+        return State.SAVE
+    else:
+        return State.MENU
 
 
 def _quit_dork():
