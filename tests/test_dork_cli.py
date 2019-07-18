@@ -5,6 +5,7 @@ from unittest.mock import patch
 import pytest
 import dork.cli as cli
 
+
 # pylint: disable=protected-access
 def test_repl_exists():
     """the dork repl should exist
@@ -74,6 +75,7 @@ def test_safe_quit(run, inputs):
     output, _, _ = run(cli._safe_quit, input_side_effect=[inputs])
     assert "Would you like to save" in output, "game should ask if game should be saved"
 
+
 def test_repl(run):
     """Test that game can start and quit
     """
@@ -88,6 +90,7 @@ def test_print_info(run):
     """
     output, _, _ = run(cli._print_info)
     assert "What is Dork" in output, "game should have a description"
+
 
 @pytest.mark.parametrize('command', ['', 'move', 'use'])
 def test_game_helper(run, command):
@@ -115,6 +118,7 @@ def test_menu_evaluates_info(run):
     output, _, _ = run(cli._menu_evaluate, ["info"])
     assert "What is Dork" in output, "menu should accept 'info' as a command"
 
+
 @pytest.mark.parametrize('state', [(5), (3), (1)])
 def test_cli_state_changes(run, state):
     """Test that quit and load change states and that menu is printed when returned to
@@ -130,6 +134,7 @@ def test_cli_state_changes(run, state):
             output, _, _ = run(cli.repl, input_side_effect=['help', 'quit'])
             assert "Welcome" in output
 
+
 def test_game_evaluates_quit(run):
     """Test that when game quits, it asks player to save first
     """
@@ -138,6 +143,7 @@ def test_game_evaluates_quit(run):
     assert "Invalid Response" in output
 
 
+'''
 #def test_menu_through_repl(run):
 #    """Test
 #    """
@@ -150,3 +156,4 @@ def test_game_evaluates_quit(run):
 #    with assertRaises(SystemExit):
 #        output, _, _ = run(cli._quit_dork)
 #        assert output == "Leaving Dork...\n\n"
+'''
