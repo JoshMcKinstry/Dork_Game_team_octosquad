@@ -40,7 +40,7 @@ USAGE: 'examine' [item]",
                "use": "---USE---\n\
 Use a key on a door.\n\
 USAGE: 'use' [item] on [direction]\n{}\
-see also - 'help open'\n".format(DIRECTIONS),}
+see also - 'help open'\n".format(DIRECTIONS), }
 CARDINALS = ['north', 'east', 'south', 'west']
 OBJECTS = ['cage', 'cellphone', 'dean-badge', 'donut',
            'flower', 'flyer', 'freshman-badge',
@@ -119,6 +119,7 @@ def evaluate(command, state):
         function = _save_evaluate()
     return function
 
+
 def _load_evaluate(path):
     """token evaluater for the load screen state
     """
@@ -136,7 +137,6 @@ def _save_evaluate():
 def _menu_evaluate(tokens):
     """token evaluater for the main menu state
     """
-    # new load help quit
     if "quit" in tokens:
         _quit_dork()
     if "load" in tokens:
@@ -183,7 +183,6 @@ def _game_evaluate(tokens):
     if action == "help":
         _game_helper(target)
         return State.GAME
-        #Validation Needed For Objects Objects and Targets
     ge.user_command((action, obj.title(), target.title()))
     return State.GAME
 

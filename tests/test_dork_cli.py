@@ -5,7 +5,7 @@ from unittest.mock import patch
 import pytest
 import dork.cli as cli
 
-# pylint: disable=protected-access
+
 def test_repl_exists():
     """the dork repl should exist
     """
@@ -152,17 +152,3 @@ def test_game_gives_help(run):
     with patch('dork.cli._game_helper') as helping:
         run(cli._game_evaluate, ['help', 'move'])
         helping.assert_called_with('move')
-
-
-#def test_menu_through_repl(run):
-#    """Test
-#    """
-#    with patch('dork.cli._load_evaluate', return_value=3):
-#        output, _, _ = run(cli.repl, input_side_effect=['load', 'path', 'quit', 'quit'])
-#    assert "Loading" in output, "menu should load previous save and then quit the game"
-
-# https://stackoverflow.com/questions/15672151/is-it-possible-for-a-unit-test-to-assert-that-a-method-calls-sys-exit
-#def test_quit_dork(run):
-#    with assertRaises(SystemExit):
-#        output, _, _ = run(cli._quit_dork)
-#        assert output == "Leaving Dork...\n\n"
