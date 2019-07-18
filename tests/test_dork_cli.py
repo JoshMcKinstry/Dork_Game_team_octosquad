@@ -82,6 +82,13 @@ def test_repl(run):
         assert "Welcome to the Game" in output, "game should start from menu"
         assert "Leaving Dork" in output, "game should quit from menu"
 
+
+def test_print_info(run):
+    """Test that description of game is printed out
+    """
+    output, _, _ = run(cli._print_info)
+    assert "What is Dork" in output, "game should have a description"
+
 #def test_menu_through_repl(run):
 #    """Test
 #    """
