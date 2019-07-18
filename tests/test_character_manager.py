@@ -79,6 +79,7 @@ def test_remove_item_from_inventory():
     character_m.remove_item_from_inventory('Flower')
     assert character_m.DICT_CHARACTERS['Player'].inventory == ['Donut']
 
+
 def test_yaml_representation():
     """
     Test for the yaml representation method

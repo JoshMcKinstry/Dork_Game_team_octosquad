@@ -40,6 +40,7 @@ def test_item_description():
     assert item_m.item_description('donut') == 'This is a donut'
     assert item_m.item_description('donut') != 'ewfwefwefe'
 
+
 def test_yaml_representation():
     """
     Test for the yaml representation method

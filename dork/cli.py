@@ -88,10 +88,10 @@ def _print_info():
         What is Dork?\n\
         Dork is an interactive text-based adventure game that takes place\n\
         in MSU Denver in the year 2040, where a new dean has been initiated\n\
-        into office. The dean has been known for his hatred of birds, usually\n\
-        hunting them for fun and putting them into cages around the campus. He\n\
-        recently caught a roadrunner and plans to give it to exterminators. It's\n\
-        up to you to save MSU Denver's mascot.")
+        into office. The dean has been known for his hatred of birds,\n\
+        hunting them for fun and putting them into cages around the campus.\n\
+        He recently caught a roadrunner and plans to give it to exterminators.\n\
+        It`s up to you to save MSU Denver's mascot.")
 
 
 def _game_helper(command):
@@ -172,7 +172,8 @@ def _game_evaluate(tokens):
         elif token in CARDINALS or token in COMMANDDICT:
             target = token
     if not action:
-        print("Please provide a command.\nTry 'help' for a list of available commands.")
+        print("Please provide a command")
+        print("Try 'help' for a list of available commands.")
         return State.GAME
     if action == "quit":
         return _safe_quit()
