@@ -92,9 +92,11 @@ def test_print_info(run):
 
 
 @pytest.mark.parametrize('command', ['', 'move', 'use'])
-def test_game_helper(run, command):
+def test_game_helper(run, command, menu, load):
     """Test that game prints help messages
     """
+    menu.return_value = None
+    load.return_value = None
     output, _, _ = run(cli.game_helper, command)
     if command == '':
         assert "List of in game commands" in output, "help should pop up"
@@ -102,7 +104,6 @@ def test_game_helper(run, command):
         assert "MOVE" in output, "help move should print 'move' help message"
     elif command == 'use':
         assert "USE" in output, "help use should print 'move' help message"
-
 
 def test_save_evaluate(run):
     """Test that saving prints message
@@ -127,8 +128,8 @@ def test_cli_state_changes(run, state):
             output, _, _ = run(cli.repl, input_side_effect=['quit'])
             assert "Leaving Dork" in output
         elif state == 3:
-           effect = ['load', 'path' 'quit']
-           output, _, _ = run(cli.repl, input_side_effect= effect)
+           effect = 
+           output, _, _ = run(cli.repl, input_side_effect=['load', 'path' 'quit'])
            assert "Loading" in output
         elif state == 1:
             output, _, _ = run(cli.repl, input_side_effect=['help', 'quit'])
