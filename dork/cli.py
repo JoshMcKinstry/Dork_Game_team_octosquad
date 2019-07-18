@@ -213,14 +213,14 @@ def repl():
     """repl for dork game
     """
     state = State.MENU
-    _print_menu()
+    print_menu()
     while True:
         command = read()
         state = evaluate(command, state)
         if state == State.QUIT:
-            _quit_dork()
+            quit_dork()
         if state == State.LOAD:
-            _print_load()
+            print_load()
         if state == State.MENU:
             print_menu()
 
