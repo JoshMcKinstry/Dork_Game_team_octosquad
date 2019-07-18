@@ -4,6 +4,7 @@ from types import FunctionType
 from unittest.mock import patch
 import pytest
 import dork.cli as cli
+import dork
 
 # pylint: disable=protected-access
 def test_repl_exists():
@@ -136,6 +137,14 @@ def test_game_evaluates_quit(run):
     output, _, _ = run(cli._game_evaluate, ['quit'], input_side_effect=['bad'])
     assert "Would you like to save the game" in output
     assert "Invalid Response" in output
+
+
+def test_game_evaluates_full_command(run):
+    """Test that the game evaluator calls the game engine
+    """
+    with patch('dork.game_engine.user_command') as called:
+        run(cli._game_evaluate, ['move', 'north'])
+        called.assert_called_with(('move', '', 'North'))
 
 
 #def test_menu_through_repl(run):
