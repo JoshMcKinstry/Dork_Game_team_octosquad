@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Dork Game main run-script.
 """
-import sys
-from dork.cli import main
+import dork.cli as cli
 
-main(*sys.argv)
+if __name__ == '__main__':
+    cli.repl()
