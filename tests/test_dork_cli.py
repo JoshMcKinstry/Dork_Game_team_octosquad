@@ -105,6 +105,7 @@ def test_game_helper(run, command, menu, load):
     elif command == 'use':
         assert "USE" in output, "help use should print 'move' help message"
 
+
 def test_save_evaluate(run):
     """Test that saving prints message
     """
@@ -128,9 +129,9 @@ def test_cli_state_changes(run, state):
             output, _, _ = run(cli.repl, input_side_effect=['quit'])
             assert "Leaving Dork" in output
         elif state == 3:
-           effect = 
-           output, _, _ = run(cli.repl, input_side_effect=['load', 'path' 'quit'])
-           assert "Loading" in output
+            ran = run(cli.repl, input_side_effect=['load', 'path' 'quit'])
+            output, _, _ = ran
+            assert "Loading" in output
         elif state == 1:
             output, _, _ = run(cli.repl, input_side_effect=['help', 'quit'])
             assert "Welcome" in output
