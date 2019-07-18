@@ -105,7 +105,7 @@ def print_info():
         in MSU Denver in the year 2040, where a new dean has been initiated\n\
         into office. The dean has been known for his hatred of birds,\n\
         hunting them for fun and putting them into cages around the campus.\n\
-        He recently caught a roadrunner and plans to give it to exterminators.\n\
+        He caught a roadrunner and plans to give it to exterminators.\n\
         It`s up to you to save MSU Denver's mascot.")
 
 

@@ -118,19 +118,6 @@ def test_menu_evaluates_info(run):
     assert "What is Dork" in output, "menu should accept 'info' as a command"
 
 
-@pytest.mark.parametrize('state', [(5), (3), (1)])
-def test_cli_state_changes(run, state):
-    """Test that quit and load change states and that menu
-    """
-    with pytest.raises(SystemExit):
-        if state == 5:
-            output, _, _ = run(cli.repl, input_side_effect=['quit'])
-            assert "Leaving Dork" in output
-        elif state == 1:
-            output, _, _ = run(cli.repl, input_side_effect=['help', 'quit'])
-            assert "Welcome" in output
-
-
 def test_game_evaluates_quit(run):
     """Test that when game quits, it asks player to save first
     """
