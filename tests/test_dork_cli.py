@@ -89,6 +89,32 @@ def test_print_info(run):
     output, _, _ = run(cli._print_info)
     assert "What is Dork" in output, "game should have a description"
 
+@pytest.mark.parametrize('command', ['', 'move', 'use'])
+def test_game_helper(run, command):
+    """Test that game prints help messages
+    """
+    output, _, _ = run(cli._game_helper, command)
+    if command == '':
+        assert "List of in game commands" in output, "help should return command list"
+    elif command == 'move':
+        assert "MOVE" in output, "help move should print 'move' help message"
+    elif command == 'use':
+        assert "USE" in output, "help use should print 'move' help message"
+
+
+def test_save_evaluate(run):
+    """Test that saving prints message
+    """
+    output, _, _ = run(cli._save_evaluate)
+    assert "Saving Game" in output, "game should notify player that game is saving"
+
+
+def test_menu_evaluates_info(run):
+    """Test that the menu evaluates the 'info' command
+    """
+    output, _, _ = run(cli._menu_evaluate, ["info"])
+    assert "What is Dork" in output, "menu should accept 'info' as a command"
+
 #def test_menu_through_repl(run):
 #    """Test
 #    """
