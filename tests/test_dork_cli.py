@@ -91,8 +91,8 @@ def test_print_info(run):
     assert "What is Dork" in output, "game should have a description"
 
 #
-#@pytest.mark.parametrize('command', ['', 'move', 'use'])
-#def test_game_helper(run, command, menu, load):
+# @pytest.mark.parametrize('command', ['', 'move', 'use'])
+# def test_game_helper(run, command, menu, load):
 #    """Test that game prints help messages
 #    """
 #    menu.return_value = None
