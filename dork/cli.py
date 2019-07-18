@@ -73,6 +73,7 @@ def _quit_dork():
 def _print_load():
     print("Loading previous checkpoint...")
 
+
 def _print_menu():
     print("Welcome to the Game of Dork!\n\
         -- NEW\n\
@@ -87,6 +88,7 @@ def _print_info():
         What is Dork?\n\
         ")
 
+
 def _game_helper(command):
     if not command:
         print(COMMANDDICT["help"])
@@ -95,6 +97,7 @@ def _game_helper(command):
             print(commands)
     else:
         print(COMMANDDICT[command])
+
 
 def evaluate(command, state):
     """command evaluating method in repl

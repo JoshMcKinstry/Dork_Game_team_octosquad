@@ -56,6 +56,7 @@ def loading_player(data):
     (position, inventory) = game_data.load_player(data)
     char_m.assembling_player(position, inventory)
 
+
 def saving():
     """
     Saving your progress at any given time
@@ -68,6 +69,7 @@ def saving():
     saved_data.update(saved_char)
     saved_data.update(saved_items)
     loader.writing_yml(saved_data, './dork/state files/last_checkpoint.yml')
+
 
 def user_command(command):
     """

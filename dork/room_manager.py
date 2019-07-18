@@ -129,7 +129,7 @@ def __description_yaml_representation():
     """
     Creates a yaml friendly representation of the set of descriptions
     """
-    descrip_repr = {'Rooms Descriptions': DICT_DESCRIPTIONS}     
+    descrip_repr = {'Rooms Descriptions': DICT_DESCRIPTIONS}
     return descrip_repr
 
 
