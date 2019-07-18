@@ -83,7 +83,7 @@ def print_menu():
         -- QUIT")
 
 
-def _print_info():
+def print_info():
     print("-----------------------------------------------------\n\
         What is Dork?\n\
         Dork is an interactive text-based adventure game that takes place\n\
@@ -134,7 +134,7 @@ def save_evaluate():
     return State.MENU
 
 
-def _menu_evaluate(tokens):
+def menu_evaluate(tokens):
     """token evaluater for the main menu state
     """
     if "quit" in tokens:
@@ -176,7 +176,7 @@ def game_evaluate(tokens):
         print("Try 'help' for a list of available commands.")
         return State.GAME
     if action == "quit":
-        return _safe_quit()
+        return safe_quit()
     if action == "save":
         return State.SAVE
     if action == "load":
