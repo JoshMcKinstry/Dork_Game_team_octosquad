@@ -92,8 +92,7 @@ def _game_evaluate(tokens):
         elif token in CARDINALS:
             target = token
     if not action:
-        print("Please provide a command.\n\
-              Try 'help' for a list of available commands.")
+        print("Please provide a command.\nTry 'help' for a list of available commands.")
         return State.GAME
     if action == "quit":
         return _safe_quit()

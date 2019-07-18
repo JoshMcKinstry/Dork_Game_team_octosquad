@@ -70,7 +70,7 @@ def test_menu_evaluate(run):
 
 def test_game_evaluate(run):
     output, _, _ = run(parser._game_evaluate, ['notaction'])
-    assert output == ("Please provide a command.\n")
+    assert output == ("Please provide a command.\nTry 'help' for a list of available commands.\n")
 
 def test_safe_quit(run):
     output, _, _ = run(parser._safe_quit)
