@@ -130,6 +130,14 @@ def test_cli_state_changes(run, state):
             output, _, _ = run(cli.repl, input_side_effect=['help', 'quit'])
             assert "Welcome" in output
 
+def test_game_evaluates_quit(run):
+    """Test that when game quits, it asks player to save first
+    """
+    output, _, _ = run(cli._game_evaluate, ['quit'], input_side_effect=['bad'])
+    assert "Would you like to save the game" in output
+    assert "Invalid Response" in output
+
+
 #def test_menu_through_repl(run):
 #    """Test
 #    """
