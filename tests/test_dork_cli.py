@@ -115,6 +115,21 @@ def test_menu_evaluates_info(run):
     output, _, _ = run(cli._menu_evaluate, ["info"])
     assert "What is Dork" in output, "menu should accept 'info' as a command"
 
+@pytest.mark.parametrize('state', [(5), (3), (1)])
+def test_cli_state_changes(run, state):
+    """Test that quit and load change states and that menu is printed when returned to
+    """
+    with pytest.raises(SystemExit):
+        if state == 5:
+            output, _, _ = run(cli.repl, input_side_effect=['quit'])
+            assert "Leaving Dork" in output
+        elif state == 3:
+            output, _, _ = run(cli.repl, input_side_effect=['load', 'path', 'quit'])
+            assert "Loading" in output
+        elif state == 1:
+            output, _, _ = run(cli.repl, input_side_effect=['help', 'quit'])
+            assert "Welcome" in output
+
 #def test_menu_through_repl(run):
 #    """Test
 #    """
