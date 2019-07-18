@@ -40,7 +40,7 @@ USAGE: 'examine' [item]",
                "use": "---USE---\n\
 Use a key on a door.\n\
 USAGE: 'use' [item] on [direction]\n{}\
-see also - 'help open'\n".format(DIRECTIONS), }
+see also - 'help open'\n".format(DIRECTIONS),}
 CARDINALS = ['north', 'east', 'south', 'west']
 OBJECTS = ['cage', 'cellphone', 'dean-badge', 'donut',
            'flower', 'flyer', 'freshman-badge',
@@ -53,10 +53,7 @@ def read():
     return input("> ")
 
 
-def safe_quit():
-    """
-    Leaving the game
-    """
+def _safe_quit():
     print("Would you like to save the game?(y/n)")
     response = input(">").casefold()
     if response == "y":
@@ -68,25 +65,16 @@ def safe_quit():
     return State.GAME
 
 
-def quit_dork():
-    '''
-    Quitting Dork
-    '''
+def _quit_dork():
     print("Leaving Dork...\n\n")
     sys.exit()
 
 
-def print_load():
-    """
-    Print Load
-    """
+def _print_load():
     print("Loading previous checkpoint...")
 
 
-def print_menu():
-    """
-    Print Menu
-    """
+def _print_menu():
     print("Welcome to the Game of Dork!\n\
         -- NEW\n\
         -- LOAD\n\
@@ -95,24 +83,18 @@ def print_menu():
         -- QUIT")
 
 
-def print_info():
-    """
-    Print Info
-    """
+def _print_info():
     print("-----------------------------------------------------\n\
         What is Dork?\n\
         Dork is an interactive text-based adventure game that takes place\n\
         in MSU Denver in the year 2040, where a new dean has been initiated\n\
-        into office. The dean has been known for his hatred of birds,\n\
-        hunting them for fun and putting them into cages around the campus.\n\
-        He caught a roadrunner and plans to give it to exterminators.\n\
-        It`s up to you to save MSU Denver's mascot.")
+        into office. The dean has been known for his hatred of birds, usually\n\
+        hunting them for fun and putting them into cages around the campus. He\n\
+        recently caught a roadrunner and plans to give it to exterminators. It's\n\
+        up to you to save MSU Denver's mascot.")
 
 
-def game_helper(command):
-    """
-    Helper Command
-    """
+def _game_helper(command):
     if not command:
         print(COMMANDDICT["help"])
         print("List of in game commands.")
@@ -128,17 +110,16 @@ def evaluate(command, state):
     # https://docs.python.org/3/tutorial/datastructures.html
     word_list = [words.casefold() for words in command.split()]
     if state == State.MENU:
-        function = menu_evaluate(word_list)
+        return _menu_evaluate(word_list)
     if state == State.GAME:
-        function = game_evaluate(word_list)
+        return _game_evaluate(word_list)
     if state == State.LOAD:
-        function = load_evaluate(command)
+        return _load_evaluate(command)
     if state == State.SAVE:
-        function = save_evaluate()
-    return function
+        return _save_evaluate()
 
 
-def load_evaluate(path):
+def _load_evaluate(path):
     """token evaluater for the load screen state
     """
     if ge.game_loader(path):
@@ -146,20 +127,18 @@ def load_evaluate(path):
     return State.MENU
 
 
-def save_evaluate():
-    """
-    Saving State
-    """
+def _save_evaluate():
     print("Saving Game...")
     ge.saving()
     return State.MENU
 
 
-def menu_evaluate(tokens):
+def _menu_evaluate(tokens):
     """token evaluater for the main menu state
     """
+    # new load help quit
     if "quit" in tokens:
-        quit_dork()
+        _quit_dork()
     if "load" in tokens:
         return State.LOAD
     if "help" in tokens:
@@ -173,13 +152,13 @@ def menu_evaluate(tokens):
         print("\nStarting the game of 'Dork'.\n")
         return evaluate("./dork/state files/game.yml", State.LOAD)
     if "info" in tokens:
-        print_info()
+        _print_info()
         return State.MENU
     print("Please input a valid command!\nTry 'help' for more options.")
     return State.MENU
 
 
-def game_evaluate(tokens):
+def _game_evaluate(tokens):
     """token evaluater for the in-game state
     """
     action = ""
@@ -193,18 +172,18 @@ def game_evaluate(tokens):
         elif token in CARDINALS or token in COMMANDDICT:
             target = token
     if not action:
-        print("Please provide a command)\n")
-        print("Try 'help' for a list of available commands.")
+        print("Please provide a command.\nTry 'help' for a list of available commands.")
         return State.GAME
     if action == "quit":
-        return safe_quit()
+        return _safe_quit()
     if action == "save":
         return State.SAVE
     if action == "load":
         return State.LOAD
     if action == "help":
-        game_helper(target)
+        _game_helper(target)
         return State.GAME
+        #Validation Needed For Objects Objects and Targets
     ge.user_command((action, obj.title(), target.title()))
     return State.GAME
 
@@ -213,16 +192,16 @@ def repl():
     """repl for dork game
     """
     state = State.MENU
-    print_menu()
+    _print_menu()
     while True:
         command = read()
         state = evaluate(command, state)
         if state == State.QUIT:
-            quit_dork()
+            _quit_dork()
         if state == State.LOAD:
-            print_load()
+            _print_load()
         if state == State.MENU:
-            print_menu()
+            _print_menu()
 
 
 class State(Enum):
