@@ -53,7 +53,7 @@ def read():
     return input("> ")
 
 
-def _safe_quit():
+def safe_quit():
     print("Would you like to save the game?(y/n)")
     response = input(">").casefold()
     if response == "y":
@@ -65,16 +65,16 @@ def _safe_quit():
     return State.GAME
 
 
-def _quit_dork():
+def quit_dork():
     print("Leaving Dork...\n\n")
     sys.exit()
 
 
-def _print_load():
+def print_load():
     print("Loading previous checkpoint...")
 
 
-def _print_menu():
+def print_menu():
     print("Welcome to the Game of Dork!\n\
         -- NEW\n\
         -- LOAD\n\
@@ -94,7 +94,7 @@ def _print_info():
         It`s up to you to save MSU Denver's mascot.")
 
 
-def _game_helper(command):
+def game_helper(command):
     if not command:
         print(COMMANDDICT["help"])
         print("List of in game commands.")
@@ -110,17 +110,17 @@ def evaluate(command, state):
     # https://docs.python.org/3/tutorial/datastructures.html
     word_list = [words.casefold() for words in command.split()]
     if state == State.MENU:
-        function = _menu_evaluate(word_list)
+        function = menu_evaluate(word_list)
     if state == State.GAME:
-        function = _game_evaluate(word_list)
+        function = game_evaluate(word_list)
     if state == State.LOAD:
-        function = _load_evaluate(command)
+        function = load_evaluate(command)
     if state == State.SAVE:
-        function = _save_evaluate()
+        function = save_evaluate()
     return function
 
 
-def _load_evaluate(path):
+def load_evaluate(path):
     """token evaluater for the load screen state
     """
     if ge.game_loader(path):
@@ -128,7 +128,7 @@ def _load_evaluate(path):
     return State.MENU
 
 
-def _save_evaluate():
+def save_evaluate():
     print("Saving Game...")
     ge.saving()
     return State.MENU
@@ -138,7 +138,7 @@ def _menu_evaluate(tokens):
     """token evaluater for the main menu state
     """
     if "quit" in tokens:
-        _quit_dork()
+        quit_dork()
     if "load" in tokens:
         return State.LOAD
     if "help" in tokens:
@@ -152,13 +152,13 @@ def _menu_evaluate(tokens):
         print("\nStarting the game of 'Dork'.\n")
         return evaluate("./dork/state files/game.yml", State.LOAD)
     if "info" in tokens:
-        _print_info()
+        print_info()
         return State.MENU
     print("Please input a valid command!\nTry 'help' for more options.")
     return State.MENU
 
 
-def _game_evaluate(tokens):
+def game_evaluate(tokens):
     """token evaluater for the in-game state
     """
     action = ""
@@ -182,7 +182,7 @@ def _game_evaluate(tokens):
     if action == "load":
         return State.LOAD
     if action == "help":
-        _game_helper(target)
+        game_helper(target)
         return State.GAME
     ge.user_command((action, obj.title(), target.title()))
     return State.GAME
@@ -192,16 +192,16 @@ def repl():
     """repl for dork game
     """
     state = State.MENU
-    _print_menu()
+    print_menu()
     while True:
         command = read()
         state = evaluate(command, state)
         if state == State.QUIT:
-            _quit_dork()
+            quit_dork()
         if state == State.LOAD:
-            _print_load()
+            print_load()
         if state == State.MENU:
-            _print_menu()
+            print_menu()
 
 
 class State(Enum):

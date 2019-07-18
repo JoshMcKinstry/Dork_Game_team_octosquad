@@ -41,7 +41,7 @@ def test_read_takes_any_input(expected, actual):
     with patch('builtins.input', return_value=actual, autospec=True):
         assert cli.read() == expected
 
-'''
+
 def test_print_load(run):
     """Test _print_load outputs correctly
     """
@@ -140,4 +140,3 @@ def test_game_evaluates_quit(run):
     output, _, _ = run(cli.game_evaluate, ['quit'], input_side_effect=['bad'])
     assert "Would you like to save the game" in output
     assert "Invalid Response" in output
-'''
