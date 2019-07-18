@@ -66,17 +66,21 @@ def test_game_evaluate(run):
     output, _, _ = run(cli._game_evaluate, ['notaction'])
     assert "Please provide a command" in output, "bad commands in game should be handled"
 
-def test_safe_quit(run):
+
+@pytest.mark.parametrize('inputs', [('y'), ('n'), ('bad')])
+def test_safe_quit(run, inputs):
     """Test
     """
-    output, _, _ = run(cli._safe_quit)
+    output, _, _ = run(cli._safe_quit, input_side_effect=[inputs])
     assert "Would you like to save" in output, "game should ask if game should be saved"
 
-#def test_repl(run):
-#    """Test
-#    """
-#    output, _, _ = run(cli.repl, input_side_effect=['quit'])
-#    assert "Leaving Dork" in output, "game should start and quit from menu"
+def test_repl(run):
+    """Test that game can start and quit
+    """
+    with pytest.raises(SystemExit):
+        output, _, _ = run(cli.repl, input_side_effect=['quit'])
+        assert "Welcome to the Game" in output, "game should start from menu"
+        assert "Leaving Dork" in output, "game should quit from menu"
 
 #def test_menu_through_repl(run):
 #    """Test
