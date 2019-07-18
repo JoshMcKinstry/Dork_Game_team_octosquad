@@ -86,10 +86,7 @@ Items:
 Player:
   Inventory:
   - Help Guide
-  - Paper
-  - Cage
-  - Freshman-Badge
-  Position: Dean Office
+  Position: Entrance
 Rooms:
   Bird Nest:
     Door:
@@ -121,7 +118,10 @@ Rooms:
       Cardinal: East
       State: Closed
       Status: Freshman-Badge
-    Items: []
+    Items:
+    - Paper
+    - Cage
+    - Freshman-Badge
     Neighbors:
       East: Hallway
       North: null

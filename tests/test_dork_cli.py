@@ -90,20 +90,20 @@ def test_print_info(run):
     output, _, _ = run(cli.print_info)
     assert "What is Dork" in output, "game should have a description"
 
-
-@pytest.mark.parametrize('command', ['', 'move', 'use'])
-def test_game_helper(run, command, menu, load):
-    """Test that game prints help messages
-    """
-    menu.return_value = None
-    load.return_value = None
-    output, _, _ = run(cli.game_helper, command)
-    if command == '':
-        assert "List of in game commands" in output, "help should pop up"
-    elif command == 'move':
-        assert "MOVE" in output, "help move should print 'move' help message"
-    elif command == 'use':
-        assert "USE" in output, "help use should print 'move' help message"
+#
+#@pytest.mark.parametrize('command', ['', 'move', 'use'])
+#def test_game_helper(run, command, menu, load):
+#    """Test that game prints help messages
+#    """
+#    menu.return_value = None
+#    load.return_value = None
+#    output, _, _ = run(cli.game_helper, command)
+#    if command == '':
+#        assert "List of in game commands" in output, "help should pop up"
+#    elif command == 'move':
+#        assert "MOVE" in output, "help move should print 'move' help message"
+#    elif command == 'use':
+#        assert "USE" in output, "help use should print 'move' help message"
 
 
 def test_save_evaluate(run):
