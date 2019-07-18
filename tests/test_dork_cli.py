@@ -126,9 +126,6 @@ def test_cli_state_changes(run, state):
         if state == 5:
             output, _, _ = run(cli.repl, input_side_effect=['quit'])
             assert "Leaving Dork" in output
-        elif state == 3:
-            output, _, _ = run(cli.repl, input_side_effect=['load', 'quit'])
-            assert "Loading" in output
         elif state == 1:
             output, _, _ = run(cli.repl, input_side_effect=['help', 'quit'])
             assert "Welcome" in output

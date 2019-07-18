@@ -54,6 +54,9 @@ def read():
 
 
 def safe_quit():
+    """
+    Leaving the game
+    """
     print("Would you like to save the game?(y/n)")
     response = input(">").casefold()
     if response == "y":
@@ -66,15 +69,24 @@ def safe_quit():
 
 
 def quit_dork():
+    '''
+    Quitting Dork
+    '''
     print("Leaving Dork...\n\n")
     sys.exit()
 
 
 def print_load():
+    """
+    Print Load
+    """
     print("Loading previous checkpoint...")
 
 
 def print_menu():
+    """
+    Print Menu
+    """
     print("Welcome to the Game of Dork!\n\
         -- NEW\n\
         -- LOAD\n\
@@ -84,6 +96,9 @@ def print_menu():
 
 
 def print_info():
+    """
+    Print Info
+    """
     print("-----------------------------------------------------\n\
         What is Dork?\n\
         Dork is an interactive text-based adventure game that takes place\n\
@@ -95,6 +110,9 @@ def print_info():
 
 
 def game_helper(command):
+    """
+    Helper Command
+    """
     if not command:
         print(COMMANDDICT["help"])
         print("List of in game commands.")
@@ -129,6 +147,9 @@ def load_evaluate(path):
 
 
 def save_evaluate():
+    """
+    Saving State
+    """
     print("Saving Game...")
     ge.saving()
     return State.MENU
