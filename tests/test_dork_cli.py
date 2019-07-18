@@ -4,7 +4,6 @@ from types import FunctionType
 from unittest.mock import patch
 import pytest
 import dork.cli as cli
-import dork
 
 # pylint: disable=protected-access
 def test_repl_exists():

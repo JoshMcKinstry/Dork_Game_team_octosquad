@@ -39,3 +39,13 @@ def test_item_description():
     item_m.assembling_items(list_item, list_description, list_property)
     assert item_m.item_description('donut') == 'This is a donut'
     assert item_m.item_description('donut') != 'ewfwefwefe'
+
+def test_yaml_representation():
+    """
+    Test for the yaml representation method
+    """
+    list_item = ['donut']
+    list_description = ['This is a donut']
+    list_property = ['openable']
+    item_m.assembling_items(list_item, list_description, list_property)
+    assert isinstance(item_m.items_yaml_representation(), dict)
