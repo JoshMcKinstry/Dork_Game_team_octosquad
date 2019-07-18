@@ -15,13 +15,13 @@ class TestValidMaze(unittest.TestCase):
         """
         Testing the data loading method.
         """
-        _d = 'This is the description'
+        descrps = {'Entrance': 'This is the description'}
         _c = ['Paper', 'Donut']
         _b = {'Cardinal': 'North', 'Status': 'Dean Badge', 'State': 'Closed'}
         _a = {'North': 'Trail', 'East': None, 'South': None, 'West': 'Lake'}
-        room_1 = {'Neighbors': _a, 'Door': _b, 'Items': _c, 'Description': _d}
-        rooms = {'room_1': room_1}
-        data = {'Rooms': rooms}
+        room_1 = {'Neighbors': _a, 'Door': _b, 'Items': _c}
+        rooms = {'Entrance': room_1}
+        data = {'Rooms': rooms, 'Rooms Descriptions': descrps}
         self.assertIsNone(engine.loading_map(data))
 
     def test_loading_item(self):
