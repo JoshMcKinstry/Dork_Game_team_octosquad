@@ -147,6 +147,14 @@ def test_game_evaluates_full_command(run):
         called.assert_called_with(('move', '', 'North'))
 
 
+def test_game_gives_help(run):
+    """Test that the game provides help to players
+    """
+    with patch('dork.cli._game_helper') as helping:
+        run(cli._game_evaluate, ['help', 'move'])
+        helping.assert_called_with('move')
+
+
 #def test_menu_through_repl(run):
 #    """Test
 #    """
