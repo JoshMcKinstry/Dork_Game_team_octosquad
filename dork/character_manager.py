@@ -61,6 +61,6 @@ def player_yaml_representation():
     """
     inventory = DICT_CHARACTERS['Player'].inventory
     position = DICT_CHARACTERS['Player'].position
-    player = {'Inventory': inventory, 'Position' : position}
+    player = {'Inventory': inventory, 'Position': position}
     player_repr = {'Player': player}
     return player_repr

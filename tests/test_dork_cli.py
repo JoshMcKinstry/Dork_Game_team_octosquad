@@ -53,18 +53,18 @@ def test_menu_evaluate(run):
     """Test the menu evaluate method
     """
     output, _, _ = run(cli._menu_evaluate, ['help'])
-    assert "Main Menu Commands" in output, "help command should provide helpful messages"
+    assert "Main Menu Commands" in output, "help will provide messages"
     output, _, _ = run(cli._menu_evaluate, ['new'])
-    assert "Starting the game" in output, "new command should start a new game"
+    assert "Starting the game" in output, "new command will start game"
     output, _, _ = run(cli._menu_evaluate, ['impossible'])
-    assert "Please input a valid command" in output, "bad commands should be handled"
+    assert "Please input a valid command" in output, "no bad commands allowed"
 
 
 def test_game_evaluate(run):
     """Test
     """
     output, _, _ = run(cli._game_evaluate, ['notaction'])
-    assert "Please provide a command" in output, "bad commands in game should be handled"
+    assert "Please provide a command" in output, "bad commands handling"
 
 
 @pytest.mark.parametrize('inputs', [('y'), ('n'), ('bad')])
@@ -72,7 +72,7 @@ def test_safe_quit(run, inputs):
     """Test
     """
     output, _, _ = run(cli._safe_quit, input_side_effect=[inputs])
-    assert "Would you like to save" in output, "game should ask if game should be saved"
+    assert "Would you like to save" in output, "game saving"
 
 
 def test_repl(run):
@@ -97,7 +97,7 @@ def test_game_helper(run, command):
     """
     output, _, _ = run(cli._game_helper, command)
     if command == '':
-        assert "List of in game commands" in output, "help should return command list"
+        assert "List of in game commands" in output, "help should pop up"
     elif command == 'move':
         assert "MOVE" in output, "help move should print 'move' help message"
     elif command == 'use':
@@ -108,7 +108,7 @@ def test_save_evaluate(run):
     """Test that saving prints message
     """
     output, _, _ = run(cli._save_evaluate)
-    assert "Saving Game" in output, "game should notify player that game is saving"
+    assert "Saving Game" in output, "game should notify player that is saving"
 
 
 def test_menu_evaluates_info(run):
@@ -120,14 +120,15 @@ def test_menu_evaluates_info(run):
 
 @pytest.mark.parametrize('state', [(5), (3), (1)])
 def test_cli_state_changes(run, state):
-    """Test that quit and load change states and that menu is printed when returned to
+    """Test that quit and load change states and that menu
     """
     with pytest.raises(SystemExit):
         if state == 5:
             output, _, _ = run(cli.repl, input_side_effect=['quit'])
             assert "Leaving Dork" in output
         elif state == 3:
-            output, _, _ = run(cli.repl, input_side_effect=['load', 'path', 'quit'])
+            input_side_effect= ['load', 'path', 'quit']
+            output, _, _ = run(cli.repl, input_side_effect)
             assert "Loading" in output
         elif state == 1:
             output, _, _ = run(cli.repl, input_side_effect=['help', 'quit'])
