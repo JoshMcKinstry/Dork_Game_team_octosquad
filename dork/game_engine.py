@@ -80,14 +80,11 @@ def user_command(command):
                     "take": pick_up,
                     "drop": drop,
                     "examine": examine,
-                    "use": use_key,
-                    "save": saving}
+                    "use": use_key}
 
     (verb, obj, target) = command
-    if verb == "open" or verb == "use":
+    if verb in ("open", "use"):
         commands_lib[verb](target, obj)
-    elif verb == 'save':
-        commands_lib[verb](target)
     elif verb == "move":
         commands_lib[verb](target)
     else:

@@ -110,14 +110,14 @@ def evaluate(command, state):
     # https://docs.python.org/3/tutorial/datastructures.html
     word_list = [words.casefold() for words in command.split()]
     if state == State.MENU:
-        return _menu_evaluate(word_list)
+        function = _menu_evaluate(word_list)
     if state == State.GAME:
-        return _game_evaluate(word_list)
+        function = _game_evaluate(word_list)
     if state == State.LOAD:
-        return _load_evaluate(command)
+        function = _load_evaluate(command)
     if state == State.SAVE:
-        return _save_evaluate()
-
+        function = _save_evaluate()
+    return function
 
 def _load_evaluate(path):
     """token evaluater for the load screen state
