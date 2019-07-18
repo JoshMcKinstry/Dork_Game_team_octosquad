@@ -1,96 +1,86 @@
-"""Tests for repl and command parser in dork
+"""Tests for repl and cli in dork
 """
 from types import FunctionType
 from unittest.mock import patch
 import pytest
-import dork.commandsparser as parser
+import dork.cli as cli
 
 
 def test_repl_exists():
     """the dork repl should exist
     """
-    expect = "Dork.commandsparser should define a repl method"
-    assert "repl" in vars(parser), expect
-    assert isinstance(parser.repl, FunctionType)
+    expect = "Dork.cli should define a repl method"
+    assert "repl" in vars(cli), expect
+    assert isinstance(cli.repl, FunctionType)
 
 
 def test_read_exists():
-    """the commandsparser.read should exist
+    """the cli.read should exist
     """
-    expect = "Dork.commandsparser should define a read method"
-    assert "read" in vars(parser), expect
-    assert isinstance(parser.read, FunctionType)
+    expect = "Dork.cli should define a read method"
+    assert "read" in vars(cli), expect
+    assert isinstance(cli.read, FunctionType)
+
+
+def test_evaluate_exists():
+    """the cli.evaluate should exist
+    """
+    expect = "Dork.cli should define an evaluate method"
+    assert "evaluate" in vars(cli), expect
+    assert isinstance(cli.evaluate, FunctionType)
 
 
 @pytest.mark.parametrize("expected, actual", [
     ("", ""),
     ("words go here", "words go here"),
     ("555", "555")
-])
+    ])
 def test_read_takes_any_input(expected, actual):
     """the repl read function should accept any input
     """
     with patch('builtins.input', return_value=actual, autospec=True):
-        assert parser.read() == expected
-
-
-def test_evaluate_exists():
-    """the commandsparser.evaluate should exist
-    """
-    expect = "Dork.commandsparser should define an evaluate method"
-    assert "evaluate" in vars(parser), expect
-    assert isinstance(parser.evaluate, FunctionType)
+        assert cli.read() == expected
 
 
 def test_print_load(run):
     """Test _print_load outputs correctly
     """
-    output, _, _ = run(parser._print_load)
-    assert output == ("Select a save game and hit enter to start!\n")
+    output, _, _ = run(cli._print_load)
+    assert "Loading previous" in output, "_print_load should print a message"
 
 
 def test_menu_evaluate(run):
     """Test the menu evaluate method
     """
-    output, _, _ = run(parser._menu_evaluate, ['help'])
-    assert output == ("Main Menu Commands for Dork\n" +
-                      "help - Print a list of commands.\n" +
-                      "load - Load a game save file from available saves.\n" +
-                      "new - Start a new game on a fresh save file.\n" +
-                      "quit - Exits the game of 'Dork'.\n")
-    output, _, _ = run(parser._menu_evaluate, ['new'])
-    assert output == ("\nStarting the game of 'Dork'.\n\n" +
-                      "Game Successfully Loaded.\n" + "**Entrance**\n" +
-                      "Welcome the campus entrance! You are in the student success building. " +
-                      "There are walls on the north and south ends of the " + 
-                      "room. There is a door in the east and a trail in the west.\n" +
-                      "You notice the following items--- Paper, Cage, Freshman-Badge.\n")
-    output, _, _ = run(parser._menu_evaluate, ['impossible'])
-    assert output == ("Please input a valid command!\nTry 'help' for more options.\n")
+    output, _, _ = run(cli._menu_evaluate, ['help'])
+    assert "Main Menu Commands" in output, "help command should provide helpful messages"
+    output, _, _ = run(cli._menu_evaluate, ['new'])
+    assert "Starting the game" in output, "new command should start a new game"
+    output, _, _ = run(cli._menu_evaluate, ['impossible'])
+    assert "Please input a valid command" in output, "bad commands should be handled"
 
 
 def test_game_evaluate(run):
     """Test
     """
-    output, _, _ = run(parser._game_evaluate, ['notaction'])
-    assert output == ("Please provide a command.\n")
+    output, _, _ = run(cli._game_evaluate, ['notaction'])
+    assert "Please provide a command" in output, "bad commands in game should be handled"
 
 def test_safe_quit(run):
     """Test
     """
-    output, _, _ = run(parser._safe_quit)
-    assert output == ("Would you like to save the game?\n")
+    output, _, _ = run(cli._safe_quit)
+    assert "Would you like to save" in output, "game should ask if game should be saved"
 
 def test_repl(run):
     """Test
     """
-    output, _, _ = run(parser.repl, input_side_effect=['quit'])
-    assert output == ("Welcome to Dork!\n")
+    output, _, _ = run(cli.repl, input_side_effect=['quit'])
+    assert "Welcome to the Game of Dork" in output, "main menu should welcome player to game"
 
 
 # https://stackoverflow.com/questions/15672151/is-it-possible-for-a-unit-test-to-assert-that-a-method-calls-sys-exit
 #def test_quit_dork(run):
 #    with assertRaises(SystemExit):
-#        output, _, _ = run(parser._quit_dork)
+#        output, _, _ = run(cli._quit_dork)
 #        assert output == "Leaving Dork...\n\n"
-    

@@ -141,7 +141,7 @@ def _quit_dork():
 
 
 def _print_load():
-    print("Select a save game and hit enter to start!")
+    print("Loading previous checkpoint...")
 
 def _print_menu():
     print("Welcome to the Game of Dork!\n\
