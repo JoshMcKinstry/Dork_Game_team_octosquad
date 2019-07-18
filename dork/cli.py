@@ -53,75 +53,6 @@ def read():
     return input("> ")
 
 
-def _menu_evaluate(tokens):
-    """token evaluater for the main menu state
-    """
-    # new load help quit
-    if "quit" in tokens:
-        _quit_dork()
-    if "load" in tokens:
-        return State.LOAD
-    if "help" in tokens:
-        print("Main Menu Commands for Dork")
-        print("help - Print a list of commands.")
-        print("load - Load a game save file from available saves.")
-        print("new - Start a new game on a fresh save file.")
-        print("quit - Exits the game of 'Dork'.")
-        return State.MENU
-    if "new" in tokens:
-        print("\nStarting the game of 'Dork'.\n")
-        return evaluate("./dork/state files/game.yml", State.LOAD)
-    if "info" in tokens:
-        _print_info()
-        return State.MENU
-    print("Please input a valid command!\nTry 'help' for more options.")
-    return State.MENU
-
-
-def _game_evaluate(tokens):
-    """token evaluater for the in-game state
-    """
-    action = ""
-    obj = ""
-    target = ""
-    for token in tokens:
-        if token in COMMANDDICT and not action:
-            action = token
-        elif token in OBJECTS:
-            obj = token
-        elif token in CARDINALS or token in COMMANDDICT:
-            target = token
-    if not action:
-        print("Please provide a command.\nTry 'help' for a list of available commands.")
-        return State.GAME
-    if action == "quit":
-        return _safe_quit()
-    if action == "save":
-        return State.SAVE
-    if action == "load":
-        return State.LOAD
-    if action == "help":
-        _game_helper(target)
-        return State.GAME
-        #Validation Needed For Objects Objects and Targets
-    ge.user_command((action, obj.title(), target.title()))
-    return State.GAME
-
-
-def _load_evaluate(path):
-    """token evaluater for the load screen state
-    """
-    if ge.game_loader(path):
-        return State.GAME
-    return State.MENU
-
-
-def _save_evaluate():
-    print("Saving Game...")
-    ge.saving()
-    return State.MENU
-
-
 def _safe_quit():
     print("Would you like to save the game?(y/n)")
     response = input(">").casefold()
@@ -180,6 +111,75 @@ def evaluate(command, state):
         return _save_evaluate()
 
 
+def _load_evaluate(path):
+    """token evaluater for the load screen state
+    """
+    if ge.game_loader(path):
+        return State.GAME
+    return State.MENU
+
+
+def _save_evaluate():
+    print("Saving Game...")
+    ge.saving()
+    return State.MENU
+
+
+def _menu_evaluate(tokens):
+    """token evaluater for the main menu state
+    """
+    # new load help quit
+    if "quit" in tokens:
+        _quit_dork()
+    if "load" in tokens:
+        return State.LOAD
+    if "help" in tokens:
+        print("Main Menu Commands for Dork")
+        print("help - Print a list of commands.")
+        print("load - Load a game save file from available saves.")
+        print("new - Start a new game on a fresh save file.")
+        print("quit - Exits the game of 'Dork'.")
+        return State.MENU
+    if "new" in tokens:
+        print("\nStarting the game of 'Dork'.\n")
+        return evaluate("./dork/state files/game.yml", State.LOAD)
+    if "info" in tokens:
+        _print_info()
+        return State.MENU
+    print("Please input a valid command!\nTry 'help' for more options.")
+    return State.MENU
+
+
+def _game_evaluate(tokens):
+    """token evaluater for the in-game state
+    """
+    action = ""
+    obj = ""
+    target = ""
+    for token in tokens:
+        if token in COMMANDDICT and not action:
+            action = token
+        elif token in OBJECTS:
+            obj = token
+        elif token in CARDINALS or token in COMMANDDICT:
+            target = token
+    if not action:
+        print("Please provide a command.\nTry 'help' for a list of available commands.")
+        return State.GAME
+    if action == "quit":
+        return _safe_quit()
+    if action == "save":
+        return State.SAVE
+    if action == "load":
+        return State.LOAD
+    if action == "help":
+        _game_helper(target)
+        return State.GAME
+        #Validation Needed For Objects Objects and Targets
+    ge.user_command((action, obj.title(), target.title()))
+    return State.GAME
+
+
 def repl():
     """repl for dork game
     """
@@ -192,6 +192,8 @@ def repl():
             _quit_dork()
         if state == State.LOAD:
             _print_load()
+        if state == State.MENU:
+            _print_menu()
 
 
 class State(Enum):
