@@ -143,7 +143,26 @@ def test_game_evaluates_quit(run):
     assert "Invalid Response" in output
 
 
+<<<<<<< HEAD
 '''
+=======
+def test_game_evaluates_full_command(run):
+    """Test that the game evaluator calls the game engine
+    """
+    with patch('dork.game_engine.user_command') as called:
+        run(cli._game_evaluate, ['move', 'north'])
+        called.assert_called_with(('move', '', 'North'))
+
+
+def test_game_gives_help(run):
+    """Test that the game provides help to players
+    """
+    with patch('dork.cli._game_helper') as helping:
+        run(cli._game_evaluate, ['help', 'move'])
+        helping.assert_called_with('move')
+
+
+>>>>>>> 674d42ce16b86838dd2ec5754c643e5fcb29f3a5
 #def test_menu_through_repl(run):
 #    """Test
 #    """

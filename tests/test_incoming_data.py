@@ -50,12 +50,10 @@ class TestIncomingData(unittest.TestCase):
         """
         Testing the Loading of each room respective main description
         """
-        room_1 = {'Neighbors': 'A', 'Door': 'B',
-                  'Items': 'C', 'Description': 'D'}
-        rooms = {'room_1': room_1}
-        data = {'Rooms': rooms}
-        expected = ['D']
-        out_put = game_data.load_room_descrips(data, ['room_1'])
+        room = {'Entrance': 'This is the description'}
+        data = {'Rooms Descriptions': room}
+        expected = ['This is the description']
+        out_put = game_data.load_room_descrips(data, ['Entrance'])
         self.assertEqual(out_put, expected)
 
     def test_load_list_room_items(self):

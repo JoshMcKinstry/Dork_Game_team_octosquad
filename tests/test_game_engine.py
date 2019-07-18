@@ -15,13 +15,13 @@ class TestValidMaze(unittest.TestCase):
         """
         Testing the data loading method.
         """
-        _d = 'This is the description'
+        descrps = {'Entrance': 'This is the description'}
         _c = ['Paper', 'Donut']
         _b = {'Cardinal': 'North', 'Status': 'Dean Badge', 'State': 'Closed'}
         _a = {'North': 'Trail', 'East': None, 'South': None, 'West': 'Lake'}
-        room_1 = {'Neighbors': _a, 'Door': _b, 'Items': _c, 'Description': _d}
-        rooms = {'room_1': room_1}
-        data = {'Rooms': rooms}
+        room_1 = {'Neighbors': _a, 'Door': _b, 'Items': _c}
+        rooms = {'Entrance': room_1}
+        data = {'Rooms': rooms, 'Rooms Descriptions': descrps}
         self.assertIsNone(engine.loading_map(data))
 
     def test_loading_item(self):
@@ -138,3 +138,17 @@ class TestValidMaze(unittest.TestCase):
         self.assertIsNone(engine.use_key('Door', 'Badge'))
         item_in_player.return_value = False
         self.assertIsNone(engine.use_key('Door', 'Tool'))
+
+    @patch('dork.yamlloader.writing_yml')
+    @patch('dork.character_manager.player_yaml_representation')
+    @patch('dork.item_manager.items_yaml_representation')
+    @patch('dork.room_manager.map_yaml_representation')
+    def test_save(self, maze, items, player, write):
+        """
+        Testing the saving method
+        """
+        maze.return_value = {'Map': 'Map Value'}
+        items.return_value = {'Items': 'Item Value'}
+        player.return_value = {'Player': 'Player Value'}
+        write.return_value = 'File'
+        self.assertIsNone(engine.saving())
