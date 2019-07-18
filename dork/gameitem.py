@@ -7,21 +7,11 @@ class Items:
     '''
     Creates, uses and stores item objects
     '''
-
-    def __init__(self, name):
+    def __init__(self, name, description, properties):
         '''
         Constructor for items
         '''
+        self.properties = []
         self.name = name
-
-    def use(self):
-        '''
-        Using item method
-        '''
-        return 'You used the ' + self.name + ' item'
-
-    def store(self):
-        '''
-        Storing item method
-        '''
-        return 'You stored the ' + self.name + ' into your inventory'
+        self.description = description
+        self.properties.append(properties)
