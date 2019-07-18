@@ -6,10 +6,6 @@ import pytest
 import dork.cli as cli
 
 
-<<<<<<< HEAD
-=======
-# pylint: disable=protected-access
->>>>>>> 0a5d7757d8541bb1098e56548dfe5f436a917554
 def test_repl_exists():
     """the dork repl should exist
     """
@@ -144,41 +140,3 @@ def test_game_evaluates_quit(run):
     output, _, _ = run(cli._game_evaluate, ['quit'], input_side_effect=['bad'])
     assert "Would you like to save the game" in output
     assert "Invalid Response" in output
-
-
-<<<<<<< HEAD
-'''
-=======
-def test_game_evaluates_full_command(run):
-    """Test that the game evaluator calls the game engine
-    """
-    with patch('dork.game_engine.user_command') as called:
-        run(cli._game_evaluate, ['move', 'north'])
-        called.assert_called_with(('move', '', 'North'))
-
-
-def test_game_gives_help(run):
-    """Test that the game provides help to players
-    """
-    with patch('dork.cli._game_helper') as helping:
-        run(cli._game_evaluate, ['help', 'move'])
-        helping.assert_called_with('move')
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 674d42ce16b86838dd2ec5754c643e5fcb29f3a5
-#def test_menu_through_repl(run):
-#    """Test
-#    """
-#    with patch('dork.cli._load_evaluate', return_value=3):
-#        output, _, _ = run(cli.repl, input_side_effect=['load', 'path', 'quit', 'quit'])
-#    assert "Loading" in output, "menu should load previous save and then quit the game"
-
-# https://stackoverflow.com/questions/15672151/is-it-possible-for-a-unit-test-to-assert-that-a-method-calls-sys-exit
-#def test_quit_dork(run):
-#    with assertRaises(SystemExit):
-#        output, _, _ = run(cli._quit_dork)
-#        assert output == "Leaving Dork...\n\n"
-'''
->>>>>>> 0a5d7757d8541bb1098e56548dfe5f436a917554
