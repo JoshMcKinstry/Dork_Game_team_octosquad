@@ -69,6 +69,8 @@ def test_game_evaluate(run):
     assert "Please provide a command" in output, "handles bad commands"
     output, _, _ = run(cli._game_evaluate, ['load'])
     assert output == ''
+    assert cli._game_evaluate(['save']) == cli.State(4)
+    assert cli._game_evaluate(['take', 'flyer']) == cli.State(2)
 
 
 @pytest.mark.parametrize('inputs', [('y'), ('n'), ('bad')])
@@ -88,7 +90,7 @@ def test_repl(run):
         assert "Leaving Dork" in output, "game should quit from menu"
         output, _, _ = run(cli.repl, input_side_effect=['info', 'quit'])
         assert "What is Dork?" in output, "game should print info from menu"
-        output, _, _ = run(cli.repl, input_side_effect=[3])
+        output, _, _ = run(cli.repl, input_side_effect=['load', 'efwwef'])
         assert "Please input a valid command!" in output, "it broke"
 
 
@@ -166,6 +168,15 @@ def test_game_gives_help(run):
     with patch('dork.cli._game_helper') as helping:
         run(cli._game_evaluate, ['help', 'move'])
         helping.assert_called_with('move')
+
+
+def test_evaluate():
+    """
+    Test evaluate
+    """
+    assert cli.evaluate('quit', cli.State(5)) is None
+    assert cli.evaluate('save', cli.State(4)) == cli.State(1)
+    assert cli.evaluate('help', cli.State(2)) == cli.State(2)
 
 
 # def test_menu_through_repl(run):
