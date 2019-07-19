@@ -40,7 +40,7 @@ USAGE: 'examine' [item]",
                "use": "---USE---\n\
 Use a key on a door.\n\
 USAGE: 'use' [item] on [direction]\n{}\
-see also - 'help open'\n".format(DIRECTIONS),}
+see also - 'help open'\n".format(DIRECTIONS), }
 CARDINALS = ['north', 'east', 'south', 'west']
 OBJECTS = ['cage', 'cellphone', 'dean-badge', 'donut',
            'flower', 'flyer', 'freshman-badge',
@@ -88,10 +88,11 @@ def _print_info():
         What is Dork?\n\
         Dork is an interactive text-based adventure game that takes place\n\
         in MSU Denver in the year 2040, where a new dean has been initiated\n\
-        into office. The dean has been known for his hatred of birds, usually\n\
-        hunting them for fun and putting them into cages around the campus. He\n\
-        recently caught a roadrunner and plans to give it to exterminators. It's\n\
-        up to you to save MSU Denver's mascot.")
+        into office. The dean has been known for his hatred of birds,\n\
+        usually hunting them for fun and putting them into cages\n\
+        around the campus. He recently caught a roadrunner and plans\n\
+        to give it to exterminators.\n\
+        It's up to you to save MSU Denver's mascot.")
 
 
 def _game_helper(command):
@@ -117,6 +118,7 @@ def evaluate(command, state):
         return _load_evaluate(command)
     if state == State.SAVE:
         return _save_evaluate()
+    return None
 
 
 def _load_evaluate(path):
@@ -172,7 +174,8 @@ def _game_evaluate(tokens):
         elif token in CARDINALS or token in COMMANDDICT:
             target = token
     if not action:
-        print("Please provide a command.\nTry 'help' for a list of available commands.")
+        print("Please provide a command.\n\
+            Try 'help' for a list of available commands.")
         return State.GAME
     if action == "quit":
         return _safe_quit()
@@ -183,7 +186,7 @@ def _game_evaluate(tokens):
     if action == "help":
         _game_helper(target)
         return State.GAME
-        #Validation Needed For Objects Objects and Targets
+        # Validation Needed For Objects Objects and Targets
     ge.user_command((action, obj.title(), target.title()))
     return State.GAME
 
@@ -193,11 +196,9 @@ def repl():
     """
     state = State.MENU
     _print_menu()
-    while True:
+    while state != State.QUIT:
         command = read()
         state = evaluate(command, state)
-        if state == State.QUIT:
-            _quit_dork()
         if state == State.LOAD:
             _print_load()
         if state == State.MENU:
