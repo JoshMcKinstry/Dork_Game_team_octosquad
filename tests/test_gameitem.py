@@ -5,7 +5,7 @@ import unittest
 from dork.gameitem import Items
 
 
-class TestValidItem(unittest.TestCase):
+class TestGameItem(unittest.TestCase):
     '''
     A testing class for the Items class
     '''

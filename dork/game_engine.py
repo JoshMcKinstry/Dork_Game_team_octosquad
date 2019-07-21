@@ -75,20 +75,25 @@ def user_command(command):
     """
     Parses user input to proper format
     """
-    commands_lib = {"move": move,
-                    "open": use_key,
-                    "take": pick_up,
-                    "drop": drop,
-                    "examine": examine,
-                    "use": use_key}
-
+    commands_lib = {"move": move, "open": use_key, "take": pick_up, "drop": drop,
+                    "examine": examine, "display": display_inventory,
+                    "where": room_to_screen, "use": use_key}
+    no_args = ["where", "display"]
+    one_target = ["move"]
+    one_obj = ["examine", "take", "drop"]
+    two_args = ["open", "use"]
     (verb, obj, target) = command
-    if verb in ("open", "use"):
+    if verb in two_args and not (obj == '' or target == ''):
         commands_lib[verb](target, obj)
-    elif verb == "move":
+    elif verb in one_target and target != '':
         commands_lib[verb](target)
-    else:
+    elif verb in one_obj and obj != '':
         commands_lib[verb](obj)
+    elif verb in no_args:
+        commands_lib[verb]()
+    else:
+        print('Invalid Command')
+        print("Try 'help' for more options")
 
 
 def __current_position():
@@ -113,6 +118,7 @@ def room_to_screen():
     print(room_m.room_description(__current_position()))
     if room_m.not_empty_room(__current_position()):
         print(room_m.to_string_current_items(__current_position()))
+    print("\n")
 
 
 def move(cardinal):

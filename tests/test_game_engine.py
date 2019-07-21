@@ -6,7 +6,7 @@ from mock import patch
 import dork.game_engine as engine
 
 
-class TestValidMaze(unittest.TestCase):
+class TestGameEngine(unittest.TestCase):
     """
     A testing class for ValidMaze
     """
