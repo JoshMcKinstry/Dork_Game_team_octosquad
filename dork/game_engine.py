@@ -121,7 +121,6 @@ def room_to_screen():
         print(room_m.to_string_current_items(__current_position()))
 
 
-
 def move(cardinal):
     """
     Moves the player from one room to another if room exists and door is
