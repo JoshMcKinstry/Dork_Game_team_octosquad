@@ -75,9 +75,10 @@ def user_command(command):
     """
     Parses user input to proper format
     """
-    commands_lib = {"move": move, "open": use_key, "take": pick_up, "drop": drop,
-                    "examine": examine, "display": display_inventory,
-                    "where": room_to_screen, "use": use_key}
+    commands_lib = {"move": move, "open": use_key, "take": pick_up,
+                    "drop": drop, "use": use_key, "examine": examine,
+                    "display": display_inventory,
+                    "where": room_to_screen}
     no_args = ["where", "display"]
     one_target = ["move"]
     one_obj = ["examine", "take", "drop"]
@@ -118,7 +119,7 @@ def room_to_screen():
     print(room_m.room_description(__current_position()))
     if room_m.not_empty_room(__current_position()):
         print(room_m.to_string_current_items(__current_position()))
-    print("\n")
+
 
 
 def move(cardinal):

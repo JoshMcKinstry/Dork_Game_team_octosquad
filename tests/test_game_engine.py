@@ -8,7 +8,7 @@ import dork.game_engine as engine
 
 class TestGameEngine(unittest.TestCase):
     """
-    A testing class for ValidMaze
+    A testing class for the game engine module.
     """
 
     def test_loading_map(self):
@@ -152,3 +152,26 @@ class TestGameEngine(unittest.TestCase):
         player.return_value = {'Player': 'Player Value'}
         write.return_value = 'File'
         self.assertIsNone(engine.saving())
+
+    @patch('dork.game_engine.display_inventory')
+    @patch('dork.game_engine.use_key')
+    @patch('dork.game_engine.examine')
+    @patch('dork.game_engine.move')
+    def test_user_command(self, one_target, one_obj, two_args, no_args):
+        """
+        Testing the user command method
+        """
+        one_target.return_value = "move"
+        one_obj.return_value = "examine"
+        two_args.return_value = "open"
+        no_args.return_value = "inventory"
+        one_target_command = ('move', '', 'North')
+        self.assertIsNone(engine.user_command(one_target_command))
+        one_obj_command = ('examine', 'Paper', '')
+        self.assertIsNone(engine.user_command(one_obj_command))
+        two_args_command = ('open', 'Key', 'East')
+        self.assertIsNone(engine.user_command(two_args_command))
+        no_args_command = ('display', '', '')
+        self.assertIsNone(engine.user_command(no_args_command))
+        invalid_args = ('no verb', '', '')
+        self.assertIsNone(engine.user_command(invalid_args))
