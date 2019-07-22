@@ -140,3 +140,5 @@ dmypy.json
 teamnotes/
 Sonar/
 # End of https://www.gitignore.io/api/python
+Game Design/
+dork/state files/last_checkpoint.yml

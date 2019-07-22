@@ -23,6 +23,8 @@ def reading_yml(file_path):
     """
     reading the content of the .yml or file
     """
-    with open(file_path, "r") as file:
-        data = yaml.safe_load(file)
-    return data
+    if valid_extension(file_path) and valid_file_path(file_path):
+        with open(file_path, "r") as file:
+            data = yaml.safe_load(file)
+        return data
+    return None
