@@ -40,7 +40,13 @@ USAGE: 'examine' [item]",
                "use": "---USE---\n\
 Use a key on a door.\n\
 USAGE: 'use' [item] on [direction]\n{}\
-see also - 'help open'\n".format(DIRECTIONS), }
+see also - 'help open'\n".format(DIRECTIONS),
+               "display": "---DISPLAY---\n\
+Display the inventory of the player.\n\
+USAGE: 'display'",
+               "where": "---WHERE---\n\
+Show where the play at.\n\
+USAGE: 'where'"  }
 CARDINALS = ['north', 'east', 'south', 'west']
 OBJECTS = ['cage', 'cellphone', 'dean-badge', 'donut',
            'flower', 'flyer', 'freshman-badge',
