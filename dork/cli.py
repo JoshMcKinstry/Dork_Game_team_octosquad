@@ -46,7 +46,7 @@ Display the inventory of the player.\n\
 USAGE: 'display'",
                "where": "---WHERE---\n\
 Show where the play at.\n\
-USAGE: 'where'"  }
+USAGE: 'where'"}
 CARDINALS = ['north', 'east', 'south', 'west']
 OBJECTS = ['cage', 'cellphone', 'dean-badge', 'donut',
            'flower', 'flyer', 'freshman-badge',
