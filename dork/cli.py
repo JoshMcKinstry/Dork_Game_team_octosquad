@@ -45,7 +45,7 @@ see also - 'help open'\n".format(DIRECTIONS),
 Display the inventory of the player.\n\
 USAGE: 'display'",
                "where": "---WHERE---\n\
-Show where the play at.\n\
+Show where the player is at.\n\
 USAGE: 'where'"}
 CARDINALS = ['north', 'east', 'south', 'west']
 OBJECTS = ['cage', 'cellphone', 'dean-badge', 'donut',
