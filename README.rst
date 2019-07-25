@@ -18,9 +18,17 @@ you set out to free the Roadrunner from its cruel fate.
 
 Requirements
 ------------ 
+python
+git
+pytest
 
 Setup
 -----
+1.Open the terminal
+2.Clone the game, type the following command at your terminal: git clone https://github.com/JoshMcKinstry/team34
+2.Navigate to the direction of the team34 folder
+3.Type the following command to start the game: python -m dork
+4.Type the following command to run the tests: python -m pytest
 
 How to Play
 -----------
