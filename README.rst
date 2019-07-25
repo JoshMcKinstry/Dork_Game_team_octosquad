@@ -35,7 +35,7 @@ How to Play
 To play Dork, Players need to enter commands into the command line interface.
 For example, to move north along the maze, the player would enter "move north".
 
-These are the commands* currently supported by the game
+These are the commands currently supported by the game*
 *note: these commands are not case sensitive
 - Help : Displays the list of commands.
 - Move [Direction] : Moves to the room in the direction specified.
@@ -50,11 +50,9 @@ These are the commands* currently supported by the game
 - Where : Displays the location of the player.
 - Display : Displays the inventory of the player.
 
-
-Features
---------
-
-* TODO
+- [Directions] : north, south, east, west
+- [Item] : cage, cellphone, dean-badge, donut, flower, flyer,
+            freshman-badge, junior-badge, key, nest, paper, sophmore-badge
 
 Credits
 -------
