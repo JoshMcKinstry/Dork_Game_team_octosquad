@@ -18,7 +18,7 @@ you set out to free the Roadrunner from its cruel fate.
 
 Requirements
 ------------ 
-python
+python 3.7.3
 git
 pytest
 
@@ -54,6 +54,7 @@ These are the commands currently supported by the game*
 - [Item] : cage, cellphone, dean-badge, donut, flower, flyer,
             freshman-badge, junior-badge, key, nest, paper, sophmore-badge
 
+For a more in depth walkthrough of the game, refer to the "Game Design" folder in the team34 folder.
 Credits
 -------
 
