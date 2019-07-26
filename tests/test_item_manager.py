@@ -1,12 +1,12 @@
 """
-A test for item_manager
+A test for the methods in the item_manager file.
 """
 import dork.item_manager as item_m
 
 
 def test_assembling_item():
     """
-    Test for assembling items
+    Test the assembling_items method.
     """
     list_item = ['donut']
     list_description = ['This is a donut']
@@ -19,7 +19,7 @@ def test_assembling_item():
 
 def test_is_item():
     """
-    Test for if the item is an item
+    Tests the is_item method.
     """
     list_item = ['donut']
     list_description = ['This is a donut']
@@ -31,7 +31,7 @@ def test_is_item():
 
 def test_item_description():
     """
-    Test for item description
+    Test the item_description method.
     """
     list_item = ['donut']
     list_description = ['This is a donut']
@@ -43,7 +43,7 @@ def test_item_description():
 
 def test_yaml_representation():
     """
-    Test for the yaml representation method
+    Test the yaml_representation method.
     """
     list_item = ['donut']
     list_description = ['This is a donut']

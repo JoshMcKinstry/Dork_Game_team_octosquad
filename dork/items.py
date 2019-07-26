@@ -1,5 +1,5 @@
 '''
-A items module that creates an abstract representation of an item.
+An items module that creates an abstract representation of an item.
 '''
 
 
@@ -8,11 +8,10 @@ class Item():
     This is a class that models an item object.
 
     Attributes:
-        name (list): A list that contains all the items available to game.
-        description (list): A list that contains all the descriptions
-            for each of the items.
-        properties (list): A list of lists that contain all the properties
-            associated with an item.
+        name (str): The name of an item.
+        description (str): The description of an item.
+        properties (list): The list of all the properties that an item
+            contains.
     '''
 
     def __init__(self, name, description, properties):
@@ -20,11 +19,10 @@ class Item():
         The constructor for the items class.
 
         Parameters:
-            name (list): A list that contains all the items available to game.
-            description (list): A list that contains all the descriptions
-                for each of the items.
-            properties (list): A list of lists that contain all the properties
-                associated with an item.
+            name (str): The name of the item.
+            description (str): The description of the item.
+            properties (list): The list of all the properties that an item
+            contains.
         """
         self.name = name
         self.description = description
@@ -35,7 +33,7 @@ class Item():
         The function that checks to see if the item has a certain property.
 
         Parameters:
-            attribute (str): A string that contains the property of item.
+            attribute (str): The property of an item.
 
         Returns:
             bool: True if the attribute is found in the item's list of
@@ -48,8 +46,8 @@ class Item():
         The function creates a yml compatible representation of a item object.
 
         Returns:
-            item (dictionary): A dictionary that contains the item's name as
-                the key value and a value of a dictionary containing the
+            item (dict): A dictionary that contains the item's name as
+                the key value and a dictionary value containing the
                 item's description and properties.
         """
 
