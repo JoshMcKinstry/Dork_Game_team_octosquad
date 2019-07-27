@@ -40,7 +40,7 @@ def loading_map(data):
 
     Parameters:
         data(dict): Nested dictionaries containing
-                all information of the game in regard to rooms.
+            all information of the game in regard to rooms.
     """
     names = game_data.load_rooms(data)
     neighbors = game_data.load_cardinals(data, names)
@@ -58,7 +58,7 @@ def loading_items(data):
 
     Parameters:
         data(dict): Nested dictionaries containing
-                all information of the game in regard to items.
+            all information of the game in regard to items.
     """
     names = game_data.load_items(data)
     descriptions = game_data.load_items_descriptions(data, names)
@@ -155,7 +155,7 @@ def move(cardinal):
 
     Parameters:
         cardinal(str): String that points to a valid cardinal.
-                i.e {North, East, South, West}
+            i.e {North, East, South, West}
     """
     room_before_mov = __current_position()
     room_after_mov = room_m.move(cardinal, room_before_mov)
@@ -220,7 +220,7 @@ def use_key(cardinal, key):
 
     Parameters:
         cardinal(str): String that points to a valid cardinal.
-                i.e {North, East, South, West}
+            i.e {North, East, South, West}
         key(str): String that represents the name of the key.
     """
     if char_m.player_has_item(key):
