@@ -21,7 +21,8 @@ class Room():
             cardinal(str): A string of a direction to check.
 
         Returns:
-            bool: Returns true there is a door at the cardinal. Returns false otherwise.
+            bool: Returns true there is a door at the cardinal.
+            Returns false otherwise.
         """
         if self.door is None:
             return False
@@ -54,13 +55,15 @@ class Room():
 
     def has_closed_door(self, cardinal):
         """
-        Checks to see if the current room has a closed door at a certain cardinal.
+        Checks to see if the current room has a closed door at a certain
+        cardinal.
 
         Parameters:
             cardinal(str): A string of a direction to check for a closed door.
 
         Returns:
-            bool: Returns true if a closed door is at the cardinal.  False otherwise.
+            bool: Returns true if a closed door is at the cardinal.
+            False otherwise.
         """
         if self.has_door_at(cardinal):
             return self.door['State'] == 'Closed'
@@ -99,7 +102,8 @@ class Room():
             item_name(str): The items name to check for in the room.
 
         Returns:
-            bool: Returns true if the item has been removed from the room. False otherwise.
+            bool: Returns true if the item has been removed from the room.
+            False otherwise.
         """
         if self.has_item(item_name):
             self.items.remove(item_name)
