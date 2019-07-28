@@ -14,13 +14,26 @@ class Character():
 
     def has_item(self, item_name):
         """
-        Returns true if the character holds the item. False otherwise.
+        This function determines if the player is holding an item.
+        
+        Parameters:
+            item_name (dict): A dictionary of possible items
+        
+        Returns:
+            item_name (bool): True if the player holds the item,
+                false otherwise.
         """
         return item_name in self.inventory
 
     def delete_item(self, item_name):
         """
-        Delete item from character.
+        This function removes an item from the character
+
+        Parameters:
+            item_name (dict): A dictionary of possible items
+
+        Returns:
+            A string indicating the state of the item.
         """
         if self.has_item(item_name):
             self.inventory.remove(item_name)
@@ -33,7 +46,13 @@ class Character():
 
     def add_item(self, item_name):
         """
-        Adds item to the character.
+        This function adds an item to the character.
+
+        Parameters:
+            item_name (dict): A dictionary of possible items.
+
+        Returns: 
+            A string verifying that he player has the item.
         """
         self.inventory.append(item_name)
         return self.name + ' now holds ' + item_name
