@@ -137,10 +137,10 @@ def to_string_current_items(name):
     Returns a string that lists the items in the selected room
 
     Parameters:
-    name(list): A list that contains all the items
+        name(list): A list that contains all the items
 
     Returns:
-    item_list: Return a string  that lists the imtems of the gaven room
+        item_list: Return a string  that lists the imtems of the gaven room
     """
     item_list = 'You notice the following items--- '
     scope = range(len(DICT_ROOMS[name].items)-1)
