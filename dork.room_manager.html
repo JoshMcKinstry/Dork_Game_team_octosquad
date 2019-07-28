@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module dork.room_manager</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="dork.html"><font color="#ffffff">dork</font></a>.room_manager</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/tianliu/Desktop/CS3250_34/team34-1/dork/room_manager.py">/Users/tianliu/Desktop/CS3250_34/team34-1/dork/room_manager.py</a></font></td></tr></table>
+    <p><tt>A&nbsp;module&nbsp;that&nbsp;handles&nbsp;the&nbsp;functionality&nbsp;of&nbsp;rooms</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-append_item"><strong>append_item</strong></a>(room_name, item_name)</dt><dd><tt>Adds&nbsp;item&nbsp;to&nbsp;a&nbsp;room<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;room_name:&nbsp;Name&nbsp;of&nbsp;the&nbsp;room&nbsp;where&nbsp;the&nbsp;player&nbsp;is&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_name:&nbsp;Name&nbsp;of&nbsp;the&nbsp;item&nbsp;that&nbsp;the&nbsp;player&nbsp;droped&nbsp;off<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dict:&nbsp;Return&nbsp;the&nbsp;items&nbsp;of&nbsp;the&nbsp;gaven&nbsp;room&nbsp;after&nbsp;the&nbsp;player&nbsp;drop&nbsp;an&nbsp;item</tt></dd></dl>
+ <dl><dt><a name="-assembling_descriptions"><strong>assembling_descriptions</strong></a>(names, descriptions)</dt><dd><tt>Adds&nbsp;the&nbsp;room&nbsp;descriptions&nbsp;for&nbsp;all&nbsp;rooms&nbsp;inside&nbsp;a&nbsp;dictionary.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;names(list):&nbsp;A&nbsp;list&nbsp;that&nbsp;contains&nbsp;all&nbsp;the&nbsp;rooms<br>
+&nbsp;&nbsp;&nbsp;&nbsp;descriptions(list):&nbsp;A&nbsp;list&nbsp;that&nbsp;contains&nbsp;all&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descriptions&nbsp;of&nbsp;the&nbsp;rooms</tt></dd></dl>
+ <dl><dt><a name="-assembling_rooms"><strong>assembling_rooms</strong></a>(names, neighbors, doors, items)</dt><dd><tt>Constructs&nbsp;room&nbsp;objects&nbsp;for&nbsp;all&nbsp;rooms&nbsp;in&nbsp;maze&nbsp;and&nbsp;stores&nbsp;all&nbsp;the&nbsp;rooms<br>
+inside&nbsp;a&nbsp;dictionary.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;names(list):&nbsp;A&nbsp;list&nbsp;that&nbsp;contains&nbsp;all&nbsp;the&nbsp;rooms<br>
+&nbsp;&nbsp;&nbsp;&nbsp;neighbors(list):&nbsp;A&nbsp;list&nbsp;that&nbsp;contains&nbsp;all&nbsp;the&nbsp;neighbors&nbsp;of&nbsp;a&nbsp;room<br>
+&nbsp;&nbsp;&nbsp;&nbsp;doors(list):&nbsp;A&nbsp;list&nbsp;that&nbsp;contains&nbsp;all&nbsp;the&nbsp;doors&nbsp;of&nbsp;a&nbsp;room<br>
+&nbsp;&nbsp;&nbsp;&nbsp;items(list):&nbsp;A&nbsp;list&nbsp;that&nbsp;contains&nbsp;all&nbsp;the&nbsp;items&nbsp;of&nbsp;a&nbsp;room</tt></dd></dl>
+ <dl><dt><a name="-current_room"><strong>current_room</strong></a>(room_name)</dt><dd><tt>The&nbsp;current&nbsp;room&nbsp;the&nbsp;player&nbsp;is&nbsp;in.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;room_name(string):&nbsp;Name&nbsp;of&nbsp;a&nbsp;room<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dict:&nbsp;Return&nbsp;the&nbsp;current&nbsp;room&nbsp;that&nbsp;the&nbsp;player&nbsp;is&nbsp;in</tt></dd></dl>
+ <dl><dt><a name="-delete_item"><strong>delete_item</strong></a>(room_name, item_name)</dt><dd><tt>Deletes&nbsp;item&nbsp;from&nbsp;room<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;room_name(string):&nbsp;Name&nbsp;of&nbsp;the&nbsp;room&nbsp;where&nbsp;the&nbsp;player&nbsp;is&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_name(string):&nbsp;Name&nbsp;of&nbsp;the&nbsp;item&nbsp;that&nbsp;the&nbsp;player&nbsp;picked&nbsp;up<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dict:&nbsp;Return&nbsp;the&nbsp;items&nbsp;of&nbsp;the&nbsp;gaven&nbsp;room&nbsp;after<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;player&nbsp;pick&nbsp;up&nbsp;an&nbsp;item</tt></dd></dl>
+ <dl><dt><a name="-is_item_in_room"><strong>is_item_in_room</strong></a>(room_name, item_name)</dt><dd><tt>Retruns&nbsp;if&nbsp;item&nbsp;is&nbsp;in&nbsp;room<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;room_name(string):&nbsp;Name&nbsp;of&nbsp;a&nbsp;room<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_name(string):&nbsp;Name&nbsp;of&nbsp;an&nbsp;item<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;Return&nbsp;true&nbsp;if&nbsp;the&nbsp;item&nbsp;is&nbsp;in&nbsp;the&nbsp;room.&nbsp;Return&nbsp;false&nbsp;otherwise.</tt></dd></dl>
+ <dl><dt><a name="-items_in_room"><strong>items_in_room</strong></a>(room_name)</dt><dd><tt>Returns&nbsp;dictionary&nbsp;of&nbsp;items&nbsp;in&nbsp;room<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;room_name(string):&nbsp;Name&nbsp;of&nbsp;a&nbsp;room<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dict:&nbsp;Return&nbsp;dictionary&nbsp;of&nbsp;items&nbsp;of&nbsp;the&nbsp;gaven&nbsp;room</tt></dd></dl>
+ <dl><dt><a name="-map_yaml_representation"><strong>map_yaml_representation</strong></a>()</dt><dd><tt>Creates&nbsp;a&nbsp;yaml&nbsp;friendly&nbsp;representation&nbsp;of&nbsp;the&nbsp;room&nbsp;with&nbsp;descriptions<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;map_representation(dict):&nbsp;Return&nbsp;dictionary&nbsp;that&nbsp;contains<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all&nbsp;the&nbsp;rooms&nbsp;with&nbsp;the&nbsp;description</tt></dd></dl>
+ <dl><dt><a name="-move"><strong>move</strong></a>(cardinal, name)</dt><dd><tt>Returns&nbsp;the&nbsp;current&nbsp;room&nbsp;of&nbsp;the&nbsp;player&nbsp;after&nbsp;the&nbsp;player&nbsp;moves<br>
+a&nbsp;certain&nbsp;direction.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cardifnal(list):&nbsp;A&nbsp;list&nbsp;that&nbsp;contains&nbsp;all&nbsp;the&nbsp;cardinals&nbsp;of&nbsp;a&nbsp;room<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name(list):&nbsp;A&nbsp;list&nbsp;that&nbsp;contains&nbsp;all&nbsp;the&nbsp;rooms<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;current_room_name:&nbsp;Return&nbsp;the&nbsp;current&nbsp;room&nbsp;after&nbsp;the&nbsp;player<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moves&nbsp;a&nbsp;certain&nbsp;direction</tt></dd></dl>
+ <dl><dt><a name="-not_empty_room"><strong>not_empty_room</strong></a>(room_name)</dt><dd><tt>Checks&nbsp;if&nbsp;room&nbsp;is&nbsp;empty<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;room_name:&nbsp;Name&nbsp;of&nbsp;a&nbsp;room<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;Return&nbsp;true&nbsp;if&nbsp;the&nbsp;room&nbsp;has&nbsp;items&nbsp;in&nbsp;it.&nbsp;Return&nbsp;false&nbsp;otherwise.</tt></dd></dl>
+ <dl><dt><a name="-open_door"><strong>open_door</strong></a>(room_name, cardinal, key)</dt><dd><tt>Used&nbsp;to&nbsp;open&nbsp;rooms<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;room_name:&nbsp;Name&nbsp;of&nbsp;a&nbsp;room<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cardinal(list):&nbsp;A&nbsp;list&nbsp;that&nbsp;contains&nbsp;the&nbsp;cardinals&nbsp;of&nbsp;a&nbsp;room<br>
+&nbsp;&nbsp;&nbsp;&nbsp;key(list):&nbsp;A&nbsp;list&nbsp;that&nbsp;contains&nbsp;all&nbsp;the&nbsp;keys<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dict:&nbsp;Return&nbsp;the&nbsp;room&nbsp;with&nbsp;the&nbsp;closed&nbsp;door&nbsp;opened<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;there&nbsp;is&nbsp;a&nbsp;matching&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;string:Print&nbsp;a&nbsp;message&nbsp;to&nbsp;the&nbsp;user&nbsp;when&nbsp;there&nbsp;is&nbsp;no&nbsp;closed&nbsp;door<br>
+&nbsp;&nbsp;&nbsp;&nbsp;string:Print&nbsp;a&nbsp;message&nbsp;to&nbsp;the&nbsp;user&nbsp;when&nbsp;there&nbsp;is&nbsp;no&nbsp;matching&nbsp;key</tt></dd></dl>
+ <dl><dt><a name="-room_description"><strong>room_description</strong></a>(room_name)</dt><dd><tt>Returns&nbsp;description&nbsp;of&nbsp;current&nbsp;room<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;room_name(string):&nbsp;Name&nbsp;of&nbsp;a&nbsp;room<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dict:&nbsp;Return&nbsp;the&nbsp;description&nbsp;of&nbsp;the&nbsp;gaven&nbsp;room</tt></dd></dl>
+ <dl><dt><a name="-to_string_current_items"><strong>to_string_current_items</strong></a>(name)</dt><dd><tt>Returns&nbsp;a&nbsp;string&nbsp;that&nbsp;lists&nbsp;the&nbsp;items&nbsp;in&nbsp;the&nbsp;selected&nbsp;room<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name(list):&nbsp;A&nbsp;list&nbsp;that&nbsp;contains&nbsp;all&nbsp;the&nbsp;items<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_list:&nbsp;Return&nbsp;a&nbsp;string&nbsp;&nbsp;that&nbsp;lists&nbsp;the&nbsp;imtems&nbsp;of&nbsp;the&nbsp;gaven&nbsp;room</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>DICT_DESCRIPTIONS</strong> = {}<br>
+<strong>DICT_ROOMS</strong> = {}</td></tr></table>
+</body></html>
