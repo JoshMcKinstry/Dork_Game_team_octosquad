@@ -156,12 +156,12 @@ def move(cardinal, name):
     a certain direction.
 
     Parameters:
-    cardifnal(list): A list that contains all the cardinals of a room
-    name(list): A list that contains all the rooms
+        cardifnal(list): A list that contains all the cardinals of a room
+        name(list): A list that contains all the rooms
 
     Returns:
-current_room_name: Return the current room after the player
-    moves a certain direction
+        current_room_name: Return the current room after the player
+            moves a certain direction
     """
     current_room_name = None
     if current_room(name).has_closed_door(cardinal):
