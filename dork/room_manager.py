@@ -178,14 +178,15 @@ def open_door(room_name, cardinal, key):
     Used to open rooms
 
     Parameters:
-    room_name: Name of a room
-    cardinal(list): A list that contains the cardinals of a room
-    key(list): A list that contains all the keys
+        room_name: Name of a room
+        cardinal(list): A list that contains the cardinals of a room
+        key(list): A list that contains all the keys
 
     Returns:
-    dict: Return the room with the closed door opened
-        if there is a matching key
-    Print a message to the user when there is no closed door or no matching key
+        dict: Return the room with the closed door opened
+            if there is a matching key
+        string:Print a message to the user when there is no closed door
+        string:Print a message to the user when there is no matching key
     """
     if current_room(room_name).has_closed_door(cardinal):
         door_status = DICT_ROOMS[room_name].get_door_status(cardinal)
