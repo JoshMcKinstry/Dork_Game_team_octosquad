@@ -109,11 +109,12 @@ def delete_item(room_name, item_name):
     Deletes item from room
 
     Parameters:
-    room_name(string): Name of the room where the player is in
-    item_name(string): Name of the item that the player picked up
+        room_name(string): Name of the room where the player is in
+        item_name(string): Name of the item that the player picked up
 
     Returns:
-    dict: Return the items of the gaven room after the player pick up an item
+        dict: Return the items of the gaven room after
+            the player pick up an item
     """
     return DICT_ROOMS[room_name].delete_item(item_name)
 
