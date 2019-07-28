@@ -68,10 +68,10 @@ def items_in_room(room_name):
     Returns dictionary of items in room
 
     Parameters:
-    room_name(string): Name of a room
+        room_name(string): Name of a room
 
     Returns:
-    dict: Return the items of the gaven room
+        dict: Return dictionary of items of the gaven room
     """
     return DICT_ROOMS[room_name].items
 
