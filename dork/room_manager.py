@@ -201,7 +201,7 @@ def __rooms_yaml_representation():
     Creates a yaml friendly representation of the set of rooms
 
     Returns:
-    rooms_repr(dict): Returns dictionary that contains all the rooms
+        rooms_repr(dict): Returns dictionary that contains all the rooms
     """
     rooms = {}
     rooms_repr = {'Rooms': rooms}
@@ -215,8 +215,8 @@ def __description_yaml_representation():
     Creates a yaml friendly representation of the set of descriptions
 
     Returns:
-    descrip_repr(dict): Returns dictionary that contains
-        all the descriptions of rooms
+        descrip_repr(dict): Returns dictionary that contains
+            all the descriptions of rooms
     """
     descrip_repr = {'Rooms Descriptions': DICT_DESCRIPTIONS}
     return descrip_repr
@@ -227,8 +227,8 @@ def map_yaml_representation():
     Creates a yaml friendly representation of the room with descriptions
 
     Returns:
-    map_representation(dict): Return dictionary that contains
-        all the rooms with the description
+        map_representation(dict): Return dictionary that contains
+            all the rooms with the description
     """
     map_representation = {}
     map_representation.update(__rooms_yaml_representation())
