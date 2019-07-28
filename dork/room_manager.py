@@ -55,10 +55,10 @@ def room_description(room_name):
     Returns description of current room
 
     Parameters:
-    room_name(string): Name of a room
+        room_name(string): Name of a room
 
     Returns:
-    dict: Return the description of the gaven room
+        dict: Return the description of the gaven room
     """
     return DICT_DESCRIPTIONS[room_name]
 
