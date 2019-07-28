@@ -29,7 +29,8 @@ def assembling_descriptions(names, descriptions):
 
     Parameters:
         names(list): A list that contains all the rooms
-        descriptions(list): A list that contains all the descriptions of the rooms
+        descriptions(list): A list that contains all the
+            descriptions of the rooms
     """
     scope = range(len(names))
     for i in scope:
@@ -41,10 +42,10 @@ def current_room(room_name):
     The current room the player is in.
 
     Parameters:
-    room_name(string): Name of a room
+        room_name(string): Name of a room
 
     Return:
-    dict: Return the current room that the player is in
+        dict: Return the current room that the player is in
     """
     return DICT_ROOMS[room_name]
 
