@@ -20,6 +20,12 @@ def valid_file_path(file_path):
 def valid_extension(file_path):
     """
     validating .yml or .ymal extension
+
+    Parameters:
+        file_path(string): The path of the file
+    Returns:
+        bool: Return true if the extention is valid
+            Return false otherwise
     """
     file_extension = os.path.splitext(file_path)
     is_valid_extension = file_extension[1] == '.yml'
