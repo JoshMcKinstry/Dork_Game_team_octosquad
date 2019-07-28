@@ -81,11 +81,11 @@ def is_item_in_room(room_name, item_name):
     Retruns if item is in room
 
     Parameters:
-    room_name(string): Name of a room
-    item_name(string): Name of an item
+        room_name(string): Name of a room
+        item_name(string): Name of an item
 
     Returns:
-    bool: Return true if the item is in the room. Return false otherwise.
+        bool: Return true if the item is in the room. Return false otherwise.
     """
     return item_name in items_in_room(room_name)
 
