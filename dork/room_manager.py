@@ -28,8 +28,8 @@ def assembling_descriptions(names, descriptions):
     Adds the room descriptions for all rooms inside a dictionary.
 
     Parameters:
-    names(list): A list that contains all the rooms
-    descriptions(list): A list that contains all the descriptions of the rooms
+        names(list): A list that contains all the rooms
+        descriptions(list): A list that contains all the descriptions of the rooms
     """
     scope = range(len(names))
     for i in scope:
