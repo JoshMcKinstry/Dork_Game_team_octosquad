@@ -95,11 +95,11 @@ def append_item(room_name, item_name):
     Adds item to a room
 
     Parameters:
-    room_name: Name of the room where the player is in
-    item_name: Name of the item that the player droped off
+        room_name: Name of the room where the player is in
+        item_name: Name of the item that the player droped off
 
     Returns:
-    dict: Return the items of the gaven room after the player drop an item
+        dict: Return the items of the gaven room after the player drop an item
     """
     return DICT_ROOMS[room_name].add_item(item_name)
 
