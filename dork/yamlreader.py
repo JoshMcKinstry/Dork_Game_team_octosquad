@@ -6,6 +6,13 @@ import yaml
 def valid_file_path(file_path):
     """
     checking for valid file path and valid extension
+
+    Parameters:
+        file_path(string): The path of the file
+
+    Returns:
+        bool: Return true if the path of the file is valid
+            Return false otherwise
     """
     return os.path.isfile(file_path)
 
