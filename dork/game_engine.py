@@ -1,5 +1,5 @@
 """
-A module that works as an interface between the main classes in the game
+A module that works as an interface between the main classes in the game.
 """
 import dork.incoming_data as game_data
 import dork.item_manager as item_m
@@ -11,7 +11,15 @@ import dork.yamlloader as loader
 
 def game_loader(path):
     """
-    Methods that loads the game from the CLI
+    Methods that validates the yaml file path, and if valid
+    it loads the game from the CLI.
+
+    Parameters:
+        path(str): A String that contains the file path to the yaml file.
+
+    Returns:
+        bool: Returns true if file path is valid.
+            Returns false if file path is invalid.
     """
     data = reader.reading_yml(path)
     if data is not None:
@@ -29,6 +37,10 @@ def loading_map(data):
     """
     Loads the map of the game. All the rooms are created along with their
     neighboring rooms, doors, descriptions, and items.
+
+    Parameters:
+        data(dict): Nested dictionaries containing
+            all information of the game in regard to rooms.
     """
     names = game_data.load_rooms(data)
     neighbors = game_data.load_cardinals(data, names)
@@ -41,7 +53,12 @@ def loading_map(data):
 
 def loading_items(data):
     """
-    Loads all the items available for the game.
+    Loads the items of the game. All the items are created along with their
+    names, properties, and descriptions.
+
+    Parameters:
+        data(dict): Nested dictionaries containing
+            all information of the game in regard to items.
     """
     names = game_data.load_items(data)
     descriptions = game_data.load_items_descriptions(data, names)
@@ -51,7 +68,11 @@ def loading_items(data):
 
 def loading_player(data):
     """
-    Load the player specs to the game
+    Loads the player specifications. The player is created along with his
+    position and inventory.
+
+    Parameters:
+        data(tuple): A tuple containing the player position and inventory.
     """
     (position, inventory) = game_data.load_player(data)
     char_m.assembling_player(position, inventory)
@@ -59,7 +80,7 @@ def loading_player(data):
 
 def saving():
     """
-    Saving your progress at any given time
+    Saving your progress at any given time as a yaml file.
     """
     saved_data = {}
     saved_map = room_m.map_yaml_representation()
@@ -73,7 +94,10 @@ def saving():
 
 def user_command(command):
     """
-    Parses user input to proper format
+    Perform the method calls to play the game via a dictionary.
+
+    Parameters:
+        command(tuple): Tuple containing a verb, an object, and a target.
     """
     commands_lib = {"move": move, "open": use_key, "take": pick_up,
                     "drop": drop, "use": use_key, "examine": examine,
@@ -99,14 +123,17 @@ def user_command(command):
 
 def __current_position():
     """
-    Returns the player current position
+    Returns the player current position.
+
+    Returns:
+        str: String description of current location.
     """
     return char_m.player_position()
 
 
 def display_inventory():
     """
-    Prints the current player inventory
+    Prints the current player inventory.
     """
     print(char_m.player_inventory())
 
@@ -125,6 +152,10 @@ def move(cardinal):
     """
     Moves the player from one room to another if room exists and door is
     open.
+
+    Parameters:
+        cardinal(str): String that points to a valid cardinal.
+            i.e {North, East, South, West}
     """
     room_before_mov = __current_position()
     room_after_mov = room_m.move(cardinal, room_before_mov)
@@ -137,7 +168,10 @@ def move(cardinal):
 
 def examine(item_name):
     """
-    Prints a detailed description of an item
+    Prints a detailed description of an item.
+
+    Parameters:
+        item_name(str): Name of item in dictionary.
     """
     valid_item = item_m.is_item(item_name)
     item_in_room = room_m.is_item_in_room(__current_position(), item_name)
@@ -151,7 +185,10 @@ def examine(item_name):
 
 def pick_up(item_name):
     """
-    Picks up items from current room
+    Picks up items from current room.
+
+    Parameters:
+        item_name(str): String description of name of item to be picked up.
     """
     (message, picked_up) = room_m.delete_item(__current_position(), item_name)
     if picked_up:
@@ -163,7 +200,10 @@ def pick_up(item_name):
 
 def drop(item_name):
     """
-    Drops items into current room
+    Drops items into current room.
+
+    Parameters:
+        item_name(str): String description of name of item to be dropped.
     """
     (message, dropped) = char_m.remove_item_from_inventory(item_name)
     if dropped:
@@ -175,8 +215,13 @@ def drop(item_name):
 
 def use_key(cardinal, key):
     """
-    Player uses the key which opens the door in their current room if they
-    have the right key.
+    Player uses key at a door in a given cardinal,
+    if key and cardinal match, method will open the door.
+
+    Parameters:
+        cardinal(str): String that points to a valid cardinal.
+            i.e {North, East, South, West}
+        key(str): String that represents the name of the key.
     """
     if char_m.player_has_item(key):
         print(room_m.open_door(__current_position(), cardinal, key))

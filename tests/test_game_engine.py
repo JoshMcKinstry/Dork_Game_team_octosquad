@@ -1,5 +1,5 @@
 """
-A test for game_engine
+A test for game_engine.
 """
 import unittest
 from mock import patch
@@ -37,7 +37,7 @@ class TestGameEngine(unittest.TestCase):
 
     def test_loading_player(self):
         """
-        Testing the loading player method
+        Testing the loading player method.
         """
         _b = ['Property']
         _a = ['Help Guide']
@@ -48,7 +48,7 @@ class TestGameEngine(unittest.TestCase):
     @patch('dork.character_manager.player_inventory')
     def test_display_inventory(self, mock_inventory):
         """
-        Testing the method that prints the player inventory
+        Testing the method that prints the player inventory.
         """
         mock_inventory.return_value = ['Flower', 'Donut']
         self.assertIsNone(engine.display_inventory())
@@ -105,7 +105,7 @@ class TestGameEngine(unittest.TestCase):
     @patch('dork.room_manager.delete_item')
     def test_pick_up(self, was_deleted, printed):
         """
-        Testing the method that picks up items from current room
+        Testing the method that picks up items from current room.
         """
         was_deleted.return_value = ('Deleted', True)
         printed.return_value = 'Printed'
@@ -118,7 +118,7 @@ class TestGameEngine(unittest.TestCase):
     @patch('dork.character_manager.remove_item_from_inventory')
     def test_drop(self, was_dropped, printed, append):
         """
-        Testing the method that drops items into current room
+        Testing the method that drops items into current room.
         """
         was_dropped.return_value = ('Dropped', True)
         printed.return_value = 'Printed'
@@ -131,7 +131,7 @@ class TestGameEngine(unittest.TestCase):
     @patch('dork.character_manager.player_has_item')
     def test_use_key(self, item_in_player, open_door):
         """
-        Testing the method that use keys in doors
+        Testing the method that use keys in doors.
         """
         item_in_player.return_value = True
         open_door.return_value = 'Door'
@@ -145,7 +145,7 @@ class TestGameEngine(unittest.TestCase):
     @patch('dork.room_manager.map_yaml_representation')
     def test_save(self, maze, items, player, write):
         """
-        Testing the saving method
+        Testing the saving method.
         """
         maze.return_value = {'Map': 'Map Value'}
         items.return_value = {'Items': 'Item Value'}
@@ -159,7 +159,7 @@ class TestGameEngine(unittest.TestCase):
     @patch('dork.game_engine.move')
     def test_user_command(self, one_target, one_obj, two_args, no_args):
         """
-        Testing the user command method
+        Testing the user command method.
         """
         one_target.return_value = "move"
         one_obj.return_value = "examine"
