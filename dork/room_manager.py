@@ -124,10 +124,10 @@ def not_empty_room(room_name):
     Checks if room is empty
 
     Parameters:
-    room_name: Name of a room
+        room_name: Name of a room
 
     Returns:
-    bool: Return true if the room has items in it. Return false otherwise.
+        bool: Return true if the room has items in it. Return false otherwise.
     """
     return len(items_in_room(room_name)) != 0
 
