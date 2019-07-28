@@ -35,6 +35,15 @@ def valid_extension(file_path):
 def reading_yml(file_path):
     """
     reading the content of the .yml or file
+
+    Parameters:
+        file_path(string): The path of the file
+
+    Returns:
+        data: Return all the data from the yaml file
+            if the path and extention are both valid
+        None: Return nothing when path or extention of the file
+            is not valid
     """
     if valid_extension(file_path) and valid_file_path(file_path):
         with open(file_path, "r") as file:
