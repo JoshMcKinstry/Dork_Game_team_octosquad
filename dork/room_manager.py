@@ -45,7 +45,7 @@ def current_room(room_name):
         room_name(string): Name of a room
 
     Return:
-        dict: Return the current room that the player is in
+        dict: Returns the current room that the player is in
     """
     return DICT_ROOMS[room_name]
 
@@ -58,7 +58,7 @@ def room_description(room_name):
         room_name(string): Name of a room
 
     Returns:
-        dict: Return the description of the gaven room
+        dict: Returns the description of the given room
     """
     return DICT_DESCRIPTIONS[room_name]
 
@@ -71,7 +71,7 @@ def items_in_room(room_name):
         room_name(string): Name of a room
 
     Returns:
-        dict: Return dictionary of items of the gaven room
+        dict: Returns dictionary of items of the given room
     """
     return DICT_ROOMS[room_name].items
 
@@ -85,7 +85,7 @@ def is_item_in_room(room_name, item_name):
         item_name(string): Name of an item
 
     Returns:
-        bool: Return true if the item is in the room. Return false otherwise.
+        bool: Returns true if the item is in the room. Return false otherwise.
     """
     return item_name in items_in_room(room_name)
 
@@ -99,7 +99,7 @@ def append_item(room_name, item_name):
         item_name: Name of the item that the player droped off
 
     Returns:
-        dict: Return the items of the gaven room after the player drop an item
+        dict: Returns the items of the gaven room after the player drop an item
     """
     return DICT_ROOMS[room_name].add_item(item_name)
 
@@ -113,7 +113,7 @@ def delete_item(room_name, item_name):
         item_name(string): Name of the item that the player picked up
 
     Returns:
-        dict: Return the items of the gaven room after
+        dict: Returns the items of the gaven room after
             the player pick up an item
     """
     return DICT_ROOMS[room_name].delete_item(item_name)
@@ -127,7 +127,7 @@ def not_empty_room(room_name):
         room_name: Name of a room
 
     Returns:
-        bool: Return true if the room has items in it. Return false otherwise.
+        bool: Returns true if the room has items in it. Return false otherwise.
     """
     return len(items_in_room(room_name)) != 0
 
@@ -140,7 +140,7 @@ def to_string_current_items(name):
         name(list): A list that contains all the items
 
     Returns:
-        item_list: Return a string  that lists the imtems of the gaven room
+        item_list: Returns a string  that lists the imtems of the given room
     """
     item_list = 'You notice the following items--- '
     scope = range(len(DICT_ROOMS[name].items)-1)
@@ -156,11 +156,11 @@ def move(cardinal, name):
     a certain direction.
 
     Parameters:
-        cardifnal(list): A list that contains all the cardinals of a room
+        cardinal(list): A list that contains all the cardinals of a room
         name(list): A list that contains all the rooms
 
     Returns:
-        current_room_name: Return the current room after the player
+        current_room_name: Returns the current room after the player
             moves a certain direction
     """
     current_room_name = None
@@ -183,7 +183,7 @@ def open_door(room_name, cardinal, key):
         key(list): A list that contains all the keys
 
     Returns:
-        dict: Return the room with the closed door opened
+        dict: Returns the room with the closed door opened
             if there is a matching key
         string:Print a message to the user when there is no closed door
         string:Print a message to the user when there is no matching key
@@ -227,7 +227,7 @@ def map_yaml_representation():
     Creates a yaml friendly representation of the room with descriptions
 
     Returns:
-        map_representation(dict): Return dictionary that contains
+        map_representation(dict): Returns dictionary that contains
             all the rooms with the description
     """
     map_representation = {}
