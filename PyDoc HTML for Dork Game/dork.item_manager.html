@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module dork.item_manager</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="dork.html"><font color="#ffffff">dork</font></a>.item_manager</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cwjnra%5Cdocuments%5Cteam34%5Cdork%5Citem_manager.py">c:\users\wjnra\documents\team34\dork\item_manager.py</a></font></td></tr></table>
+    <p><tt>A&nbsp;module&nbsp;that&nbsp;handles&nbsp;the&nbsp;functionality&nbsp;of&nbsp;items.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-assembling_items"><strong>assembling_items</strong></a>(names, descriptions, properties)</dt><dd><tt>Constructs&nbsp;item&nbsp;objects&nbsp;for&nbsp;all&nbsp;items&nbsp;in&nbsp;game&nbsp;and&nbsp;stores&nbsp;all&nbsp;the&nbsp;items<br>
+inside&nbsp;a&nbsp;dictionary.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;names(list):&nbsp;A&nbsp;list&nbsp;that&nbsp;contains&nbsp;all&nbsp;the&nbsp;items&nbsp;available&nbsp;to&nbsp;game.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;description(list):&nbsp;A&nbsp;list&nbsp;that&nbsp;has&nbsp;all&nbsp;the&nbsp;item&nbsp;descriptions.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;properties(list):&nbsp;A&nbsp;list&nbsp;of&nbsp;&nbsp;lists&nbsp;that&nbsp;contain&nbsp;all&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;associated&nbsp;with&nbsp;an&nbsp;item.</tt></dd></dl>
+ <dl><dt><a name="-is_item"><strong>is_item</strong></a>(item_name)</dt><dd><tt>A&nbsp;function&nbsp;that&nbsp;verifies&nbsp;that&nbsp;an&nbsp;object&nbsp;is&nbsp;a&nbsp;valid&nbsp;item.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_name(str):&nbsp;Holds&nbsp;the&nbsp;name&nbsp;of&nbsp;item.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;Returns&nbsp;true&nbsp;if&nbsp;item&nbsp;is&nbsp;in&nbsp;dictionary.&nbsp;Returns&nbsp;false&nbsp;otherwise.</tt></dd></dl>
+ <dl><dt><a name="-item_description"><strong>item_description</strong></a>(item_name)</dt><dd><tt>A&nbsp;function&nbsp;that&nbsp;gets&nbsp;the&nbsp;item&nbsp;description.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_name(str):&nbsp;Name&nbsp;of&nbsp;item&nbsp;in&nbsp;dictionary<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dict:&nbsp;String&nbsp;description&nbsp;of&nbsp;item.</tt></dd></dl>
+ <dl><dt><a name="-items_yaml_representation"><strong>items_yaml_representation</strong></a>()</dt><dd><tt>Creates&nbsp;a&nbsp;yaml&nbsp;friendly&nbsp;representation&nbsp;of&nbsp;the&nbsp;set&nbsp;of&nbsp;items.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;items_repr(dict):&nbsp;Returns&nbsp;dictionary&nbsp;that&nbsp;contains&nbsp;all&nbsp;item&nbsp;objects.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>DICT_ITEMS</strong> = {}</td></tr></table>
+</body></html>
