@@ -68,9 +68,16 @@ For a more in depth walkthrough of the game, refer to the "Game Design" folder i
 
 Credits
 -------
+* Josh McKinstry <jmckins3@msudenver.edu>
+* Sinh Mai <smai2@msudenver.edu>
+* Sky Liu <tliu1@msudenver.edu>
+* Warren Joseph Ramos <wramos1@msudenver.edu> 
+* Jacob Netwal <jnetwal@msudenver.edu>
+* Andres Restrepo <arestre1@msudenver.edu>
+* Rachel Rosebrook <rrosebro@msudenver.edu>
+* Kevin Morales-Folgar <kmorale4@msudenver.edu>
 
-Please see the credits provided in the repo or Documentation.
-
+Version: 1.0.0
 
 This package was created with Cookiecutter_ and the
 `lsmith-zenoscave/cookiecutter-simplemodule`_ project template.
