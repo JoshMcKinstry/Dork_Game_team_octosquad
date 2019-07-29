@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module dork.rooms</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="dork.html"><font color="#ffffff">dork</font></a>.rooms</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cwjnra%5Cdocuments%5Cteam34%5Cdork%5Crooms.py">c:\users\wjnra\documents\team34\dork\rooms.py</a></font></td></tr></table>
+    <p><tt>A&nbsp;room&nbsp;module&nbsp;that&nbsp;creates&nbsp;an&nbsp;abstract&nbsp;representation&nbsp;of&nbsp;a&nbsp;room</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="dork.rooms.html#Room">Room</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Room">class <strong>Room</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Room">Room</a>(name,&nbsp;neighbors,&nbsp;door,&nbsp;items)<br>
+&nbsp;<br>
+A&nbsp;class&nbsp;that&nbsp;models&nbsp;an&nbsp;room&nbsp;<a href="builtins.html#object">object</a><br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Room-__init__"><strong>__init__</strong></a>(self, name, neighbors, door, items)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Room-add_item"><strong>add_item</strong></a>(self, item_name)</dt><dd><tt>Adds&nbsp;item&nbsp;to&nbsp;the&nbsp;room.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_name(str):&nbsp;The&nbsp;item&nbsp;to&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;room.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;str:&nbsp;String&nbsp;printed&nbsp;to&nbsp;user&nbsp;when&nbsp;they&nbsp;drop&nbsp;an&nbsp;item.</tt></dd></dl>
+
+<dl><dt><a name="Room-delete_item"><strong>delete_item</strong></a>(self, item_name)</dt><dd><tt>Delete&nbsp;item&nbsp;from&nbsp;room&nbsp;if&nbsp;it&nbsp;is&nbsp;found&nbsp;inside&nbsp;of&nbsp;room.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_name(str):&nbsp;The&nbsp;items&nbsp;name&nbsp;to&nbsp;check&nbsp;for&nbsp;in&nbsp;the&nbsp;room.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;Returns&nbsp;true&nbsp;if&nbsp;the&nbsp;item&nbsp;has&nbsp;been&nbsp;removed&nbsp;from&nbsp;the&nbsp;room.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Room-get_door_status"><strong>get_door_status</strong></a>(self, cardinal)</dt><dd><tt>If&nbsp;there&nbsp;is&nbsp;a&nbsp;door&nbsp;at&nbsp;the&nbsp;specified&nbsp;cardinal,&nbsp;return&nbsp;the&nbsp;status&nbsp;of&nbsp;it.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cardinal(str):&nbsp;A&nbsp;string&nbsp;of&nbsp;a&nbsp;direction&nbsp;to&nbsp;check&nbsp;for&nbsp;a&nbsp;door.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;str:&nbsp;The&nbsp;doors&nbsp;status.</tt></dd></dl>
+
+<dl><dt><a name="Room-has_closed_door"><strong>has_closed_door</strong></a>(self, cardinal)</dt><dd><tt>Checks&nbsp;to&nbsp;see&nbsp;if&nbsp;the&nbsp;current&nbsp;room&nbsp;has&nbsp;a&nbsp;closed&nbsp;door&nbsp;at&nbsp;a&nbsp;certain<br>
+cardinal.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cardinal(str):&nbsp;A&nbsp;string&nbsp;of&nbsp;a&nbsp;direction&nbsp;to&nbsp;check&nbsp;for&nbsp;a&nbsp;closed&nbsp;door.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;Returns&nbsp;true&nbsp;if&nbsp;a&nbsp;closed&nbsp;door&nbsp;is&nbsp;at&nbsp;the&nbsp;cardinal.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Room-has_door_at"><strong>has_door_at</strong></a>(self, cardinal)</dt><dd><tt>Checks&nbsp;if&nbsp;a&nbsp;room&nbsp;is&nbsp;present&nbsp;at&nbsp;a&nbsp;certain&nbsp;Cardinal<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cardinal(str):&nbsp;A&nbsp;string&nbsp;of&nbsp;a&nbsp;direction&nbsp;to&nbsp;check.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;Returns&nbsp;true&nbsp;there&nbsp;is&nbsp;a&nbsp;door&nbsp;at&nbsp;the&nbsp;cardinal.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Returns&nbsp;false&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Room-has_item"><strong>has_item</strong></a>(self, item_name)</dt><dd><tt>Checks&nbsp;to&nbsp;see&nbsp;if&nbsp;a&nbsp;specified&nbsp;item&nbsp;is&nbsp;in&nbsp;the&nbsp;room.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_name(str):&nbsp;an&nbsp;items&nbsp;name&nbsp;to&nbsp;be&nbsp;checked&nbsp;if&nbsp;in&nbsp;room.<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;Returns&nbsp;true&nbsp;if&nbsp;item&nbsp;is&nbsp;in&nbsp;the&nbsp;room.&nbsp;&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Room-has_neighbor"><strong>has_neighbor</strong></a>(self, cardinal)</dt><dd><tt>Checks&nbsp;to&nbsp;see&nbsp;if&nbsp;the&nbsp;current&nbsp;room&nbsp;has&nbsp;an&nbsp;adjacent&nbsp;room.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cardinal(str):&nbsp;A&nbsp;string&nbsp;of&nbsp;a&nbsp;direction&nbsp;to&nbsp;check&nbsp;for&nbsp;a&nbsp;room.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;Returns&nbsp;true&nbsp;if&nbsp;the&nbsp;room&nbsp;has&nbsp;a&nbsp;neighbor.&nbsp;&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Room-update_door_status"><strong>update_door_status</strong></a>(self)</dt><dd><tt>Method&nbsp;used&nbsp;to&nbsp;open&nbsp;a&nbsp;door.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;str:&nbsp;prints&nbsp;a&nbsp;string&nbsp;to&nbsp;the&nbsp;user&nbsp;after&nbsp;opening&nbsp;a&nbsp;door.</tt></dd></dl>
+
+<dl><dt><a name="Room-yaml_representation"><strong>yaml_representation</strong></a>(self)</dt><dd><tt>Creates&nbsp;a&nbsp;yml&nbsp;compatible&nbsp;representation&nbsp;of&nbsp;a&nbsp;room&nbsp;<a href="builtins.html#object">object</a><br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Room">Room</a>:&nbsp;The&nbsp;room&nbsp;represented&nbsp;from&nbsp;the&nbsp;yml.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

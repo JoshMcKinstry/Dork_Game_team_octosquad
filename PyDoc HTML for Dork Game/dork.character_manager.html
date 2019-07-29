@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module dork.character_manager</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="dork.html"><font color="#ffffff">dork</font></a>.character_manager</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cwjnra%5Cdocuments%5Cteam34%5Cdork%5Ccharacter_manager.py">c:\users\wjnra\documents\team34\dork\character_manager.py</a></font></td></tr></table>
+    <p><tt>A&nbsp;module&nbsp;that&nbsp;handles&nbsp;the&nbsp;functionality&nbsp;of&nbsp;player&nbsp;both&nbsp;NPCs&nbsp;and&nbsp;Player</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-assembling_player"><strong>assembling_player</strong></a>(position, inventory)</dt><dd><tt>Loading&nbsp;the&nbsp;player&nbsp;specifications&nbsp;into&nbsp;the&nbsp;player&nbsp;object.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;position&nbsp;(dict):&nbsp;A&nbsp;key&nbsp;to&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;possible&nbsp;positions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inventory&nbsp;(list):&nbsp;A&nbsp;list&nbsp;of&nbsp;the&nbsp;player's&nbsp;held&nbsp;items</tt></dd></dl>
+ <dl><dt><a name="-player_has_item"><strong>player_has_item</strong></a>(item_name)</dt><dd><tt>Checks&nbsp;whether&nbsp;or&nbsp;not&nbsp;the&nbsp;item&nbsp;is&nbsp;in&nbsp;the&nbsp;player's&nbsp;inventory.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_name&nbsp;(dict):&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;items<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_name&nbsp;(list):&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;items&nbsp;held&nbsp;by&nbsp;the&nbsp;player.</tt></dd></dl>
+ <dl><dt><a name="-player_inventory"><strong>player_inventory</strong></a>()</dt><dd><tt>This&nbsp;function&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;player's&nbsp;inventory.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DICT_CHARACTERS['Player'].inventory&nbsp;(dict):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;the&nbsp;items&nbsp;held&nbsp;by&nbsp;the&nbsp;player</tt></dd></dl>
+ <dl><dt><a name="-player_position"><strong>player_position</strong></a>()</dt><dd><tt>Returns&nbsp;the&nbsp;room&nbsp;that&nbsp;the&nbsp;player&nbsp;is&nbsp;in.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DICT_CHARACTERS['Player'].position&nbsp;(dict):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;room&nbsp;the&nbsp;player&nbsp;is&nbsp;currently&nbsp;in</tt></dd></dl>
+ <dl><dt><a name="-player_yaml_representation"><strong>player_yaml_representation</strong></a>()</dt><dd><tt>Returns&nbsp;a&nbsp;friendly&nbsp;yaml&nbsp;representation&nbsp;of&nbsp;the&nbsp;player.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;player_repr&nbsp;(dict):&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;dictionaries<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showing&nbsp;the&nbsp;current&nbsp;chracter&nbsp;state.</tt></dd></dl>
+ <dl><dt><a name="-remove_item_from_inventory"><strong>remove_item_from_inventory</strong></a>(item_name)</dt><dd><tt>Removes&nbsp;the&nbsp;item&nbsp;from&nbsp;the&nbsp;player's&nbsp;inventory.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_name&nbsp;(dict):&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;items&nbsp;in&nbsp;the&nbsp;game<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DICT_CHARACTERS['Player'].delete_item(item_name)&nbsp;(dict):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;items&nbsp;held&nbsp;by&nbsp;the&nbsp;player<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;the&nbsp;item&nbsp;in&nbsp;question&nbsp;deleted.</tt></dd></dl>
+ <dl><dt><a name="-update_player_inventory"><strong>update_player_inventory</strong></a>(item_name)</dt><dd><tt>Adds&nbsp;an&nbsp;item&nbsp;to&nbsp;the&nbsp;player's&nbsp;inventory.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_name&nbsp;(dict):&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;items&nbsp;in&nbsp;the&nbsp;game<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DICT_CHARACTERS['Player'].add_item(item_name)&nbsp;(dict):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;items&nbsp;held&nbsp;by&nbsp;the&nbsp;player<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;the&nbsp;item&nbsp;in&nbsp;question&nbsp;added.</tt></dd></dl>
+ <dl><dt><a name="-update_player_position"><strong>update_player_position</strong></a>(room_name)</dt><dd><tt>Updates&nbsp;the&nbsp;player's&nbsp;position&nbsp;to&nbsp;the&nbsp;new&nbsp;room&nbsp;after&nbsp;moving.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;room_name&nbsp;(dict):&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;possible&nbsp;rooms</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>DICT_CHARACTERS</strong> = {}</td></tr></table>
+</body></html>
