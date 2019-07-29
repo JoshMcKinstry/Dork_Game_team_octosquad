@@ -20,7 +20,16 @@ Requirements
 ------------ 
 python 3.7.3
 git
+
+Pip packages 
+------------
+coverage
+doc8
+flake8
+mock
+pylint
 pytest
+pyyaml
 
 Setup
 -----
@@ -29,6 +38,7 @@ Setup
 3. Navigate to the direction of the team34 folder
 4. Type the following command to start the game: python -m dork
 5. Type the following command to run the tests: python -m pytest
+6. Type the following command to install pip packages: pip install "Name of package"
 
 How to Play
 -----------
@@ -55,6 +65,7 @@ These are the commands currently supported by the game*
             freshman-badge, junior-badge, key, nest, paper, sophmore-badge
 
 For a more in depth walkthrough of the game, refer to the "Game Design" folder in the team34 folder.
+
 Credits
 -------
 
