@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module game_engine</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>game_engine</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Ckevin%5Cdesktop%5Czorn%20project%203250%20summer%20software%20dev%20tools%5Cteam%2034%20repo%5Cteam34%5Cdork%5Cgame_engine.py">c:\users\kevin\desktop\zorn project 3250 summer software dev tools\team 34 repo\team34\dork\game_engine.py</a></font></td></tr></table>
+    <p><tt>A&nbsp;module&nbsp;that&nbsp;works&nbsp;as&nbsp;an&nbsp;interface&nbsp;between&nbsp;the&nbsp;main&nbsp;classes&nbsp;in&nbsp;the&nbsp;game.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="dork.character_manager.html">dork.character_manager</a><br>
+<a href="dork.incoming_data.html">dork.incoming_data</a><br>
+</td><td width="25%" valign=top><a href="dork.item_manager.html">dork.item_manager</a><br>
+<a href="dork.yamlloader.html">dork.yamlloader</a><br>
+</td><td width="25%" valign=top><a href="dork.yamlreader.html">dork.yamlreader</a><br>
+<a href="dork.room_manager.html">dork.room_manager</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-display_inventory"><strong>display_inventory</strong></a>()</dt><dd><tt>Prints&nbsp;the&nbsp;current&nbsp;player&nbsp;inventory.</tt></dd></dl>
+ <dl><dt><a name="-drop"><strong>drop</strong></a>(item_name)</dt><dd><tt>Drops&nbsp;items&nbsp;into&nbsp;current&nbsp;room.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_name(str):&nbsp;String&nbsp;description&nbsp;of&nbsp;name&nbsp;of&nbsp;item&nbsp;to&nbsp;be&nbsp;dropped.</tt></dd></dl>
+ <dl><dt><a name="-examine"><strong>examine</strong></a>(item_name)</dt><dd><tt>Prints&nbsp;a&nbsp;detailed&nbsp;description&nbsp;of&nbsp;an&nbsp;item.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_name(str):&nbsp;Name&nbsp;of&nbsp;item&nbsp;in&nbsp;dictionary.</tt></dd></dl>
+ <dl><dt><a name="-game_loader"><strong>game_loader</strong></a>(path)</dt><dd><tt>Methods&nbsp;that&nbsp;validates&nbsp;the&nbsp;yaml&nbsp;file&nbsp;path,&nbsp;and&nbsp;if&nbsp;valid<br>
+it&nbsp;loads&nbsp;the&nbsp;game&nbsp;from&nbsp;the&nbsp;CLI.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;path(str):&nbsp;A&nbsp;String&nbsp;that&nbsp;contains&nbsp;the&nbsp;file&nbsp;path&nbsp;to&nbsp;the&nbsp;yaml&nbsp;file.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;Returns&nbsp;true&nbsp;if&nbsp;file&nbsp;path&nbsp;is&nbsp;valid.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns&nbsp;false&nbsp;if&nbsp;file&nbsp;path&nbsp;is&nbsp;invalid.</tt></dd></dl>
+ <dl><dt><a name="-loading_items"><strong>loading_items</strong></a>(data)</dt><dd><tt>Loads&nbsp;the&nbsp;items&nbsp;of&nbsp;the&nbsp;game.&nbsp;All&nbsp;the&nbsp;items&nbsp;are&nbsp;created&nbsp;along&nbsp;with&nbsp;their<br>
+names,&nbsp;properties,&nbsp;and&nbsp;descriptions.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data(dict):&nbsp;Nested&nbsp;dictionaries&nbsp;containing<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all&nbsp;information&nbsp;of&nbsp;the&nbsp;game&nbsp;in&nbsp;regard&nbsp;to&nbsp;items.</tt></dd></dl>
+ <dl><dt><a name="-loading_map"><strong>loading_map</strong></a>(data)</dt><dd><tt>Loads&nbsp;the&nbsp;map&nbsp;of&nbsp;the&nbsp;game.&nbsp;All&nbsp;the&nbsp;rooms&nbsp;are&nbsp;created&nbsp;along&nbsp;with&nbsp;their<br>
+neighboring&nbsp;rooms,&nbsp;doors,&nbsp;descriptions,&nbsp;and&nbsp;items.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data(dict):&nbsp;Nested&nbsp;dictionaries&nbsp;containing<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all&nbsp;information&nbsp;of&nbsp;the&nbsp;game&nbsp;in&nbsp;regard&nbsp;to&nbsp;rooms.</tt></dd></dl>
+ <dl><dt><a name="-loading_player"><strong>loading_player</strong></a>(data)</dt><dd><tt>Loads&nbsp;the&nbsp;player&nbsp;specifications.&nbsp;The&nbsp;player&nbsp;is&nbsp;created&nbsp;along&nbsp;with&nbsp;his<br>
+position&nbsp;and&nbsp;inventory.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data(tuple):&nbsp;A&nbsp;tuple&nbsp;containing&nbsp;the&nbsp;player&nbsp;position&nbsp;and&nbsp;inventory.</tt></dd></dl>
+ <dl><dt><a name="-move"><strong>move</strong></a>(cardinal)</dt><dd><tt>Moves&nbsp;the&nbsp;player&nbsp;from&nbsp;one&nbsp;room&nbsp;to&nbsp;another&nbsp;if&nbsp;room&nbsp;exists&nbsp;and&nbsp;door&nbsp;is<br>
+open.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cardinal(str):&nbsp;String&nbsp;that&nbsp;points&nbsp;to&nbsp;a&nbsp;valid&nbsp;cardinal.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.e&nbsp;{North,&nbsp;East,&nbsp;South,&nbsp;West}</tt></dd></dl>
+ <dl><dt><a name="-pick_up"><strong>pick_up</strong></a>(item_name)</dt><dd><tt>Picks&nbsp;up&nbsp;items&nbsp;from&nbsp;current&nbsp;room.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item_name(str):&nbsp;String&nbsp;description&nbsp;of&nbsp;name&nbsp;of&nbsp;item&nbsp;to&nbsp;be&nbsp;picked&nbsp;up.</tt></dd></dl>
+ <dl><dt><a name="-room_to_screen"><strong>room_to_screen</strong></a>()</dt><dd><tt>Prints&nbsp;the&nbsp;room&nbsp;name,&nbsp;room&nbsp;description&nbsp;and&nbsp;room&nbsp;items.</tt></dd></dl>
+ <dl><dt><a name="-saving"><strong>saving</strong></a>()</dt><dd><tt>Saving&nbsp;your&nbsp;progress&nbsp;at&nbsp;any&nbsp;given&nbsp;time&nbsp;as&nbsp;a&nbsp;yaml&nbsp;file.</tt></dd></dl>
+ <dl><dt><a name="-use_key"><strong>use_key</strong></a>(cardinal, key)</dt><dd><tt>Player&nbsp;uses&nbsp;key&nbsp;at&nbsp;a&nbsp;door&nbsp;in&nbsp;a&nbsp;given&nbsp;cardinal,<br>
+if&nbsp;key&nbsp;and&nbsp;cardinal&nbsp;match,&nbsp;method&nbsp;will&nbsp;open&nbsp;the&nbsp;door.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cardinal(str):&nbsp;String&nbsp;that&nbsp;points&nbsp;to&nbsp;a&nbsp;valid&nbsp;cardinal.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.e&nbsp;{North,&nbsp;East,&nbsp;South,&nbsp;West}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;key(str):&nbsp;String&nbsp;that&nbsp;represents&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;key.</tt></dd></dl>
+ <dl><dt><a name="-user_command"><strong>user_command</strong></a>(command)</dt><dd><tt>Perform&nbsp;the&nbsp;method&nbsp;calls&nbsp;to&nbsp;play&nbsp;the&nbsp;game&nbsp;via&nbsp;a&nbsp;dictionary.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;command(tuple):&nbsp;Tuple&nbsp;containing&nbsp;a&nbsp;verb,&nbsp;an&nbsp;object,&nbsp;and&nbsp;a&nbsp;target.</tt></dd></dl>
+</td></tr></table>
+</body></html>

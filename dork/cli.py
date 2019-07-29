@@ -1,5 +1,6 @@
-"""REPL and commands parser for dork game
-"""
+'''
+A module that parses commands via the REPL process
+'''
 import sys
 from enum import Enum
 from dork import game_engine as ge
@@ -40,7 +41,13 @@ USAGE: 'examine' [item]",
                "use": "---USE---\n\
 Use a key on a door.\n\
 USAGE: 'use' [item] on [direction]\n{}\
-see also - 'help open'\n".format(DIRECTIONS), }
+see also - 'help open'\n".format(DIRECTIONS),
+               "display": "---DISPLAY---\n\
+Display the inventory of the player.\n\
+USAGE: 'display'",
+               "where": "---WHERE---\n\
+Show where the player is at.\n\
+USAGE: 'where'"}
 CARDINALS = ['north', 'east', 'south', 'west']
 OBJECTS = ['cage', 'cellphone', 'dean-badge', 'donut',
            'flower', 'flyer', 'freshman-badge',
@@ -48,12 +55,25 @@ OBJECTS = ['cage', 'cellphone', 'dean-badge', 'donut',
 
 
 def read():
-    """read input from console to repl
+    """
+    This function reads input from the console to the REPL
+
+    Returns:
+        input (str): The user's selection for the game state
     """
     return input("> ")
 
 
 def _safe_quit():
+    """
+    This function ends the game with a possible save
+
+    Parameters:
+        response (str): The user's input whether or not to save
+
+    Returns:
+        State (enum): Token delegating the current game state
+    """
     print("Would you like to save the game?(y/n)")
     response = input(">").casefold()
     if response == "y":
@@ -66,15 +86,24 @@ def _safe_quit():
 
 
 def _quit_dork():
+    """
+    This function ends the game immediately
+    """
     print("Leaving Dork...\n\n")
     sys.exit()
 
 
 def _print_load():
+    """
+    This prints a loading statement while the game loads
+    """
     print("Loading previous checkpoint...")
 
 
 def _print_menu():
+    """
+    This prints out the overall menu for the game
+    """
     print("Welcome to the Game of Dork!\n\
         -- NEW\n\
         -- LOAD\n\
@@ -84,6 +113,9 @@ def _print_menu():
 
 
 def _print_info():
+    """
+    This prints out an informative statement on the game
+    """
     print("-----------------------------------------------------\n\
         What is Dork?\n\
         Dork is an interactive text-based adventure game that takes place\n\
@@ -96,6 +128,17 @@ def _print_info():
 
 
 def _game_helper(command):
+    """
+    This function displays the helper list
+        whenever a player enters an unknown command
+
+    Parameters:
+        command (dict): A dictionary (of dictionaries) that contains the
+            various actions possible in the game.
+
+    Returns:
+
+    """
     if not command:
         print(COMMANDDICT["help"])
         print("List of in game commands.")
@@ -106,7 +149,14 @@ def _game_helper(command):
 
 
 def evaluate(command, state):
-    """command evaluating method in repl
+    """
+    This function evaluates the current state of the game
+
+    Parameters:
+        state (str): A string indicating current state of the game
+
+    Returns:
+        State (enum): An enum which selects the correct state
     """
     # https://docs.python.org/3/tutorial/datastructures.html
     word_list = [words.casefold() for words in command.split()]
@@ -122,7 +172,15 @@ def evaluate(command, state):
 
 
 def _load_evaluate(path):
-    """token evaluater for the load screen state
+    """
+    This function evaluates the current game state
+        and loads a new game if called upon
+
+    Parameters:
+        path (str): The file location of the saved game
+
+    Returns:
+        State (enum): An enum which selects the correct state
     """
     if ge.game_loader(path):
         return State.GAME
@@ -130,13 +188,26 @@ def _load_evaluate(path):
 
 
 def _save_evaluate():
+    """
+    This function prints a statement about saving a new game
+        and then saves the game
+    """
     print("Saving Game...")
     ge.saving()
     return State.MENU
 
 
 def _menu_evaluate(tokens):
-    """token evaluater for the main menu state
+    """
+    This function evalulates the command input by the user
+        for the most basic of command options
+        (the options available in the initial menu).
+
+    Parameters:
+        tokens (list): A list of possible input options by the user
+
+    Returns:
+        State (enum): An enum which selects the correct state
     """
     # new load help quit
     if "quit" in tokens:
@@ -161,7 +232,16 @@ def _menu_evaluate(tokens):
 
 
 def _game_evaluate(tokens):
-    """token evaluater for the in-game state
+    """
+    This function evalulates the command input by the user
+        for the more complex commands parsing through
+        the input for specific keywords.
+
+    Parameters:
+        tokens (list): A list of possible input options by the user
+
+    Returns:
+        State (enum): An enum which selects the correct state
     """
     action = ""
     obj = ""
@@ -192,7 +272,11 @@ def _game_evaluate(tokens):
 
 
 def repl():
-    """repl for dork game
+    """
+    This function is the overall REPL for our game
+
+    Returns:
+
     """
     state = State.MENU
     _print_menu()
@@ -206,7 +290,8 @@ def repl():
 
 
 class State(Enum):
-    """State tracker for the game
+    """
+    This class tracks the overall state for the game
     """
     MENU = 1
     GAME = 2

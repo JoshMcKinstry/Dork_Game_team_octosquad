@@ -1,5 +1,5 @@
 """
-A module that test the incoming_data module
+A module that test the incoming_data module.
 """
 import unittest
 import dork.incoming_data as game_data
@@ -7,12 +7,12 @@ import dork.incoming_data as game_data
 
 class TestIncomingData(unittest.TestCase):
     """
-    A testing class for the incoming_data module
+    A testing class for the incoming_data module.
     """
 
     def test_load_rooms(self):
         """
-        Testing the Loading of the room names
+        Testing the Loading of the room names.
         """
         room_1 = {'Neighbors': 'A', 'Door': 'B',
                   'Items': 'C', 'Description': 'D'}
@@ -24,7 +24,7 @@ class TestIncomingData(unittest.TestCase):
 
     def test_load_cardinals(self):
         """
-        Testing the Loading of the room cardinals
+        Testing the Loading of the room cardinals.
         """
         room_1 = {'Neighbors': 'A', 'Door': 'B',
                   'Items': 'C', 'Description': 'D'}
@@ -36,7 +36,7 @@ class TestIncomingData(unittest.TestCase):
 
     def test_load_doors(self):
         """
-        Testing the Loading of the doors in each room
+        Testing the Loading of the doors in each room.
         """
         room_1 = {'Neighbors': 'A', 'Door': 'B',
                   'Items': 'C', 'Description': 'D'}
@@ -58,7 +58,7 @@ class TestIncomingData(unittest.TestCase):
 
     def test_load_list_room_items(self):
         """
-        Testing the Loading of each room respective list of items
+        Testing the Loading of each room respective list of items.
         """
         room_1 = {'Neighbors': 'A', 'Door': 'B',
                   'Items': 'C', 'Description': 'D'}
@@ -70,7 +70,7 @@ class TestIncomingData(unittest.TestCase):
 
     def test_load_items(self):
         """
-        Testing the Loading of items into the game
+        Testing the Loading of items into the game.
         """
         item = {'Description': 'A', 'Properties': 'B'}
         item_name = {'item_1': item}
@@ -81,7 +81,7 @@ class TestIncomingData(unittest.TestCase):
 
     def test_load_items_descriptions(self):
         """
-        Testing the Loading of each item respective description
+        Testing the Loading of each item respective description.
         """
         item = {'Description': 'A', 'Properties': 'B'}
         item_name = {'item_1': item}
@@ -92,7 +92,7 @@ class TestIncomingData(unittest.TestCase):
 
     def test_load_items_properties(self):
         """
-        Testing the Loading of each item respective properties
+        Testing the Loading of each item respective properties.
         """
         item = {'Description': 'A', 'Properties': 'B'}
         item_name = {'item_1': item}
@@ -103,7 +103,7 @@ class TestIncomingData(unittest.TestCase):
 
     def test_load_player(self):
         """
-        Testing the Loading of the player specs
+        Testing the Loading of the player specs.
         """
         player = {'Inventory': 'A', 'Position': 'B'}
         data = {'Player': player}

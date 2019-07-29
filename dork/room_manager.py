@@ -10,6 +10,12 @@ def assembling_rooms(names, neighbors, doors, items):
     """
     Constructs room objects for all rooms in maze and stores all the rooms
     inside a dictionary.
+
+    Parameters:
+        names(list): A list that contains all the rooms
+        neighbors(list): A list that contains all the neighbors of a room
+        doors(list): A list that contains all the doors of a room
+        items(list): A list that contains all the items of a room
     """
     scope = range(len(names))
     for i in scope:
@@ -20,6 +26,11 @@ def assembling_rooms(names, neighbors, doors, items):
 def assembling_descriptions(names, descriptions):
     """
     Adds the room descriptions for all rooms inside a dictionary.
+
+    Parameters:
+        names(list): A list that contains all the rooms
+        descriptions(list): A list that contains all the
+            descriptions of the rooms
     """
     scope = range(len(names))
     for i in scope:
@@ -29,6 +40,12 @@ def assembling_descriptions(names, descriptions):
 def current_room(room_name):
     """
     The current room the player is in.
+
+    Parameters:
+        room_name(string): Name of a room
+
+    Return:
+        dict: Returns the current room that the player is in
     """
     return DICT_ROOMS[room_name]
 
@@ -36,6 +53,12 @@ def current_room(room_name):
 def room_description(room_name):
     """
     Returns description of current room
+
+    Parameters:
+        room_name(string): Name of a room
+
+    Returns:
+        dict: Returns the description of the given room
     """
     return DICT_DESCRIPTIONS[room_name]
 
@@ -43,6 +66,12 @@ def room_description(room_name):
 def items_in_room(room_name):
     """
     Returns dictionary of items in room
+
+    Parameters:
+        room_name(string): Name of a room
+
+    Returns:
+        dict: Returns dictionary of items of the given room
     """
     return DICT_ROOMS[room_name].items
 
@@ -50,6 +79,13 @@ def items_in_room(room_name):
 def is_item_in_room(room_name, item_name):
     """
     Retruns if item is in room
+
+    Parameters:
+        room_name(string): Name of a room
+        item_name(string): Name of an item
+
+    Returns:
+        bool: Returns true if the item is in the room. Return false otherwise.
     """
     return item_name in items_in_room(room_name)
 
@@ -57,6 +93,13 @@ def is_item_in_room(room_name, item_name):
 def append_item(room_name, item_name):
     """
     Adds item to a room
+
+    Parameters:
+        room_name: Name of the room where the player is in
+        item_name: Name of the item that the player droped off
+
+    Returns:
+        dict: Returns the items of the gaven room after the player drop an item
     """
     return DICT_ROOMS[room_name].add_item(item_name)
 
@@ -64,6 +107,14 @@ def append_item(room_name, item_name):
 def delete_item(room_name, item_name):
     """
     Deletes item from room
+
+    Parameters:
+        room_name(string): Name of the room where the player is in
+        item_name(string): Name of the item that the player picked up
+
+    Returns:
+        dict: Returns the items of the gaven room after
+            the player pick up an item
     """
     return DICT_ROOMS[room_name].delete_item(item_name)
 
@@ -71,6 +122,12 @@ def delete_item(room_name, item_name):
 def not_empty_room(room_name):
     """
     Checks if room is empty
+
+    Parameters:
+        room_name: Name of a room
+
+    Returns:
+        bool: Returns true if the room has items in it. Return false otherwise.
     """
     return len(items_in_room(room_name)) != 0
 
@@ -78,6 +135,12 @@ def not_empty_room(room_name):
 def to_string_current_items(name):
     """
     Returns a string that lists the items in the selected room
+
+    Parameters:
+        name(list): A list that contains all the items
+
+    Returns:
+        item_list: Returns a string  that lists the imtems of the given room
     """
     item_list = 'You notice the following items--- '
     scope = range(len(DICT_ROOMS[name].items)-1)
@@ -91,6 +154,14 @@ def move(cardinal, name):
     """
     Returns the current room of the player after the player moves
     a certain direction.
+
+    Parameters:
+        cardinal(list): A list that contains all the cardinals of a room
+        name(list): A list that contains all the rooms
+
+    Returns:
+        current_room_name: Returns the current room after the player
+            moves a certain direction
     """
     current_room_name = None
     if current_room(name).has_closed_door(cardinal):
@@ -105,6 +176,17 @@ def move(cardinal, name):
 def open_door(room_name, cardinal, key):
     """
     Used to open rooms
+
+    Parameters:
+        room_name: Name of a room
+        cardinal(list): A list that contains the cardinals of a room
+        key(list): A list that contains all the keys
+
+    Returns:
+        dict: Returns the room with the closed door opened
+            if there is a matching key
+        string:Print a message to the user when there is no closed door
+        string:Print a message to the user when there is no matching key
     """
     if current_room(room_name).has_closed_door(cardinal):
         door_status = DICT_ROOMS[room_name].get_door_status(cardinal)
@@ -117,6 +199,9 @@ def open_door(room_name, cardinal, key):
 def __rooms_yaml_representation():
     """
     Creates a yaml friendly representation of the set of rooms
+
+    Returns:
+        rooms_repr(dict): Returns dictionary that contains all the rooms
     """
     rooms = {}
     rooms_repr = {'Rooms': rooms}
@@ -128,6 +213,10 @@ def __rooms_yaml_representation():
 def __description_yaml_representation():
     """
     Creates a yaml friendly representation of the set of descriptions
+
+    Returns:
+        descrip_repr(dict): Returns dictionary that contains
+            all the descriptions of rooms
     """
     descrip_repr = {'Rooms Descriptions': DICT_DESCRIPTIONS}
     return descrip_repr
@@ -136,6 +225,10 @@ def __description_yaml_representation():
 def map_yaml_representation():
     """
     Creates a yaml friendly representation of the room with descriptions
+
+    Returns:
+        map_representation(dict): Returns dictionary that contains
+            all the rooms with the description
     """
     map_representation = {}
     map_representation.update(__rooms_yaml_representation())

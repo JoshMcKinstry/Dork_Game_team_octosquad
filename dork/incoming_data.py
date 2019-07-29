@@ -1,11 +1,17 @@
 """
-A module that loads the game information
+A module that loads the game information from a yaml file.
 """
 
 
 def load_rooms(data):
     """
-    Loading the room names
+    Loading the room names.
+
+    Parameter:
+        data(dict): Dictionary of all room names.
+
+    Returns:
+        room_names(list): Returns list of all room names.
     """
     room_names = list(data['Rooms'].keys())
     return room_names
@@ -13,7 +19,15 @@ def load_rooms(data):
 
 def load_cardinals(data, room_names):
     """
-    Loading the room cardinals
+    Loading the room cardinals.
+
+    Parameters:
+        data(dict): Nested dictionaries containing
+            all information of the game.
+        room_names(list): List containg room names.
+
+    Returns:
+        room_cardinals(list): Returns list of room neighbors.
     """
     room_cardinals = []
     for name in room_names:
@@ -24,7 +38,15 @@ def load_cardinals(data, room_names):
 
 def load_doors(data, room_names):
     """
-    Loading the doors in each room
+    Loading the doors in each room.
+
+    Parameters:
+        data(dict): Nested dictionaries containing
+            all information of the game.
+        room_names(list): List containg room names.
+
+    Returns:
+        room_doors(list): Returns list of room doors.
     """
     room_doors = []
     for name in room_names:
@@ -35,7 +57,15 @@ def load_doors(data, room_names):
 
 def load_room_descrips(data, room_names):
     """
-    Loading each room respective main description
+    Loading each rooms respective main description.
+
+    Parameters:
+        data(dict): Nested dictionaries containing
+            all information of the game.
+        room_names(list): List containg room names.
+
+    Returns:
+        room_descrips(list): Returns list of room descriptions.
     """
     room_descrips = []
     for name in room_names:
@@ -46,7 +76,15 @@ def load_room_descrips(data, room_names):
 
 def load_list_room_items(data, room_names):
     """
-    Loading each room respective list of items
+    Loading each room respective list of items.
+
+    Parameters:
+        data(dict): Nested dictionaries containing
+            all information of the game.
+        room_names(list): List containg room names.
+
+    Returns:
+        items_list(list): Returns list of room items.
     """
     items_list = []
     for name in room_names:
@@ -57,7 +95,14 @@ def load_list_room_items(data, room_names):
 
 def load_items(data):
     """
-    Loading items into the game
+    Loading items into the game.
+
+    Parameters:
+        data(dict): Nested dictionaries containing
+            all information of the game.
+
+    Returns:
+        items_name(list): Returns list of item names.
     """
     items_name = list(data['Items'].keys())
     return items_name
@@ -65,7 +110,15 @@ def load_items(data):
 
 def load_items_descriptions(data, items_name):
     """
-    Loading each item respective description
+    Loading each items respective description.
+
+    Parameters:
+        data(dict): Nested dictionaries containing
+            all information of the game.
+        items_name(list): List of item names.
+
+    Returns:
+        items_descriptions(list): Returns list of item descriptions.
     """
     item_descriptions = []
     for name in items_name:
@@ -76,7 +129,15 @@ def load_items_descriptions(data, items_name):
 
 def load_items_properties(data, items_name):
     """
-    Loading each item respective properties
+    Loading each items respective properties.
+
+    Parameters:
+        data(dict): Nested dictionaries containing
+            all information of the game.
+        items_name(list): List of item names.
+
+    Returns:
+        items_descriptions(list): Returns list of item properties.
     """
     item_properties = []
     for name in items_name:
@@ -87,7 +148,14 @@ def load_items_properties(data, items_name):
 
 def load_player(data):
     """
-    Loading the player specs
+    Loading the player specs.
+
+    Parameters:
+        data(dict): Nested dictionaries containing
+            all information of the game.
+
+    Returns:
+        player_specs(tuple): Tuple of player specs.
     """
     player_specs = (data['Player']['Position'], data['Player']['Inventory'])
     return player_specs
