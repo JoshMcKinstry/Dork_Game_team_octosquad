@@ -15,10 +15,10 @@ class Character():
     def has_item(self, item_name):
         """
         This function determines if the player is holding an item.
-        
+
         Parameters:
             item_name (dict): A dictionary of possible items
-        
+
         Returns:
             item_name (bool): True if the player holds the item,
                 false otherwise.
@@ -51,7 +51,7 @@ class Character():
         Parameters:
             item_name (dict): A dictionary of possible items.
 
-        Returns: 
+        Returns:
             A string verifying that he player has the item.
         """
         self.inventory.append(item_name)

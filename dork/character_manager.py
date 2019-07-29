@@ -22,7 +22,7 @@ def player_position():
     Returns the room that the player is in.
 
     Returns:
-        DICT_CHARACTERS['Player'].position (dict): 
+        DICT_CHARACTERS['Player'].position (dict):
             The room the player is currently in
     """
     return DICT_CHARACTERS['Player'].position
@@ -32,7 +32,7 @@ def update_player_position(room_name):
     """
     Updates the player's position to the new room after moving.
 
-    Parameters: 
+    Parameters:
         room_name (dict): A dictionary of possible rooms
     """
     DICT_CHARACTERS['Player'].position = room_name
@@ -55,7 +55,7 @@ def player_has_item(item_name):
 
     Parameters:
         item_name (dict): A dictionary of items
-    
+
     Returns:
         item_name (list): A dictionary of items held by the player.
     """
@@ -66,7 +66,7 @@ def update_player_inventory(item_name):
     """
     Adds an item to the player's inventory.
 
-    Parameters: 
+    Parameters:
         item_name (dict): A dictionary of items in the game
 
     Returns:

@@ -70,7 +70,7 @@ def _safe_quit():
 
     Parameters:
         response (str): The user's input whether or not to save
-    
+
     Returns:
         State (enum): Token delegating the current game state
     """
@@ -132,9 +132,9 @@ def _game_helper(command):
     This function displays the helper list
         whenever a player enters an unknown command
 
-    Parameters: 
+    Parameters:
         command (dict): A dictionary (of dictionaries) that contains the
-            various actions possible in the game.  
+            various actions possible in the game.
 
     Returns:
 
@@ -154,7 +154,7 @@ def evaluate(command, state):
 
     Parameters:
         state (str): A string indicating current state of the game
-    
+
     Returns:
         State (enum): An enum which selects the correct state
     """
@@ -175,8 +175,8 @@ def _load_evaluate(path):
     """
     This function evaluates the current game state
         and loads a new game if called upon
-    
-    Parameters: 
+
+    Parameters:
         path (str): The file location of the saved game
 
     Returns:
